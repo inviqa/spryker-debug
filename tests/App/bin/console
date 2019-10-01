@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+
+use Spryker\Zed\Console\Communication\ConsoleBootstrap;
+use Symfony\Component\Debug\Debug;
+
+
+$autoload = __DIR__ . '/../../../vendor/autoload.php';
+
+if (!file_exists($autoload)) {
+    throw new \Exception('Autoload file does not exist, run composer install');
+}
+
+
+define('APPLICATION_ROOT_DIR', __DIR__ . '/../');
+define('APPLICATION_ENV', 'devtest');
+define('APPLICATION_STORE', 'GB');
+define('APPLICATION_VENDOR_DIR', __DIR__ . '/../../../vendor');
+
+require_once $autoload;
+
+Debug::enable();
+
+$bootstrap = new ConsoleBootstrap();
+$bootstrap->run();

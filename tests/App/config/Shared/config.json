@@ -1,0 +1,25 @@
+{
+  "Spryker": {
+    "Shared": {
+      "Kernel": {
+        "KernelConstants": {
+          "PROJECT_NAMESPACE": "Inviqa\\Spryker\\Debug\\Tests\\App\\Pyz",
+          "PROJECT_NAMESPACES": [
+            "Inviqa\\Spryker\\Debug\\Tests\\App\\Pyz"
+          ],
+          "CORE_NAMESPACES": [
+            "SprykerShop",
+            "SprykerMiddleware",
+            "SprykerEco",
+            "Spryker"
+          ]
+        }
+      },
+      "ErrorHandler": {
+        "ErrorHandlerConstants": {
+          "ERROR_LEVEL": 8191
+        }
+      }
+    }
+  }
+}
