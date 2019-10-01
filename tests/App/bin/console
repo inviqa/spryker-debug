@@ -1,6 +1,7 @@
 #!/usr/bin/env php
 <?php
 
+use Inviqa\Spryker\Debug\Tests\TestContainer;
 use Spryker\Zed\Console\Communication\ConsoleBootstrap;
 use Symfony\Component\Debug\Debug;
 
@@ -12,14 +13,10 @@ if (!file_exists($autoload)) {
 }
 
 
-define('APPLICATION_ROOT_DIR', __DIR__ . '/../');
-define('APPLICATION_ENV', 'devtest');
-define('APPLICATION_STORE', 'GB');
-define('APPLICATION_VENDOR_DIR', __DIR__ . '/../../../vendor');
 
 require_once $autoload;
 
-Debug::enable();
+(new TestContainer());
 
 $bootstrap = new ConsoleBootstrap();
 $bootstrap->run();
