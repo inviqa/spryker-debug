@@ -1,0 +1,7 @@
+default:
+  suites:
+    zed:
+      filters:
+        tags: "~@broken && ~@pending"
+      contexts:
+        - Inviqa\Spryker\Debug\Tests\Acceptance\Context\ZedContext

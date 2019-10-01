@@ -1,0 +1,31 @@
+{
+    "name": "inviqa/spryker-debug",
+    "description": "Inviqa Spryker Debug Module",
+    "type": "library",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Leech",
+            "email": "daniel.leech@inviqa.com"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+        "Inviqa\\Spryker\\Debug\\": "src/"
+      }
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "Inviqa\\Spryker\\Debug\\Tests\\": "tests/"
+      }
+    },
+    "require": {
+        "spryker/product": "^5.0",
+        "spryker-shop/shop-application": "^1.0"
+    },
+    "require-dev": {
+        "behat/behat": "^3.5",
+        "spryker-sdk/phpstan-spryker": "^1.0"
+    }
+}
