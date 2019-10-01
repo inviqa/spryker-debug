@@ -3,8 +3,8 @@
 namespace Inviqa\Spryker\Debug\Tests;
 
 use Inviqa\Spryker\Debug\Shared\Test\ApplicationBuilder;
-use Silex\Application;
 use Spryker\Service\Container\Container;
+use Spryker\Shared\Application\Application;
 use Spryker\Zed\Console\Communication\ConsoleBootstrap;
 use Spryker\Zed\Product\Business\ProductFacade;
 use Spryker\Zed\Product\Business\ProductFacadeInterface;
@@ -17,12 +17,19 @@ class TestContainer extends Container
         Debug::enable();
 
         parent::__construct([
-            Application::class => ApplicationBuilder::create(__DIR__ . '/App', 'GB')->build(),
-            ConsoleBootstrap::class => new ConsoleBootstrap(),
+            Application::class => $this->initApplication(),
+            ConsoleBootstrap::class => function () {
+                return new ConsoleBootstrap();
+            },
             ProductFacadeInterface::class => function () {
                 return new ProductFacade();
             }
 
         ]);
+    }
+
+    private function initApplication(): Application
+    {
+        return ApplicationBuilder::create(__DIR__ . '/App', 'GB')->build();
     }
 }
