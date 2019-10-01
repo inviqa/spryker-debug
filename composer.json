@@ -17,7 +17,7 @@
     },
     "autoload-dev": {
       "psr-4": {
-        "Inviqa\\Spryker\\Debug\\Tests\\App\\": "tests/App/src/",
+        "TestApp\\": "tests/App/src/",
         "Inviqa\\Spryker\\Debug\\Tests\\": "tests/",
         "Generated\\Shared\\Transfer\\": "tests/App/src/Generated/Shared/Transfer/"
       }
@@ -27,7 +27,9 @@
         "spryker-shop/shop-application": "^1.0",
         "symfony/debug": "4.4.x-dev",
         "phpunit/phpunit": "^8.4@dev",
-        "spryker/console": "^3.0@dev"
+        "spryker/console": "^3.0@dev",
+        "spryker/propel": "^3.0@dev",
+        "symfony/var-dumper": "^5.0@dev"
     },
     "require-dev": {
         "behat/behat": "^3.5",

@@ -5,6 +5,7 @@ namespace Inviqa\Spryker\Debug\Shared\Test;
 use RuntimeException;
 use Spryker\Shared\Application\Application;
 use Spryker\Zed\Application\Communication\ZedBootstrap;
+use Spryker\Zed\Propel\Communication\Plugin\ServiceProvider\PropelServiceProvider;
 
 class ApplicationBuilder
 {
@@ -30,6 +31,11 @@ class ApplicationBuilder
      */
     private $env;
 
+    /**
+     * @var bool
+     */
+    private $enablePropel;
+
     private function __construct(string $rootDir, string $store, string $app)
     {
         $this->app = $app;
@@ -48,6 +54,12 @@ class ApplicationBuilder
         return $this;
     }
 
+    public function enablePropel(): self
+    {
+        $this->enablePropel = true;
+        return $this;
+    }
+
     public function build(): Application
     {
         $this->defineIfNotSet('APPLICATION', $this->resolveApp());
@@ -57,8 +69,9 @@ class ApplicationBuilder
         $this->defineIfNotSet('APPLICATION_VENDOR_DIR', __DIR__ . '/../../../vendor');
 
         $bootstrap = new ZedBootstrap();
+        $application = $bootstrap->boot();
 
-        return $bootstrap->boot();
+        return $application;
     }
 
     private function resolveApp(): string

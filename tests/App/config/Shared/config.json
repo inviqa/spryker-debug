@@ -3,9 +3,9 @@
     "Shared": {
       "Kernel": {
         "KernelConstants": {
-          "PROJECT_NAMESPACE": "Inviqa\\Spryker\\Debug\\Tests\\App\\Pyz",
+          "PROJECT_NAMESPACE": "TestApp",
           "PROJECT_NAMESPACES": [
-            "Inviqa\\Spryker\\Debug\\Tests\\App\\Pyz"
+            "TestApp"
           ],
           "CORE_NAMESPACES": [
             "SprykerShop",

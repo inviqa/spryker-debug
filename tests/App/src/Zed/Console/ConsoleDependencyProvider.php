@@ -1,6 +1,6 @@
 <?php
 
-namespace Inviqa\Spryker\Debug\Tests\App\Pyz\Zed\Console;
+namespace TestApp\Zed\Console;
 
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
 use Spryker\Zed\Kernel\Container;

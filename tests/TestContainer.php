@@ -30,6 +30,7 @@ class TestContainer extends Container
 
     private function initApplication(): Application
     {
-        return ApplicationBuilder::create(__DIR__ . '/App', 'GB')->build();
+        return ApplicationBuilder::create(__DIR__ . '/App', 'GB')
+            ->build();
     }
 }
