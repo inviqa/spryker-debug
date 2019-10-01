@@ -1,7 +1,15 @@
 default:
   suites:
     zed:
+      autowire: true
+      services: Inviqa\Spryker\Debug\Tests\TestContainer
+      paths:
+        features: tests/Acceptance/Features
       filters:
         tags: "~@broken && ~@pending"
       contexts:
-        - Inviqa\Spryker\Debug\Tests\Acceptance\Context\ZedContext
+        - Inviqa\Spryker\Debug\Tests\Acceptance\Context\ConsoleContext
+
+  extensions:
+    Roave\BehatPsrContainer\PsrContainerExtension:
+      container: 'tests/Container.php'

@@ -22,10 +22,15 @@
     },
     "require": {
         "spryker/product": "^5.0",
-        "spryker-shop/shop-application": "^1.0"
+        "spryker-shop/shop-application": "^1.0",
+        "symfony/debug": "4.4.x-dev",
+        "phpunit/phpunit": "^8.4@dev",
+        "spryker/console": "^3.0@dev"
     },
     "require-dev": {
         "behat/behat": "^3.5",
-        "spryker-sdk/phpstan-spryker": "^1.0"
+        "spryker-sdk/phpstan-spryker": "^1.0",
+        "roave/behat-psr11extension": "dev-master",
+        "webmozart/path-util": "^2.3@dev"
     }
 }
