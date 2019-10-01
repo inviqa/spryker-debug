@@ -16,7 +16,6 @@ if (!file_exists($autoload)) {
 
 require_once $autoload;
 
-(new TestContainer());
+// this will bootstrap the application
+(new TestContainer())->get(ConsoleBootstrap::class)->run();
 
-$bootstrap = new ConsoleBootstrap();
-$bootstrap->run();
