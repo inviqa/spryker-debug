@@ -17,7 +17,9 @@
     },
     "autoload-dev": {
       "psr-4": {
-        "Inviqa\\Spryker\\Debug\\Tests\\": "tests/"
+        "Inviqa\\Spryker\\Debug\\Tests\\App\\": "tests/App/src/",
+        "Inviqa\\Spryker\\Debug\\Tests\\": "tests/",
+        "Generated\\Shared\\Transfer\\": "tests/App/src/Generated/Shared/Transfer/"
       }
     },
     "require": {
