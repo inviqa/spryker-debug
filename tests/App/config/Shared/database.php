@@ -6,11 +6,11 @@ use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Zed\Propel\PropelConfig;
 
 
-$config[PropelConstants::ZED_DB_USERNAME] = 'spryker_debug_test';
-$config[PropelConstants::ZED_DB_PASSWORD] = 'spryker_debug_test';
+$config[PropelConstants::ZED_DB_USERNAME] = 'test';
+$config[PropelConstants::ZED_DB_PASSWORD] = 'test';
+$config[PropelConstants::ZED_DB_DATABASE] = 'test';
 $config[PropelConstants::ZED_DB_HOST] = 'localhost';
-$config[PropelConstants::ZED_DB_PORT] = '5432';
-$config[PropelConstants::ZED_DB_DATABASE] = 'spryker_debug_test';
+$config[PropelConstants::ZED_DB_PORT] = '54320';
 $config[PropelConstants::ZED_DB_ENGINE] = 'pgsql';
 
 $DSN = sprintf(
@@ -54,13 +54,21 @@ $config[PropelConstants::PROPEL] = [
     ],
     'paths' => [
         'phpDir' => APPLICATION_ROOT_DIR,
-        'sqlDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/Sql',
-        'migrationDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/Migration_' . $config[PropelConstants::ZED_DB_ENGINE],
+        'sqlDir' => APPLICATION_ROOT_DIR . '/Orm/Propel/Sql',
+        'migrationDir' => APPLICATION_ROOT_DIR . '/Orm/Propel/Migration_' . $config[PropelConstants::ZED_DB_ENGINE],
         'schemaDir' => APPLICATION_ROOT_DIR . '/Orm/Propel/Schema',
-        'phpConfDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/Config/' . APPLICATION_ENV . '/',
+        'phpConfDir' => APPLICATION_ROOT_DIR . '/Orm/Propel/Config/' . APPLICATION_ENV . '/',
     ],
 ];
 
 $ENGINE = $config[PropelConstants::ZED_DB_ENGINE];
 $config[PropelConstants::PROPEL]['database']['connections']['default'] = $connections[$ENGINE];
 $config[PropelConstants::PROPEL]['database']['connections']['zed'] = $connections[$ENGINE];
+
+$config[PropelConstants::ZED_DB_ENGINE_PGSQL] = PropelConfig::DB_ENGINE_PGSQL;
+$config[PropelConstants::ZED_DB_SUPPORTED_ENGINES] = [
+    PropelConfig::DB_ENGINE_PGSQL => 'PostgreSql',
+];
+$config[PropelConstants::SCHEMA_FILE_PATH_PATTERN] = APPLICATION_VENDOR_DIR . '/*/*/src/*/Zed/*/Persistence/Propel/Schema/';
+$config[PropelConstants::USE_SUDO_TO_MANAGE_DATABASE] = true;
+$config[PropelConstants::PROPEL_DEBUG] = false;

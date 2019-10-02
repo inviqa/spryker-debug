@@ -2,8 +2,8 @@
 
 namespace Inviqa\Spryker\Debug\Tests\Unit\Shared\Config;
 
-use Inviqa\Spryker\Debug\Shared\Config\ArrayLoader;
-use Inviqa\Spryker\Debug\Shared\Config\Exception\InvalidConfigException;
+use InviqaSprykerDebug\Shared\Config\ArrayLoader;
+use InviqaSprykerDebug\Shared\Config\Exception\InvalidConfigException;
 use PHPUnit\Framework\TestCase;
 
 class ArrayLoaderTest extends TestCase

@@ -1,6 +1,6 @@
 <?php
 
-use Inviqa\Spryker\Debug\Shared\Config\ArrayLoader;
+use InviqaSprykerDebug\Shared\Config\ArrayLoader;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Zed\Propel\PropelConfig;
 

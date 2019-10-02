@@ -1,8 +1,8 @@
 <?php
 
-namespace Inviqa\Spryker\Debug\Shared\Config;
+namespace InviqaSprykerDebug\Shared\Config;
 
-use Inviqa\Spryker\Debug\Shared\Config\Exception\InvalidConfigException;
+use InviqaSprykerDebug\Shared\Config\Exception\InvalidConfigException;
 use RuntimeException;
 
 class ArrayLoader

@@ -1,11 +1,12 @@
 <?php
 
-namespace Inviqa\Spryker\Debug\Tests\Acceptance\Context;
+namespace InviqaSprykerDebug\Tests\Acceptance\Context;
 
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
+use Generated\Shared\Transfer\ProductAbstractTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Spryker\Zed\Product\Business\ProductFacadeInterface;
 
@@ -26,8 +27,14 @@ class ConsoleContext implements Context
      */
     public function theProductExistsAs(string $sku, TableNode $table)
     {
+        $productTransfer = new ProductAbstractTransfer();
+        $productTransfer->setSku($sku);
+        $idProductAbstract = $this->productFacade->createProductAbstract($productTransfer);
+
         $productTransfer = new ProductConcreteTransfer();
-        $this->productFacade->saveProductConcrete($productTransfer);
+        $productTransfer->setFkProductAbstract($idProductAbstract);
+        $productTransfer->setSku($sku);
+        $this->productFacade->createProductConcrete($productTransfer);
     }
 
     /**

@@ -3,9 +3,9 @@
     "Shared": {
       "Kernel": {
         "KernelConstants": {
-          "PROJECT_NAMESPACE": "TestApp",
+          "PROJECT_NAMESPACE": "Pyz",
           "PROJECT_NAMESPACES": [
-            "TestApp"
+            "Pyz"
           ],
           "CORE_NAMESPACES": [
             "SprykerShop",

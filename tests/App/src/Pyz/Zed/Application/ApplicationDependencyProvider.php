@@ -1,6 +1,6 @@
 <?php
 
-namespace TestApp\Zed\Application;
+namespace Pyz\Zed\Application;
 
 use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationDependencyProvider;
 use Spryker\Zed\Kernel\Container;

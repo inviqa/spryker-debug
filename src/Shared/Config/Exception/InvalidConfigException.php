@@ -1,6 +1,6 @@
 <?php
 
-namespace Inviqa\Spryker\Debug\Shared\Config\Exception;
+namespace InviqaSprykerDebug\Shared\Config\Exception;
 
 use RuntimeException;
 

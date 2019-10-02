@@ -1,6 +1,6 @@
 <?php
 
-namespace Pyz\Tests\Integration\Helper;
+namespace InviqaSprykerDebug\Shared\Workspace;
 
 use RuntimeException;
 use Symfony\Component\Filesystem\Filesystem;

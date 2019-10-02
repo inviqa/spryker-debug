@@ -1,8 +1,8 @@
 <?php
 
-namespace Inviqa\Spryker\Debug\Tests;
+namespace InviqaSprykerDebug\Tests;
 
-use Inviqa\Spryker\Debug\Shared\Test\ApplicationBuilder;
+use InviqaSprykerDebug\Shared\Test\ApplicationBuilder;
 use Spryker\Service\Container\Container;
 use Spryker\Shared\Application\Application;
 use Spryker\Zed\Console\Communication\ConsoleBootstrap;

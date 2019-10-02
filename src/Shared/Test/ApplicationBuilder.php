@@ -1,6 +1,6 @@
 <?php
 
-namespace Inviqa\Spryker\Debug\Shared\Test;
+namespace InviqaSprykerDebug\Shared\Test;
 
 use RuntimeException;
 use Spryker\Shared\Application\Application;
@@ -70,6 +70,9 @@ class ApplicationBuilder
 
         $bootstrap = new ZedBootstrap();
         $application = $bootstrap->boot();
+
+        // the documented return type above is wrong, and it confuses PHPStan.
+        assert($application instanceof Application);
 
         return $application;
     }

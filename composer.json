@@ -12,13 +12,14 @@
     ],
     "autoload": {
       "psr-4": {
-        "Inviqa\\Spryker\\Debug\\": "src/"
+        "InviqaSprykerDebug\\": "src/"
       }
     },
     "autoload-dev": {
       "psr-4": {
-        "TestApp\\": "tests/App/src/",
-        "Inviqa\\Spryker\\Debug\\Tests\\": "tests/",
+        "Orm\\": "tests/App/src/Orm/",
+        "Pyz\\": "tests/App/src/Pyz/",
+        "InviqaSprykerDebug\\Tests\\": "tests/",
         "Generated\\Shared\\Transfer\\": "tests/App/src/Generated/Shared/Transfer/"
       }
     },
@@ -36,5 +37,10 @@
         "spryker-sdk/phpstan-spryker": "^1.0",
         "roave/behat-psr11extension": "dev-master",
         "webmozart/path-util": "^2.3@dev"
+    },
+    "scripts": {
+      "phpcs": "./vendor/bin/phpcs",
+      "phpunit": "./vendor/bin/phpunit",
+      "phpstan": "./vendor/bin/phpstan analyse -c phpstan.neon src --level=7"
     }
 }
