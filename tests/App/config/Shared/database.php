@@ -54,10 +54,10 @@ $config[PropelConstants::PROPEL] = [
     ],
     'paths' => [
         'phpDir' => APPLICATION_ROOT_DIR,
-        'sqlDir' => APPLICATION_ROOT_DIR . '/Orm/Propel/Sql',
-        'migrationDir' => APPLICATION_ROOT_DIR . '/Orm/Propel/Migration_' . $config[PropelConstants::ZED_DB_ENGINE],
-        'schemaDir' => APPLICATION_ROOT_DIR . '/Orm/Propel/Schema',
-        'phpConfDir' => APPLICATION_ROOT_DIR . '/Orm/Propel/Config/' . APPLICATION_ENV . '/',
+        'sqlDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/Sql',
+        'migrationDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/Migration_' . $config[PropelConstants::ZED_DB_ENGINE],
+        'schemaDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/Schema',
+        'phpConfDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/Config/' . APPLICATION_ENV . '/',
     ],
 ];
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-use Inviqa\Spryker\Debug\Tests\TestContainer;
+use InviqaSprykerDebug\Tests\TestContainer;
 use Spryker\Zed\Console\Communication\ConsoleBootstrap;
 use Symfony\Component\Debug\Debug;
 
@@ -11,8 +11,6 @@ $autoload = __DIR__ . '/../../../vendor/autoload.php';
 if (!file_exists($autoload)) {
     throw new \Exception('Autoload file does not exist, run composer install');
 }
-
-
 
 require_once $autoload;
 
