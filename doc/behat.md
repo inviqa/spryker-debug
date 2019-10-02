@@ -68,9 +68,12 @@ You can then contexts which accept dependencies:
 
 class MyContext implements Context
 {
+    private $bridge;
+
     // ...
     public function __construct(MyBridge $bridge)
     {
+        $this->bridge = $bridge;
         // ...
     }
 }
@@ -79,6 +82,60 @@ class MyContext implements Context
 and the "bridge" class will be automatically injected (note that "bridge" is a
 concept to "bridge" the gap between context and project code, but you may also
 inject the Spryker facades directly if prefered).
+
+State
+-----
+
+It is sometimes necessary to share state over many contexts in order that you
+can avoid explicity referencing entities in each step.
+
+### ProcessState
+
+Allows you to execute a command and check the result in another context:
+
+```php
+<?php
+
+// ...
+
+class Context1 implements Context
+{
+    // ...
+
+    public function __construct(ProcessState $state)
+    {
+        $this->state = $state;
+    }
+
+    /**
+     * @Given I run commad ":command"
+     */
+    public function runsCommand(string $command)
+    {
+      $process = $this->state->createProcess($command);
+      $process->run();
+    }
+}
+
+class Context2 implements Context
+{
+    // ...
+
+    public function __construct(ProcessState $state)
+    {
+        $this->state = $state;
+    }
+
+    /**
+     * @Given I run commad ":command"
+     */
+    public function iShouldSeeSomething(string $command)
+    {
+      $process = $this->state->getLastProcess();
+      Assert::assertEquals('Hello', $process->getOutput());
+    }
+}
+```
 
 Contexts
 --------
@@ -118,3 +175,10 @@ Feature: Product Debug Command
 
   # ...
 ```
+
+### WorkspaceContext
+
+*BeforeScenario*: Will remove the contents of the workspace before each
+scenario.
+
+Provides steps to manage the workspace (this is for integration tests).

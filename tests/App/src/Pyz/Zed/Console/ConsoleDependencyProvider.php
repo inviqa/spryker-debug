@@ -2,6 +2,7 @@
 
 namespace Pyz\Zed\Console;
 
+use InviqaSprykerDebug\Zed\Communication\Console\DatabaseShellConsole;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Propel\Communication\Console\BuildModelConsole;
@@ -28,6 +29,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new InsertSqlConsole(),
             new MigrateConsole(),
             new SchemaCopyConsole(),
+
+            new DatabaseShellConsole(),
         ];
     }
 }

@@ -8,6 +8,9 @@ use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Generated\Shared\Transfer\ProductAbstractTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
+use InviqaSprykerDebug\Shared\Workspace\Workspace;
+use InviqaSprykerDebug\Zed\Behat\State\ProcessState;
+use PHPUnit\Framework\Assert;
 use Spryker\Zed\Product\Business\ProductFacadeInterface;
 
 class ConsoleContext implements Context
@@ -17,9 +20,21 @@ class ConsoleContext implements Context
      */
     private $productFacade;
 
-    public function __construct(ProductFacadeInterface $productFacade)
+    /**
+     * @var Workspace
+     */
+    private $workspace;
+
+    /**
+     * @var ProcessState
+     */
+    private $processState;
+
+    public function __construct(ProductFacadeInterface $productFacade, Workspace $workspace, ProcessState $processState)
     {
         $this->productFacade = $productFacade;
+        $this->workspace = $workspace;
+        $this->processState = $processState;
     }
 
     /**
@@ -46,19 +61,44 @@ class ConsoleContext implements Context
     }
 
     /**
-     * @When I execute :arg1
+     * @When I execute console command :command
      */
-    public function iExecute($arg1)
+    public function iExecute($command)
     {
-        throw new PendingException();
+        $process = $this->processState->create(
+            sprintf(__DIR__ . '/../../App/bin/console %s', $command),
+            $this->workspace->path()
+        );
+        $process->run();
     }
 
     /**
-     * @Then I should see the following:
+     * @Then the command should succeed
+     * @Then the command should exit with code :exitCode
      */
-    public function iShouldSeeTheFollowing(PyStringNode $string)
+    public function theCommandShouldExitWithCode(int $exitCode = 0)
     {
-        throw new PendingException();
+        $process = $this->processState->getLastProcess();
+        if ($process->getExitCode() == $exitCode) {
+            return;
+        }
+
+        Assert::fail(sprintf(
+            'Command exited with "%s" but expected "%s": STDOUT: %s STDERR: %s',
+            $process->getExitCode(),
+            $exitCode,
+            $process->getOutput(),
+            $process->getErrorOutput()
+        ));
+    }
+
+    /**
+     * @Then I should see the following output:
+     */
+    public function iShouldSeeTheFollowingOutput(PyStringNode $string)
+    {
+        $process = $this->processState->getLastProcess();
+        Assert::assertContains($string->getRaw(), $process->getOutput());
     }
 
     /**

@@ -9,6 +9,7 @@ default:
         tags: "~@broken && ~@pending"
       contexts:
         - InviqaSprykerDebug\Zed\Behat\Context\DatabaseContext
+        - InviqaSprykerDebug\Zed\Behat\Context\WorkspaceContext
 
         - InviqaSprykerDebug\Tests\Acceptance\Context\ConsoleContext
 

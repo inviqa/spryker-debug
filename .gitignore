@@ -3,3 +3,4 @@
 /tests/App/src/Generated/
 /tests/App/src/Orm/
 /.phpunit.result.cache
+/tests/Workspace

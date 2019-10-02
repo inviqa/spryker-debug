@@ -3,6 +3,8 @@
 namespace InviqaSprykerDebug\Tests;
 
 use InviqaSprykerDebug\Shared\Test\ApplicationBuilder;
+use InviqaSprykerDebug\Shared\Workspace\Workspace;
+use InviqaSprykerDebug\Zed\Behat\State\ProcessState;
 use Spryker\Service\Container\Container;
 use Spryker\Shared\Application\Application;
 use Spryker\Zed\Console\Communication\ConsoleBootstrap;
@@ -22,11 +24,17 @@ class TestContainer extends Container
     private function registerServices(): void
     {
         $this[Application::class] = $this->initApplication();
+        $this[Workspace::class] = function () {
+            return new Workspace(__DIR__ . '/Workspace');
+        };
         $this[ConsoleBootstrap::class] = function () {
             return new ConsoleBootstrap();
         };
         $this[ProductFacadeInterface::class] = function () {
-                return new ProductFacade();
+            return new ProductFacade();
+        };
+        $this[ProcessState::class] = function () {
+            return new ProcessState();
         };
     }
 
