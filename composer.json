@@ -36,9 +36,17 @@
         "behat/behat": "^3.5",
         "spryker-sdk/phpstan-spryker": "^1.0",
         "roave/behat-psr11extension": "dev-master",
-        "webmozart/path-util": "^2.3@dev"
+        "webmozart/path-util": "^2.3@dev",
+        "spryker/code-sniffer": "dev-master"
     },
     "scripts": {
+      "integrate": [
+        "@phpcs",
+        "@phpstan",
+        "@phpunit",
+        "@behat"
+      ],
+      "behat": "./vendor/bin/behat",
       "phpcs": "./vendor/bin/phpcs",
       "phpunit": "./vendor/bin/phpunit",
       "phpstan": "./vendor/bin/phpstan analyse -c phpstan.neon src --level=7"

@@ -3,7 +3,6 @@
 namespace InviqaSprykerDebug\Shared\Config;
 
 use InviqaSprykerDebug\Shared\Config\Exception\InvalidConfigException;
-use RuntimeException;
 
 class ArrayLoader
 {
@@ -24,7 +23,6 @@ class ArrayLoader
         $resolved = [];
 
         foreach ($config as $key => $value) {
-
             if ($checkConstant) {
                 $resolved[constant($fqn . '::' . $key)] = $value;
                 continue;
@@ -37,9 +35,12 @@ class ArrayLoader
                 continue;
             }
 
-            throw new InvalidConfigException(sprintf(
-                'Could not resolve "%s"', $fqn
-            ));
+            throw new InvalidConfigException(
+                sprintf(
+                    'Could not resolve "%s"',
+                    $fqn
+                )
+            );
         }
 
         return $resolved;

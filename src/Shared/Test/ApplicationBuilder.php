@@ -5,7 +5,6 @@ namespace InviqaSprykerDebug\Shared\Test;
 use RuntimeException;
 use Spryker\Shared\Application\Application;
 use Spryker\Zed\Application\Communication\ZedBootstrap;
-use Spryker\Zed\Propel\Communication\Plugin\ServiceProvider\PropelServiceProvider;
 
 class ApplicationBuilder
 {
@@ -31,11 +30,6 @@ class ApplicationBuilder
      */
     private $env;
 
-    /**
-     * @var bool
-     */
-    private $enablePropel;
-
     private function __construct(string $rootDir, string $store, string $app)
     {
         $this->app = $app;
@@ -51,12 +45,7 @@ class ApplicationBuilder
     public function applicationEnv(string $env): self
     {
         $this->env = $env;
-        return $this;
-    }
 
-    public function enablePropel(): self
-    {
-        $this->enablePropel = true;
         return $this;
     }
 
@@ -85,10 +74,12 @@ class ApplicationBuilder
     private function resolveRootDir(): string
     {
         if (!file_exists($this->rootDir)) {
-            throw new RuntimeException(sprintf(
-                'Root Directory "%s" does not exist',
-                $this->rootDir
-            ));
+            throw new RuntimeException(
+                sprintf(
+                    'Root Directory "%s" does not exist',
+                    $this->rootDir
+                )
+            );
         }
 
         return $this->rootDir;

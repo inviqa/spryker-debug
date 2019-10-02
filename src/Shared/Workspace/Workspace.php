@@ -56,24 +56,30 @@ class Workspace
     public function copy(string $absoluteSource, string $relativeDest)
     {
         if (Path::isAbsolute($relativeDest)) {
-            throw new RuntimeException(sprintf(
-                'Cannot copy file to an absolute path "%s" in a workspace',
-                $relativeDest
-            ));
+            throw new RuntimeException(
+                sprintf(
+                    'Cannot copy file to an absolute path "%s" in a workspace',
+                    $relativeDest
+                )
+            );
         }
 
         if (Path::isAbsolute($absoluteSource) === false) {
-            throw new RuntimeException(sprintf(
-                'Cannot copy file from a relative path "%s" in a workspace',
-                $absoluteSource
-            ));
+            throw new RuntimeException(
+                sprintf(
+                    'Cannot copy file from a relative path "%s" in a workspace',
+                    $absoluteSource
+                )
+            );
         }
 
         if (file_exists($absoluteSource) === false) {
-            throw new RuntimeException(sprintf(
-                'File "%s" does not exist',
-                $absoluteSource
-            ));
+            throw new RuntimeException(
+                sprintf(
+                    'File "%s" does not exist',
+                    $absoluteSource
+                )
+            );
         }
 
         $this->filesystem->copy($absoluteSource, $this->path($relativeDest));

@@ -14,11 +14,13 @@ class DatabaseContext implements Context
      */
     public function startTransaction(ScenarioScope $scope)
     {
-        if (false === Propel::getConnection()->beginTransaction()) {
-            throw new RuntimeException(sprintf(
-                'Could not start DB transaction in Behat scenario "%s"',
-                $scope->getName()
-            ));
+        if (Propel::getConnection()->beginTransaction() === false) {
+            throw new RuntimeException(
+                sprintf(
+                    'Could not start DB transaction in Behat scenario "%s"',
+                    $scope->getName()
+                )
+            );
         }
     }
 
@@ -27,11 +29,13 @@ class DatabaseContext implements Context
      */
     public function rollbackTransaction(ScenarioScope $scope)
     {
-        if (false === Propel::getConnection()->rollBack()) {
-            throw new RuntimeException(sprintf(
-                'Could not rollback DB transaction in Behat scenario "%s"',
-                $scope->getName()
-            ));
+        if (Propel::getConnection()->rollBack() === false) {
+            throw new RuntimeException(
+                sprintf(
+                    'Could not rollback DB transaction in Behat scenario "%s"',
+                    $scope->getName()
+                )
+            );
         }
     }
 }
