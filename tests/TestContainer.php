@@ -15,17 +15,19 @@ class TestContainer extends Container
     public function __construct()
     {
         Debug::enable();
+        parent::__construct();
+        $this->registerServices();
+    }
 
-        parent::__construct([
-            Application::class => $this->initApplication(),
-            ConsoleBootstrap::class => function () {
-                return new ConsoleBootstrap();
-            },
-            ProductFacadeInterface::class => function () {
+    private function registerServices(): void
+    {
+        $this[Application::class] = $this->initApplication();
+        $this[ConsoleBootstrap::class] = function () {
+            return new ConsoleBootstrap();
+        };
+        $this[ProductFacadeInterface::class] = function () {
                 return new ProductFacade();
-            }
-
-        ]);
+        };
     }
 
     private function initApplication(): Application
