@@ -5,8 +5,6 @@ default:
       autowire: true
       services: InviqaSprykerDebug\Tests\TestContainer
 
-      filters:
-        tags: "~@broken && ~@pending"
       contexts:
         - InviqaSprykerDebug\Tests\Acceptance\Context\DatabaseContext
         - InviqaSprykerDebug\Tests\Acceptance\Context\WorkspaceContext
