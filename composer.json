@@ -24,7 +24,6 @@
       }
     },
     "require": {
-        "spryker/product": "^5.0",
         "spryker-shop/shop-application": "^1.0",
         "spryker/propel": "^3.0@dev",
         "spryker/console": "^3.0|^4.0"
