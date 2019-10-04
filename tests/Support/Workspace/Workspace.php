@@ -36,6 +36,7 @@ class Workspace
         }
 
         $this->filesystem->remove($this->path);
+        $this->filesystem->mkdir($this->path);
     }
 
     public function path(string $relative = '/'): string

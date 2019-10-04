@@ -76,26 +76,11 @@ class ConsoleContext implements Context
     }
 
     /**
-     * @Given the product SKU-:arg1 exists as:
+     *
+     * @Then the command should fail
      */
-    public function theProductSkuExistsAs($arg1, TableNode $table)
+    public function theCommandShouldFail()
     {
-        throw new PendingException();
-    }
-
-    /**
-     * @When I generate the report :arg1 for SKU :arg2
-     */
-    public function iGenerateTheReportForSku($arg1, $arg2)
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then the following report should be generated:
-     */
-    public function theFollowingReportShouldBeGenerated(PyStringNode $string)
-    {
-        throw new PendingException();
+        Assert::assertNotEquals(0, $this->process->getExitCode());
     }
 }
