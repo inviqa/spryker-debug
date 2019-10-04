@@ -45,7 +45,7 @@ List all configuration:
 $ ./vendor/bin/console debug:config
 ```
 
-Filter keys:
+List all configuration that has a key containing the string "rabbit":
 
 ```bash
 $ ./vendor/bin/console debug:config rabbit
