@@ -19,6 +19,8 @@ use Spryker\Zed\Propel\Communication\Console\SchemaCopyConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueDumpConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueTaskConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueWorkerConsole;
+use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllQueuesConsole;
+use Spryker\Zed\RabbitMq\Communication\Console\PurgeAllQueuesConsole;
 use Spryker\Zed\Transfer\Communication\Console\TransferGeneratorConsole;
 
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
@@ -38,6 +40,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new QueueDumpConsole(),
             new QueueTaskConsole(),
             new QueueWorkerConsole(),
+            new PurgeAllQueuesConsole(),
+            new DeleteAllQueuesConsole(),
 
             new DatabaseShellConsole(),
             new RedisShellConsole(),

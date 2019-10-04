@@ -2,6 +2,11 @@
 
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
 
+$config[RabbitMqEnv::RABBITMQ_API_HOST] = 'localhost';
+$config[RabbitMqEnv::RABBITMQ_API_PORT] = '16672';
+$config[RabbitMqEnv::RABBITMQ_API_USERNAME] = 'guest';
+$config[RabbitMqEnv::RABBITMQ_API_PASSWORD] = 'guest';
+$config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/';
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
     [
         RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'GB-connection',

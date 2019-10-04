@@ -21,6 +21,7 @@ class QueueContext implements Context
     public function theQueueExists(string $queueName)
     {
         $options = new RabbitMqOptionTransfer();
+        $options->setQueueName($queueName);
         $this->client->createQueueAdapter()->createQueue($queueName, [
             'rabbitMqConsumerOption' => $options,
         ]);

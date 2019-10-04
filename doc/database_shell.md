@@ -1,7 +1,7 @@
 Database Shell
 ==============
 
-Attempts to lauch the Postgres shell using the current project database
+Attempts to launch the Postgres shell using the current project database
 configuration.
 
 Installation
@@ -33,6 +33,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
 Usage
 -----
+
+Connect to the `psql` shell:
 
 ```bash
 $ ./vendor/bin/debug:database:shell

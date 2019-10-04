@@ -10,7 +10,6 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\ConsoleOutputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
-use Inviqa\Zed\SprykerDebug\Communication\Console\AbstractShellConsole;
 
 class RedisShellConsole extends AbstractShellConsole
 {
