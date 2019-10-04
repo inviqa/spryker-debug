@@ -1,16 +1,28 @@
 Spryker Debug
 =============
 
+[![Build Status](https://travis-ci.org/inviqa/spryker-debug.svg?branch=master)](https://travis-ci.org/inviqa/spryker-debug)
+
 Collection of debug and development tools for Spryker:
 
-- [Config Dump](doc/config_dump.md)
-- [Database Shell](doc/database_shell.md)
-- [Redis Shell](doc/redis_shell.md)
+Installation
+------------
 
-Documentation
--------------
+```
+composer require inviqa/spryker-debug
+```
 
-See the [doc](doc) folder.
+Each feature needs to be enabled individually. Instructions provided in the
+documentation.
+
+Features
+--------
+
+Follow the link for documentation:
+
+- [Config Dump](doc/config_dump.md): Introspect configuration.
+- [Database Shell](doc/database_shell.md): Launch a postgres shell.
+- [Redis Shell](doc/redis_shell.md): Launch a Redis shell.
 
 Developing
 ----------

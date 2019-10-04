@@ -9,7 +9,35 @@ This command will:
 - Show the file in which the configuration value was created / modified.
 - Allow you to filter by key
 
-Usage:
+Installation
+------------
+
+Add the `ConfigDumpConsole` to your `ConsoleDependencyProvider`:
+
+```php
+<?php
+
+namespace Pyz\Zed\Console;
+
+// ...
+use InviqaSprykerDebug\Zed\Communication\Console\ConfigDumpConsole;
+
+class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
+{
+    // ...
+
+    protected function getConsoleCommands(Container $container)
+    {
+        return [
+            // ...
+            new ConfigDumpConsole(),
+        ];
+    }
+}
+```
+
+Usage
+-----
 
 ```bash
 $ ./vendor/bin/console debug:config
