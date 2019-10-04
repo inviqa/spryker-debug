@@ -37,5 +37,5 @@ Usage
 Launch the redis shell:
 
 ```bash
-$ ./vendor/bin/debug:redis:shell
+$ ./vendor/bin/console debug:redis:shell
 ```
