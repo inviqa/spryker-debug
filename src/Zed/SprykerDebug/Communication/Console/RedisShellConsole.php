@@ -1,8 +1,8 @@
 <?php
 
-namespace Inviqa\SprykerDebug\Zed\Communication\Console;
+namespace Inviqa\Zed\SprykerDebug\Communication\Console;
 
-use Inviqa\SprykerDebug\Zed\Communication\Model\Cast;
+use Inviqa\Zed\SprykerDebug\Communication\Model\Cast;
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\Storage\StorageConstants;
 use Symfony\Component\Console\Input\InputInterface;
@@ -10,6 +10,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\ConsoleOutputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
+use Inviqa\Zed\SprykerDebug\Communication\Console\AbstractShellConsole;
 
 class RedisShellConsole extends AbstractShellConsole
 {

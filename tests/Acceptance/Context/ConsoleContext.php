@@ -9,7 +9,7 @@ use Behat\Behat\Context\Context;
 use Generated\Shared\Transfer\ProductAbstractTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Inviqa\SprykerDebug\Tests\Support\Workspace\Workspace;
-use Inviqa\SprykerDebug\Zed\Behat\State\ProcessState;
+use Inviqa\Zed\SprykerDebug\Behat\State\ProcessState;
 use PHPUnit\Framework\Assert;
 use Spryker\Zed\Product\Business\ProductFacadeInterface;
 use Symfony\Component\Process\Process;

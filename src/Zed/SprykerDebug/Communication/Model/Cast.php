@@ -1,6 +1,6 @@
 <?php
 
-namespace Inviqa\SprykerDebug\Zed\Communication\Model;
+namespace Inviqa\Zed\SprykerDebug\Communication\Model;
 
 class Cast
 {

@@ -15,7 +15,7 @@ Add the `RedisShellConsole` to your `ConsoleDependencyProvider`:
 namespace Pyz\Zed\Console;
 
 // ...
-use Inviqa\SprykerDebug\Zed\Communication\Console\RedisShellConsole;
+use Inviqa\Zed\SprykerDebug\Communication\Console\RedisShellConsole;
 
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 {

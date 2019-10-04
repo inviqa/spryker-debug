@@ -6,6 +6,7 @@ use Spryker\Shared\Kernel\KernelConstants;
 $config[KernelConstants::PROJECT_NAMESPACE] = 'Pyz';
 $config[KernelConstants::PROJECT_NAMESPACES] = [
     'Pyz',
+    'Inviqa',
 ];
 $config[KernelConstants::CORE_NAMESPACES] = [
     'SprykerShop',
