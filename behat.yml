@@ -3,14 +3,14 @@ default:
     zed:
 
       autowire: true
-      services: InviqaSprykerDebug\Tests\TestContainer
+      services: Inviqa\SprykerDebug\Tests\TestContainer
 
       contexts:
-        - InviqaSprykerDebug\Tests\Acceptance\Context\DatabaseContext
-        - InviqaSprykerDebug\Tests\Acceptance\Context\WorkspaceContext
-        - InviqaSprykerDebug\Tests\Acceptance\Context\ConsoleContext
-        - InviqaSprykerDebug\Tests\Acceptance\Context\ConfigContext
-        - InviqaSprykerDebug\Tests\Acceptance\Context\QueueContext
+        - Inviqa\SprykerDebug\Tests\Acceptance\Context\DatabaseContext
+        - Inviqa\SprykerDebug\Tests\Acceptance\Context\WorkspaceContext
+        - Inviqa\SprykerDebug\Tests\Acceptance\Context\ConsoleContext
+        - Inviqa\SprykerDebug\Tests\Acceptance\Context\ConfigContext
+        - Inviqa\SprykerDebug\Tests\Acceptance\Context\QueueContext
 
   extensions:
     Roave\BehatPsrContainer\PsrContainerExtension:

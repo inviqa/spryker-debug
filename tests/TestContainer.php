@@ -1,11 +1,11 @@
 <?php
 
-namespace InviqaSprykerDebug\Tests;
+namespace Inviqa\SprykerDebug\Tests;
 
-use InviqaSprykerDebug\Tests\Support\ApplicationBuilder;
-use InviqaSprykerDebug\Tests\Support\Workspace\Workspace;
-use InviqaSprykerDebug\Zed\Behat\State\LocalizationState;
-use InviqaSprykerDebug\Zed\Behat\State\ProcessState;
+use Inviqa\SprykerDebug\Tests\Support\ApplicationBuilder;
+use Inviqa\SprykerDebug\Tests\Support\Workspace\Workspace;
+use Inviqa\SprykerDebug\Zed\Behat\State\LocalizationState;
+use Inviqa\SprykerDebug\Zed\Behat\State\ProcessState;
 use Spryker\Client\RabbitMq\RabbitMqClient;
 use Spryker\Client\RabbitMq\RabbitMqClientInterface;
 use Spryker\Service\Container\Container;

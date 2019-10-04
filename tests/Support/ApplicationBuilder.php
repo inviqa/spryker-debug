@@ -1,6 +1,6 @@
 <?php
 
-namespace InviqaSprykerDebug\Tests\Support;
+namespace Inviqa\SprykerDebug\Tests\Support;
 
 use RuntimeException;
 use Spryker\Shared\Application\Application;

@@ -1,6 +1,6 @@
 <?php
 
-namespace InviqaSprykerDebug\Zed\Communication;
+namespace Inviqa\SprykerDebug\Zed\Communication;
 
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
 

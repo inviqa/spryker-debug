@@ -1,9 +1,9 @@
 <?php
 
-namespace InviqaSprykerDebug\Zed\Communication\Console;
+namespace Inviqa\SprykerDebug\Zed\Communication\Console;
 
-use InviqaSprykerDebug\Zed\Communication\Model\Cast;
-use InviqaSprykerDebug\Zed\Communication\Model\Config\ConfigTypeExtractingConfig;
+use Inviqa\SprykerDebug\Zed\Communication\Model\Cast;
+use Inviqa\SprykerDebug\Zed\Communication\Model\Config\ConfigTypeExtractingConfig;
 use ReflectionClass;
 use Spryker\Shared\Config\Config;
 use Spryker\Zed\Kernel\Communication\Console\Console;

@@ -12,14 +12,14 @@
     ],
     "autoload": {
       "psr-4": {
-        "InviqaSprykerDebug\\": "src/"
+        "Inviqa\SprykerDebug\\": "src/"
       }
     },
     "autoload-dev": {
       "psr-4": {
         "Orm\\": "tests/App/src/Orm/",
         "Pyz\\": "tests/App/src/Pyz/",
-        "InviqaSprykerDebug\\Tests\\": "tests/",
+        "Inviqa\SprykerDebug\\Tests\\": "tests/",
         "Generated\\Shared\\Transfer\\": "tests/App/src/Generated/Shared/Transfer/"
       }
     },

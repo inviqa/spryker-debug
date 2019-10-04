@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-use InviqaSprykerDebug\Tests\TestContainer;
+use Inviqa\SprykerDebug\Tests\TestContainer;
 use Spryker\Zed\Console\Communication\ConsoleBootstrap;
 use Symfony\Component\Debug\Debug;
 

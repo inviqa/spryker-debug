@@ -1,6 +1,6 @@
 <?php
 
-namespace InviqaSprykerDebug\Tests\Acceptance\Context;
+namespace Inviqa\SprykerDebug\Tests\Acceptance\Context;
 
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
@@ -8,8 +8,8 @@ use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Generated\Shared\Transfer\ProductAbstractTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
-use InviqaSprykerDebug\Tests\Support\Workspace\Workspace;
-use InviqaSprykerDebug\Zed\Behat\State\ProcessState;
+use Inviqa\SprykerDebug\Tests\Support\Workspace\Workspace;
+use Inviqa\SprykerDebug\Zed\Behat\State\ProcessState;
 use PHPUnit\Framework\Assert;
 use Spryker\Zed\Product\Business\ProductFacadeInterface;
 use Symfony\Component\Process\Process;

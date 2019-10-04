@@ -20,7 +20,7 @@ Add the `ConfigDumpConsole` to your `ConsoleDependencyProvider`:
 namespace Pyz\Zed\Console;
 
 // ...
-use InviqaSprykerDebug\Zed\Communication\Console\ConfigDumpConsole;
+use Inviqa\SprykerDebug\Zed\Communication\Console\ConfigDumpConsole;
 
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 {

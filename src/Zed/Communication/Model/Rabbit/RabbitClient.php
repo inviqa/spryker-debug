@@ -1,6 +1,6 @@
 <?php
 
-namespace InviqaSprykerDebug\Zed\Communication\Model\Rabbit;
+namespace Inviqa\SprykerDebug\Zed\Communication\Model\Rabbit;
 
 final class RabbitClient
 {

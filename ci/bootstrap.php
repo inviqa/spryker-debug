@@ -2,6 +2,6 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use InviqaSprykerDebug\Tests\TestContainer;
+use Inviqa\SprykerDebug\Tests\TestContainer;
 
 $container = (new TestContainer());

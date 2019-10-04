@@ -1,6 +1,6 @@
 <?php
 
-namespace InviqaSprykerDebug\Tests\Acceptance\Context;
+namespace Inviqa\SprykerDebug\Tests\Acceptance\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\TableNode;
