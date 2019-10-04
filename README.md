@@ -8,8 +8,19 @@ Collection of debug and development tools for Spryker:
 Installation
 ------------
 
+Require the package with composer:
+
 ```
-composer require inviqa/spryker-debug
+$ composer require inviqa/spryker-debug
+```
+
+Add the `Inviqa` namespace to your `config/Shared/config_default.php` file:
+
+```php
+$config[KernelConstants::PROJECT_NAMESPACES] = [
+    'Pyz',
+    'Inviqa',
+];
 ```
 
 Each feature needs to be enabled individually. Instructions provided in the
