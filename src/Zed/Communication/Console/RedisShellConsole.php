@@ -2,15 +2,13 @@
 
 namespace InviqaSprykerDebug\Zed\Communication\Console;
 
+use InviqaSprykerDebug\Zed\Communication\Model\Cast;
 use Spryker\Shared\Config\Config;
-use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Storage\StorageConstants;
-use Spryker\Zed\Kernel\Communication\Console\Console;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\ConsoleOutputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Process\ExecutableFinder;
 use Symfony\Component\Process\Process;
 
 class RedisShellConsole extends AbstractShellConsole
@@ -28,7 +26,9 @@ class RedisShellConsole extends AbstractShellConsole
     {
         assert($output instanceof ConsoleOutputInterface);
         $process = new Process(
-            $this->buildCommand($input),
+            array_merge([
+                $this->resolveShellPath(Cast::toString($input->getOption(self::OPTION_SHELL))),
+            ], $this->buildArgs()),
             null,
             [
                 'REDISCLI_AUTH' => Config::get(StorageConstants::STORAGE_REDIS_PASSWORD),
@@ -39,17 +39,18 @@ class RedisShellConsole extends AbstractShellConsole
         $process->setTty(true);
         $process->run();
 
-        return $process->getExitCode();
+        return Cast::toInt($process->getExitCode());
     }
 
-    private function buildCommand(InputInterface $input): string
+    private function buildArgs(): array
     {
-        return sprintf(
-            '%s -h %s -p %s -n %s',
-            $this->resolveShellPath($input->getOption(self::OPTION_SHELL)),
+        return [
+            '-h',
             Config::get(StorageConstants::STORAGE_REDIS_HOST),
+            '-p',
             Config::get(StorageConstants::STORAGE_REDIS_PORT),
-            Config::get(StorageConstants::STORAGE_REDIS_DATABASE)
-        );
+            '-n',
+            Config::get(StorageConstants::STORAGE_REDIS_DATABASE),
+        ];
     }
 }

@@ -2,10 +2,12 @@
 
 namespace InviqaSprykerDebug\Zed\Communication\Console;
 
+use InviqaSprykerDebug\Zed\Communication\Model\Cast;
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\Propel\PropelConstants;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\ConsoleOutputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
 
@@ -25,7 +27,9 @@ class DatabaseShellConsole extends AbstractShellConsole
     {
         assert($output instanceof ConsoleOutputInterface);
         $process = new Process(
-            $this->resolveShellPath($input->getOption(self::OPTION_SHELL)),
+            [
+                $this->resolveShellPath(Cast::toString($input->getOption(self::OPTION_SHELL))),
+            ],
             null,
             [
                 'PGPASSWORD' => Config::get(PropelConstants::ZED_DB_PASSWORD),
@@ -40,6 +44,6 @@ class DatabaseShellConsole extends AbstractShellConsole
         $process->setTty(true);
         $process->run();
 
-        return $process->getExitCode();
+        return Cast::toInt($process->getExitCode());
     }
 }
