@@ -1,7 +1,7 @@
 Database Shell
 ==============
 
-Attempts to lauch the Postgres shell using the current project database
+Attempts to launch the Postgres shell using the current project database
 configuration.
 
 Installation
@@ -15,7 +15,7 @@ Add the `DatabaseShellConsole` to your `ConsoleDependencyProvider`:
 namespace Pyz\Zed\Console;
 
 // ...
-use InviqaSprykerDebug\Zed\Communication\Console\DatabaseShellConsole;
+use Inviqa\Zed\SprykerDebug\Communication\Console\DatabaseShellConsole;
 
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 {
@@ -33,6 +33,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
 Usage
 -----
+
+Connect to the `psql` shell:
 
 ```bash
 $ ./vendor/bin/debug:database:shell

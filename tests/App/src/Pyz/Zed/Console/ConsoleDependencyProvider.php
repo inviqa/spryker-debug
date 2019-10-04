@@ -2,9 +2,10 @@
 
 namespace Pyz\Zed\Console;
 
-use InviqaSprykerDebug\Zed\Communication\Console\ConfigDumpConsole;
-use InviqaSprykerDebug\Zed\Communication\Console\DatabaseShellConsole;
-use InviqaSprykerDebug\Zed\Communication\Console\RedisShellConsole;
+use Inviqa\Zed\SprykerDebug\Communication\Console\ConfigDumpConsole;
+use Inviqa\Zed\SprykerDebug\Communication\Console\DatabaseShellConsole;
+use Inviqa\Zed\SprykerDebug\Communication\Console\QueuesOverviewConsole;
+use Inviqa\Zed\SprykerDebug\Communication\Console\RedisShellConsole;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Propel\Communication\Console\BuildModelConsole;
@@ -15,6 +16,11 @@ use Spryker\Zed\Propel\Communication\Console\InsertSqlConsole;
 use Spryker\Zed\Propel\Communication\Console\MigrateConsole;
 use Spryker\Zed\Propel\Communication\Console\PropelInstallConsole;
 use Spryker\Zed\Propel\Communication\Console\SchemaCopyConsole;
+use Spryker\Zed\Queue\Communication\Console\QueueDumpConsole;
+use Spryker\Zed\Queue\Communication\Console\QueueTaskConsole;
+use Spryker\Zed\Queue\Communication\Console\QueueWorkerConsole;
+use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllQueuesConsole;
+use Spryker\Zed\RabbitMq\Communication\Console\PurgeAllQueuesConsole;
 use Spryker\Zed\Transfer\Communication\Console\TransferGeneratorConsole;
 
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
@@ -31,10 +37,16 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new InsertSqlConsole(),
             new MigrateConsole(),
             new SchemaCopyConsole(),
+            new QueueDumpConsole(),
+            new QueueTaskConsole(),
+            new QueueWorkerConsole(),
+            new PurgeAllQueuesConsole(),
+            new DeleteAllQueuesConsole(),
 
             new DatabaseShellConsole(),
             new RedisShellConsole(),
             new ConfigDumpConsole(),
+            new QueuesOverviewConsole(),
         ];
     }
 }

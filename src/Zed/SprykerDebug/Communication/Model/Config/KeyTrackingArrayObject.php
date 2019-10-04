@@ -1,6 +1,6 @@
 <?php
 
-namespace InviqaSprykerDebug\Zed\Communication\Model\Config;
+namespace Inviqa\Zed\SprykerDebug\Communication\Model\Config;
 
 use ArrayObject;
 

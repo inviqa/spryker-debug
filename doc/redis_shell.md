@@ -1,7 +1,7 @@
 Redis Shell
 ===========
 
-Attempts to lauch the Redis shell using the current project _storage_
+Attempts to launch the Redis shell using the current project _storage_
 configuration.
 
 Installation
@@ -15,7 +15,7 @@ Add the `RedisShellConsole` to your `ConsoleDependencyProvider`:
 namespace Pyz\Zed\Console;
 
 // ...
-use InviqaSprykerDebug\Zed\Communication\Console\RedisShellConsole;
+use Inviqa\Zed\SprykerDebug\Communication\Console\RedisShellConsole;
 
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 {
@@ -33,6 +33,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
 Usage
 -----
+
+Launch the redis shell:
 
 ```bash
 $ ./vendor/bin/debug:redis:shell

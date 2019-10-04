@@ -20,7 +20,7 @@ Add the `ConfigDumpConsole` to your `ConsoleDependencyProvider`:
 namespace Pyz\Zed\Console;
 
 // ...
-use InviqaSprykerDebug\Zed\Communication\Console\ConfigDumpConsole;
+use Inviqa\Zed\SprykerDebug\Communication\Console\ConfigDumpConsole;
 
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 {
@@ -46,5 +46,28 @@ $ ./vendor/bin/console debug:config
 Filter keys:
 
 ```bash
-$ ./vendor/bin/console debug:config DB
+$ ./vendor/bin/console debug:config rabbit
++------------------------------------+---------------------------------------------------------------+--------------+
+| Key                                | Value                                                         | Origin       |
++------------------------------------+---------------------------------------------------------------+--------------+
+| RABBITMQ:RABBITMQ_API_HOST         | localhost                                                     | rabbitmq.php |
+| RABBITMQ:RABBITMQ_API_PASSWORD     | guest                                                         | rabbitmq.php |
+| RABBITMQ:RABBITMQ_API_PORT         | 16672                                                         | rabbitmq.php |
+| RABBITMQ:RABBITMQ_API_USERNAME     | guest                                                         | rabbitmq.php |
+| RABBITMQ:RABBITMQ_API_VIRTUAL_HOST | /                                                             | rabbitmq.php |
+| RABBITMQ:RABBITMQ_CONNECTIONS      | [                                                             | rabbitmq.php |
+|                                    |     {                                                         |              |
+|                                    |         "RABBITMQ:RABBITMQ_CONNECTION_NAME": "GB-connection", |              |
+|                                    |         "RABBITMQ:RABBITMQ_HOST": "localhost",                |              |
+|                                    |         "RABBITMQ:RABBITMQ_PORT": "57720",                    |              |
+|                                    |         "RABBITMQ:RABBITMQ_PASSWORD": "guest",                |              |
+|                                    |         "RABBITMQ:RABBITMQ_USERNAME": "guest",                |              |
+|                                    |         "RABBITMQ:RABBITMQ_VIRTUAL_HOST": "\/",               |              |
+|                                    |         "RABBITMQ:RABBITMQ_STORE_NAMES": [                    |              |
+|                                    |             "GB"                                              |              |
+|                                    |         ],                                                    |              |
+|                                    |         "RABBITMQ:RABBITMQ_DEFAULT_CONNECTION": true          |              |
+|                                    |     }                                                         |              |
+|                                    | ]                                                             |              |
++------------------------------------+---------------------------------------------------------------+--------------+
 ```

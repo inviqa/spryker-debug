@@ -1,8 +1,8 @@
 <?php
 
-namespace InviqaSprykerDebug\Zed\Communication\Console;
+namespace Inviqa\Zed\SprykerDebug\Communication\Console;
 
-use InviqaSprykerDebug\Zed\Communication\Model\Cast;
+use Inviqa\Zed\SprykerDebug\Communication\Model\Cast;
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\Storage\StorageConstants;
 use Symfony\Component\Console\Input\InputInterface;

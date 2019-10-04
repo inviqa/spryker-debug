@@ -23,6 +23,7 @@ Follow the link for documentation:
 - [Config Dump](doc/config_dump.md): Introspect configuration.
 - [Database Shell](doc/database_shell.md): Launch a postgres shell.
 - [Redis Shell](doc/redis_shell.md): Launch a Redis shell.
+- [Queue Overview](doc/queue_overview.md): Show queue statuses.
 
 Developing
 ----------

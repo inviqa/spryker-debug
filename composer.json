@@ -12,21 +12,23 @@
     ],
     "autoload": {
       "psr-4": {
-        "InviqaSprykerDebug\\": "src/"
+        "Inviqa\\": "src/"
       }
     },
     "autoload-dev": {
       "psr-4": {
         "Orm\\": "tests/App/src/Orm/",
         "Pyz\\": "tests/App/src/Pyz/",
-        "InviqaSprykerDebug\\Tests\\": "tests/",
+        "Inviqa\\SprykerDebug\\Tests\\": "tests/",
         "Generated\\Shared\\Transfer\\": "tests/App/src/Generated/Shared/Transfer/"
       }
     },
     "require": {
         "spryker-shop/shop-application": "^1.0",
         "spryker/propel": "^3.0@dev",
-        "spryker/console": "^3.0|^4.0"
+        "spryker/console": "^3.0|^4.0",
+        "guzzlehttp/guzzle": "^6.0",
+        "spryker/rabbit-mq": "^2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.4@dev",

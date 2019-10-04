@@ -1,0 +1,7 @@
+<?php
+
+namespace InviqaSprykerDebug\Zed\Communication\Model\Rabbit;
+
+class RabbitClient
+{
+}
