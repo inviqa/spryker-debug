@@ -9,6 +9,7 @@ default:
         - InviqaSprykerDebug\Tests\Acceptance\Context\DatabaseContext
         - InviqaSprykerDebug\Tests\Acceptance\Context\WorkspaceContext
         - InviqaSprykerDebug\Tests\Acceptance\Context\ConsoleContext
+        - InviqaSprykerDebug\Tests\Acceptance\Context\ConfigContext
 
   extensions:
     Roave\BehatPsrContainer\PsrContainerExtension:

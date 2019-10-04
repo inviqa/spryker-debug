@@ -4,3 +4,4 @@
 /tests/App/src/Orm/
 /.phpunit.result.cache
 /tests/Workspace
+/tests/App/config/Shared/config_local.php

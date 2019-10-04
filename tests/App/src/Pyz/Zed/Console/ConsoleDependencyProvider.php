@@ -2,6 +2,7 @@
 
 namespace Pyz\Zed\Console;
 
+use InviqaSprykerDebug\Zed\Communication\Console\ConfigDumpConsole;
 use InviqaSprykerDebug\Zed\Communication\Console\DatabaseShellConsole;
 use InviqaSprykerDebug\Zed\Communication\Console\RedisShellConsole;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
@@ -33,6 +34,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
             new DatabaseShellConsole(),
             new RedisShellConsole(),
+            new ConfigDumpConsole(),
         ];
     }
 }

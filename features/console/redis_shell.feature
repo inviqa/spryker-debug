@@ -2,7 +2,7 @@ Feature: Open a new Redis shell
 
   As a developer
   In order to quickly inspect the Redis storage for a Spryker application
-  I want to run a command which opens the database shell
+  I want to run a command which opens the Redis CLI shell
 
   Background:
     Given the file "test-shell" exists in the workspace:

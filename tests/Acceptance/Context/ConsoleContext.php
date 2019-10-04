@@ -76,6 +76,14 @@ class ConsoleContext implements Context
     }
 
     /**
+     * @Then I should not see the following output:
+     */
+    public function iShouldNotSeeTheFollowingOutput(PyStringNode $string)
+    {
+        Assert::assertNotContains($string->getRaw(), $this->process->getOutput());
+    }
+
+    /**
      *
      * @Then the command should fail
      */
