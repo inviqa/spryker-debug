@@ -6,6 +6,8 @@ use InviqaSprykerDebug\Tests\Support\ApplicationBuilder;
 use InviqaSprykerDebug\Tests\Support\Workspace\Workspace;
 use InviqaSprykerDebug\Zed\Behat\State\LocalizationState;
 use InviqaSprykerDebug\Zed\Behat\State\ProcessState;
+use Spryker\Client\RabbitMq\RabbitMqClient;
+use Spryker\Client\RabbitMq\RabbitMqClientInterface;
 use Spryker\Service\Container\Container;
 use Spryker\Shared\Application\Application;
 use Spryker\Zed\Console\Communication\ConsoleBootstrap;
@@ -24,32 +26,36 @@ class TestContainer extends Container
 
     private function registerServices(): void
     {
-        $this[Application::class] = $this->initApplication();
-
-        $this[Workspace::class] = $this->share(function () {
-            return new Workspace(__DIR__ . '/Workspace');
-        });
-
-        $this[ConsoleBootstrap::class] = function () {
-            return new ConsoleBootstrap();
-        };
-
-        $this[ProductFacadeInterface::class] = $this->share(function () {
-            return new ProductFacade();
-        });
-
-        $this[ProcessState::class] = $this->share(function () {
-            return new ProcessState();
-        });
-
-        $this[LocalizationState::class] = $this->share(function () {
-            return new LocalizationState();
-        });
+        $this->registerApplication();
+        $this->registerSupport();
+        $this->registerRabbit();
     }
 
     private function initApplication(): Application
     {
         return ApplicationBuilder::create(__DIR__ . '/App', 'GB')
             ->build();
+    }
+
+    private function registerApplication(): void
+    {
+        $this[Application::class] = $this->initApplication();
+        $this[ConsoleBootstrap::class] = function () {
+            return new ConsoleBootstrap();
+        };
+    }
+
+    private function registerSupport(): void
+    {
+        $this[Workspace::class] = $this->share(function () {
+            return new Workspace(__DIR__ . '/Workspace');
+        });
+    }
+
+    private function registerRabbit(): void
+    {
+        $this[RabbitMqClientInterface::class] = $this->share(function () {
+            return new RabbitMqClient();
+        });
     }
 }

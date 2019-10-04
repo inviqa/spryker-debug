@@ -18,3 +18,4 @@ $config[ErrorHandlerConstants::ERROR_LEVEL] = 8191;
 
 require __DIR__ . '/../database.php';
 require __DIR__ . '/../storage.php';
+require __DIR__ . '/../rabbitmq.php';

@@ -13,6 +13,7 @@
         <exclude name="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue"/>
         <exclude name="PSR1.Methods.CamelCapsMethodName.NotCamelCaps"/>
         <exclude name="Squiz.Scope.MethodScope.Missing"/>
+        <exclude name="Spryker.Namespaces.SprykerNamespace.NamespaceFolderMismatch"/>
     </rule>
     <rule ref="Generic.Commenting.Todo" >
         <type>error</type>

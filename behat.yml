@@ -10,6 +10,7 @@ default:
         - InviqaSprykerDebug\Tests\Acceptance\Context\WorkspaceContext
         - InviqaSprykerDebug\Tests\Acceptance\Context\ConsoleContext
         - InviqaSprykerDebug\Tests\Acceptance\Context\ConfigContext
+        - InviqaSprykerDebug\Tests\Acceptance\Context\QueueContext
 
   extensions:
     Roave\BehatPsrContainer\PsrContainerExtension:

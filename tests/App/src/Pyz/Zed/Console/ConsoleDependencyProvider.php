@@ -4,6 +4,7 @@ namespace Pyz\Zed\Console;
 
 use InviqaSprykerDebug\Zed\Communication\Console\ConfigDumpConsole;
 use InviqaSprykerDebug\Zed\Communication\Console\DatabaseShellConsole;
+use InviqaSprykerDebug\Zed\Communication\Console\QueuesOverviewConsole;
 use InviqaSprykerDebug\Zed\Communication\Console\RedisShellConsole;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
@@ -15,6 +16,9 @@ use Spryker\Zed\Propel\Communication\Console\InsertSqlConsole;
 use Spryker\Zed\Propel\Communication\Console\MigrateConsole;
 use Spryker\Zed\Propel\Communication\Console\PropelInstallConsole;
 use Spryker\Zed\Propel\Communication\Console\SchemaCopyConsole;
+use Spryker\Zed\Queue\Communication\Console\QueueDumpConsole;
+use Spryker\Zed\Queue\Communication\Console\QueueTaskConsole;
+use Spryker\Zed\Queue\Communication\Console\QueueWorkerConsole;
 use Spryker\Zed\Transfer\Communication\Console\TransferGeneratorConsole;
 
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
@@ -31,10 +35,14 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new InsertSqlConsole(),
             new MigrateConsole(),
             new SchemaCopyConsole(),
+            new QueueDumpConsole(),
+            new QueueTaskConsole(),
+            new QueueWorkerConsole(),
 
             new DatabaseShellConsole(),
             new RedisShellConsole(),
             new ConfigDumpConsole(),
+            new QueuesOverviewConsole(),
         ];
     }
 }

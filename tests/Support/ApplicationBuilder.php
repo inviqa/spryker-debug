@@ -70,7 +70,7 @@ class ApplicationBuilder
         $this->defineIfNotSet('APPLICATION_ROOT_DIR', $this->resolveRootDir());
         $this->defineIfNotSet('APPLICATION_ENV', $this->resolveEnv());
         $this->defineIfNotSet('APPLICATION_STORE', $this->store);
-        $this->defineIfNotSet('APPLICATION_VENDOR_DIR', __DIR__ . '/../../../vendor');
+        $this->defineIfNotSet('APPLICATION_VENDOR_DIR', __DIR__ . '/../../vendor');
 
         $bootstrap = new ZedBootstrap();
         $application = $bootstrap->boot();
