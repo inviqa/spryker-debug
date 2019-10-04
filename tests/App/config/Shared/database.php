@@ -5,7 +5,6 @@ use Propel\Generator\Builder\Om\QueryBuilder;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Zed\Propel\PropelConfig;
 
-
 $config[PropelConstants::ZED_DB_USERNAME] = 'test';
 $config[PropelConstants::ZED_DB_PASSWORD] = 'test';
 $config[PropelConstants::ZED_DB_DATABASE] = 'test';

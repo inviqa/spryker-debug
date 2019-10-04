@@ -1,6 +1,6 @@
 <?php
 
-namespace InviqaSprykerDebug\Shared\Workspace;
+namespace InviqaSprykerDebug\Tests\Support\Workspace;
 
 use RuntimeException;
 use Symfony\Component\Filesystem\Filesystem;

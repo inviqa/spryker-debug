@@ -1,16 +1,15 @@
 default:
   suites:
     zed:
+
       autowire: true
       services: InviqaSprykerDebug\Tests\TestContainer
-      paths:
-        features: tests/Acceptance/Features
+
       filters:
         tags: "~@broken && ~@pending"
       contexts:
-        - InviqaSprykerDebug\Zed\Behat\Context\DatabaseContext
-        - InviqaSprykerDebug\Zed\Behat\Context\WorkspaceContext
-
+        - InviqaSprykerDebug\Tests\Acceptance\Context\DatabaseContext
+        - InviqaSprykerDebug\Tests\Acceptance\Context\WorkspaceContext
         - InviqaSprykerDebug\Tests\Acceptance\Context\ConsoleContext
 
   extensions:

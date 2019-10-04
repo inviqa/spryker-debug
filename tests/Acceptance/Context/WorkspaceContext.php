@@ -1,10 +1,10 @@
 <?php
 
-namespace InviqaSprykerDebug\Zed\Behat\Context;
+namespace InviqaSprykerDebug\Tests\Acceptance\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
-use InviqaSprykerDebug\Shared\Workspace\Workspace;
+use InviqaSprykerDebug\Tests\Support\Workspace\Workspace;
 
 class WorkspaceContext implements Context
 {

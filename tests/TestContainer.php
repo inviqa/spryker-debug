@@ -2,8 +2,9 @@
 
 namespace InviqaSprykerDebug\Tests;
 
-use InviqaSprykerDebug\Shared\Test\ApplicationBuilder;
-use InviqaSprykerDebug\Shared\Workspace\Workspace;
+use InviqaSprykerDebug\Tests\Support\ApplicationBuilder;
+use InviqaSprykerDebug\Tests\Support\Workspace\Workspace;
+use InviqaSprykerDebug\Zed\Behat\State\LocalizationState;
 use InviqaSprykerDebug\Zed\Behat\State\ProcessState;
 use Spryker\Service\Container\Container;
 use Spryker\Shared\Application\Application;
@@ -24,18 +25,26 @@ class TestContainer extends Container
     private function registerServices(): void
     {
         $this[Application::class] = $this->initApplication();
-        $this[Workspace::class] = function () {
+
+        $this[Workspace::class] = $this->share(function () {
             return new Workspace(__DIR__ . '/Workspace');
-        };
+        });
+
         $this[ConsoleBootstrap::class] = function () {
             return new ConsoleBootstrap();
         };
-        $this[ProductFacadeInterface::class] = function () {
+
+        $this[ProductFacadeInterface::class] = $this->share(function () {
             return new ProductFacade();
-        };
-        $this[ProcessState::class] = function () {
+        });
+
+        $this[ProcessState::class] = $this->share(function () {
             return new ProcessState();
-        };
+        });
+
+        $this[LocalizationState::class] = $this->share(function () {
+            return new LocalizationState();
+        });
     }
 
     private function initApplication(): Application

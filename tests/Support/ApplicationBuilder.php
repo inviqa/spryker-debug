@@ -1,6 +1,6 @@
 <?php
 
-namespace InviqaSprykerDebug\Shared\Test;
+namespace InviqaSprykerDebug\Tests\Support;
 
 use RuntimeException;
 use Spryker\Shared\Application\Application;
@@ -9,11 +9,13 @@ use Spryker\Zed\Application\Communication\ZedBootstrap;
 class ApplicationBuilder
 {
     private const ENV_DEVTEST = 'devtest';
+    private const APP_ZED = 'ZED';
+    private const APP_YVES = 'YVES';
 
     /**
      * @var string
      */
-    private $app;
+    private $app = self::APP_ZED;
 
     /**
      * @var string
@@ -30,28 +32,41 @@ class ApplicationBuilder
      */
     private $env;
 
-    private function __construct(string $rootDir, string $store, string $app)
+    private function __construct(string $rootDir, string $store)
     {
-        $this->app = $app;
         $this->rootDir = $rootDir;
         $this->store = $store;
     }
 
-    public static function create(string $rootDir, string $store, string $app = 'ZED'): self
+    public static function create(string $rootDir, string $store): self
     {
-        return new self($rootDir, $store, $app);
+        return new self($rootDir, $store);
     }
 
-    public function applicationEnv(string $env): self
+    public function env(string $env): self
     {
         $this->env = $env;
 
         return $this;
     }
 
+    public function forZed(): self
+    {
+        $this->app = self::APP_ZED;
+
+        return $this;
+    }
+
+    public function forYves(): self
+    {
+        $this->app = self::APP_YVES;
+
+        return $this;
+    }
+
     public function build(): Application
     {
-        $this->defineIfNotSet('APPLICATION', $this->resolveApp());
+        $this->defineIfNotSet('APPLICATION', $this->app);
         $this->defineIfNotSet('APPLICATION_ROOT_DIR', $this->resolveRootDir());
         $this->defineIfNotSet('APPLICATION_ENV', $this->resolveEnv());
         $this->defineIfNotSet('APPLICATION_STORE', $this->store);
@@ -64,11 +79,6 @@ class ApplicationBuilder
         assert($application instanceof Application);
 
         return $application;
-    }
-
-    private function resolveApp(): string
-    {
-        return strtoupper($this->app);
     }
 
     private function resolveRootDir(): string

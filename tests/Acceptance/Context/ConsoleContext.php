@@ -8,48 +8,24 @@ use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Generated\Shared\Transfer\ProductAbstractTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
-use InviqaSprykerDebug\Shared\Workspace\Workspace;
+use InviqaSprykerDebug\Tests\Support\Workspace\Workspace;
 use InviqaSprykerDebug\Zed\Behat\State\ProcessState;
 use PHPUnit\Framework\Assert;
 use Spryker\Zed\Product\Business\ProductFacadeInterface;
+use Symfony\Component\Process\Process;
 
 class ConsoleContext implements Context
 {
-    /**
-     * @var ProductFacadeInterface
-     */
-    private $productFacade;
-
     /**
      * @var Workspace
      */
     private $workspace;
 
-    /**
-     * @var ProcessState
-     */
-    private $processState;
+    private $process;
 
-    public function __construct(ProductFacadeInterface $productFacade, Workspace $workspace, ProcessState $processState)
+    public function __construct(Workspace $workspace)
     {
-        $this->productFacade = $productFacade;
         $this->workspace = $workspace;
-        $this->processState = $processState;
-    }
-
-    /**
-     * @Given the product :arg1 exists as:
-     */
-    public function theProductExistsAs(string $sku, TableNode $table)
-    {
-        $productTransfer = new ProductAbstractTransfer();
-        $productTransfer->setSku($sku);
-        $idProductAbstract = $this->productFacade->createProductAbstract($productTransfer);
-
-        $productTransfer = new ProductConcreteTransfer();
-        $productTransfer->setFkProductAbstract($idProductAbstract);
-        $productTransfer->setSku($sku);
-        $this->productFacade->createProductConcrete($productTransfer);
     }
 
     /**
@@ -65,11 +41,11 @@ class ConsoleContext implements Context
      */
     public function iExecute($command)
     {
-        $process = $this->processState->create(
+        $this->process = new Process(
             sprintf(__DIR__ . '/../../App/bin/console %s', $command),
             $this->workspace->path()
         );
-        $process->run();
+        $this->process->run();
     }
 
     /**
@@ -78,17 +54,16 @@ class ConsoleContext implements Context
      */
     public function theCommandShouldExitWithCode(int $exitCode = 0)
     {
-        $process = $this->processState->getLastProcess();
-        if ($process->getExitCode() == $exitCode) {
+        if ($this->process->getExitCode() == $exitCode) {
             return;
         }
 
         Assert::fail(sprintf(
             'Command exited with "%s" but expected "%s": STDOUT: %s STDERR: %s',
-            $process->getExitCode(),
+            $this->process->getExitCode(),
             $exitCode,
-            $process->getOutput(),
-            $process->getErrorOutput()
+            $this->process->getOutput(),
+            $this->process->getErrorOutput()
         ));
     }
 
@@ -97,8 +72,7 @@ class ConsoleContext implements Context
      */
     public function iShouldSeeTheFollowingOutput(PyStringNode $string)
     {
-        $process = $this->processState->getLastProcess();
-        Assert::assertContains($string->getRaw(), $process->getOutput());
+        Assert::assertContains($string->getRaw(), $this->process->getOutput());
     }
 
     /**
