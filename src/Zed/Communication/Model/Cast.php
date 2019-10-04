@@ -18,8 +18,8 @@ class Cast
         return (string)$value;
     }
 
-    public static function toInt($int): int
+    public static function toInt($value): int
     {
-        return (int)$int;
+        return (int)$value;
     }
 }
