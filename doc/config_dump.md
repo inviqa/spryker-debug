@@ -39,6 +39,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 Usage
 -----
 
+List all configuration:
+
 ```bash
 $ ./vendor/bin/console debug:config
 ```
