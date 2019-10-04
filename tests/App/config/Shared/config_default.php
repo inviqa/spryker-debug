@@ -16,4 +16,5 @@ $config[KernelConstants::CORE_NAMESPACES] = [
 $config[KernelConstants::PROJECT_NAMESPACE] = 'Pyz';
 $config[ErrorHandlerConstants::ERROR_LEVEL] = 8191;
 
-require __DIR__ . '/database.php';
+require __DIR__ . '/../database.php';
+require __DIR__ . '/../storage.php';
