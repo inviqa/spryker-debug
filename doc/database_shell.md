@@ -40,4 +40,4 @@ Connect to the `psql` shell:
 $ ./vendor/bin/debug:database:shell
 ```
 
-Note that the `pgcli` shell will need to be available.
+Note that the `psql` shell will need to be available.
