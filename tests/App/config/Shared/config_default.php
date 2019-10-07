@@ -16,7 +16,9 @@ $config[KernelConstants::CORE_NAMESPACES] = [
 ];
 $config[KernelConstants::PROJECT_NAMESPACE] = 'Pyz';
 $config[ErrorHandlerConstants::ERROR_LEVEL] = 8191;
+$config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/../../vendor/spryker';
 
 require __DIR__ . '/../database.php';
 require __DIR__ . '/../storage.php';
 require __DIR__ . '/../rabbitmq.php';
+require __DIR__ . '/../twig.php';

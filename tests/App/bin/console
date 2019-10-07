@@ -16,4 +16,3 @@ require_once $autoload;
 
 // this will bootstrap the application
 (new TestContainer())->get(ConsoleBootstrap::class)->run();
-

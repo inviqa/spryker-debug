@@ -11,6 +11,7 @@ default:
         - Inviqa\SprykerDebug\Tests\Acceptance\Context\ConsoleContext
         - Inviqa\SprykerDebug\Tests\Acceptance\Context\ConfigContext
         - Inviqa\SprykerDebug\Tests\Acceptance\Context\QueueContext
+        - Inviqa\SprykerDebug\Tests\Acceptance\Context\TwigContext
 
   extensions:
     Roave\BehatPsrContainer\PsrContainerExtension:
