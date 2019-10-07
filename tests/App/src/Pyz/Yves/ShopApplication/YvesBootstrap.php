@@ -7,7 +7,7 @@
 
 namespace Pyz\Yves\ShopApplication;
 
-use Inviqa\Yves\Communication\Plugin\SprykerDebugControllerProvider;
+use Inviqa\Yves\SprykerDebug\Plugin\SprykerDebugControllerProvider;
 use Pyz\Yves\Test\Plugin\Provider\TestControllerProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Spryker\Shared\Application\Business\Routing\SilexRouter;
