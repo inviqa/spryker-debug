@@ -23,7 +23,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     protected function getApplicationPlugins(): array
     {
         return [
-            new TwigVarDumpApplicationPlugin()
+            new TwigVarDumpApplicationPlugin(),
         ];
     }
 }

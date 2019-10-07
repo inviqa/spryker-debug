@@ -2,14 +2,12 @@
 
 namespace Inviqa\SprykerDebug\Tests\Acceptance\Context;
 
-use Behat\Gherkin\Node\TableNode;
-use Behat\Gherkin\Node\PyStringNode;
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
+use Behat\Gherkin\Node\PyStringNode;
+use Behat\Gherkin\Node\TableNode;
 use Inviqa\SprykerDebug\Tests\Support\Workspace\Workspace;
 use PHPUnit\Framework\Assert;
 use Twig\Environment;
-use Twig_Environment;
 
 class TwigContext implements Context
 {
