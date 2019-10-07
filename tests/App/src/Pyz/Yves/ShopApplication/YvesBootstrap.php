@@ -7,11 +7,13 @@
 
 namespace Pyz\Yves\ShopApplication;
 
+use Inviqa\Yves\Communication\Plugin\SprykerDebugControllerProvider;
 use Pyz\Yves\Test\Plugin\Provider\TestControllerProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Spryker\Shared\Application\Business\Routing\SilexRouter;
 use Spryker\Shared\Application\ServiceProvider\RoutingServiceProvider;
 use SprykerShop\Yves\ShopApplication\YvesBootstrap as SprykerYvesBootstrap;
+use Spryker\Shared\ErrorHandler\Plugin\ServiceProvider\WhoopsErrorHandlerServiceProvider;
 
 class YvesBootstrap extends SprykerYvesBootstrap
 {
@@ -20,8 +22,10 @@ class YvesBootstrap extends SprykerYvesBootstrap
      */
     protected function registerServiceProviders()
     {
+        $this->application['debug'] = true;
         $this->application->register(new ServiceControllerServiceProvider());
         $this->application->register(new RoutingServiceProvider());
+        $this->application->register(new WhoopsErrorHandlerServiceProvider());
     }
 
     /**
@@ -55,6 +59,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
     {
         return [
             new TestControllerProvider(),
+            new SprykerDebugControllerProvider(),
         ];
     }
 }
