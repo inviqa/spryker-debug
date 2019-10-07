@@ -8,26 +8,6 @@ Integrate the `symfony/var-dumper` component with Twig to get pretty dumps:
 Installation
 ------------
 
-First ensure you have Twig debug mode enabled. Assuming that your development
-environment is `development` add the following to
-`config/Share/config_development.php`:
-
-```php
-use Spryker\Shared\Twig\TwigConstants;
-
-$config[TwigConstants::YVES_TWIG_OPTIONS] = [
-    // ...
-    'debug' => true,
-];
-$config[TwigConstants::ZED_TWIG_OPTIONS] = [
-    // ...
-    'debug' => true,
-];
-```
-
-This is necessary because we use the Silex integration which depends upon the
-Twig debug mode, not the Spryker one.
-
 ### Yves
 
 Add the `TwigVarDumpServiceProvider` to your `YvesBootstrap`:
@@ -45,7 +25,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
     protected function registerServiceProviders()
 		{
         // ...
-        $this->applicatoin->register(new TwigVarDumpServiceProvider());
+        $this->application->register(new TwigVarDumpServiceProvider());
 		}
 }
 ```
