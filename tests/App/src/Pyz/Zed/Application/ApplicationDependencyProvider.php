@@ -2,7 +2,7 @@
 
 namespace Pyz\Zed\Application;
 
-use Inviqa\Shared\SprykerDebug\Plugin\Provider\TwigVarDumpServiceProvider;
+use Inviqa\Shared\SprykerDebug\Plugin\Application\TwigVarDumpApplicationPlugin;
 use Silex\Provider\TwigServiceProvider;
 use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationDependencyProvider;
 use Spryker\Zed\Kernel\Container;
@@ -17,7 +17,13 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new PropelServiceProvider(),
             new TwigServiceProvider(),
             new SprykerTwigServiceProvider(),
-            new TwigVarDumpServiceProvider()
         ]);
+    }
+
+    protected function getApplicationPlugins(): array
+    {
+        return [
+            new TwigVarDumpApplicationPlugin()
+        ];
     }
 }

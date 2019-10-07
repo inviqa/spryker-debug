@@ -20,12 +20,14 @@ namespace Pyz\Yves\ShopApplication;
 // ...
 use Inviqa\Shared\SprykerDebug\Plugin\Provider\TwigVarDumpServiceProvider;
 
-class YvesBootstrap extends SprykerYvesBootstrap
+class ShopApplicationDependencyProvider extends SprykerShopApplicationDependencyProvider
 {
-    protected function registerServiceProviders()
+    protected function getApplicationPlugins(): array
     {
-        // ...
-        $this->application->register(new TwigVarDumpServiceProvider());
+        return [
+            // ...
+            new TwigVarDumpApplicationPlugin(),
+        ];
     }
 }
 ```
@@ -42,14 +44,12 @@ use Inviqa\Shared\SprykerDebug\Plugin\Provider\TwigVarDumpServiceProvider;
 
 class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
 {
-    protected function getServiceProviders(Container $container)
+    protected function getApplicationPlugins(Container $container)
     {
-        $providers = [
+        return [
             // ...
-            new TwigVarDumpServiceProvider()
+            new TwigVarDumpApplicationPlugin()
         ]);
-
-        // ...
     }
 }
 ```
