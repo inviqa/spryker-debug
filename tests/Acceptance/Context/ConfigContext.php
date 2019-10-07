@@ -42,7 +42,6 @@ class ConfigContext implements Context
             self::configLocalPath(),
             implode(PHP_EOL, $file)
         );
-        die('purring');
     }
 
     private static function configLocalPath(): string

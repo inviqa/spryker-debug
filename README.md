@@ -31,10 +31,16 @@ Features
 
 Follow the link for documentation:
 
+### Console Commands
+
 - [Config Dump](doc/config_dump.md): Introspect configuration.
 - [Database Shell](doc/database_shell.md): Launch a postgres shell.
 - [Redis Shell](doc/redis_shell.md): Launch a Redis shell.
 - [Queue Overview](doc/queue_overview.md): Show queue statuses.
+
+### Integrations
+
+- [Twig Var Dumper](doc/twig_var_dumper.md): Use a superior {{ dump() }}` to debug in Twig.
 
 Developing
 ----------

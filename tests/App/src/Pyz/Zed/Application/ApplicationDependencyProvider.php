@@ -2,7 +2,7 @@
 
 namespace Pyz\Zed\Application;
 
-use Inviqa\Yves\SprykerDebug\Plugin\Provider\TwigVarDumpServiceProvider;
+use Inviqa\Shared\SprykerDebug\Plugin\Provider\TwigVarDumpServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationDependencyProvider;
 use Spryker\Zed\Kernel\Container;
