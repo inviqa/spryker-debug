@@ -1,3 +1,0 @@
-<?php return [
-    '@workspace/Hello.twig' => '/home/daniel/www/inviqa/spryker-debug/tests/Workspace/Hello.twig',
-];
