@@ -4,6 +4,7 @@ namespace Inviqa\SprykerDebug\Tests\Acceptance\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\TableNode;
+use function Safe\json_decode;
 
 class ConfigContext implements Context
 {
@@ -31,9 +32,9 @@ class ConfigContext implements Context
 
         foreach ($table->getRowsHash() as $name => $value) {
             $file[] = sprintf(
-                '$config[\'%s\'] = \'%s\';',
+                '$config[\'%s\'] = %s;',
                 $name,
-                $value
+                var_export(json_decode($value, true), true)
             );
         }
 
@@ -41,6 +42,7 @@ class ConfigContext implements Context
             self::configLocalPath(),
             implode(PHP_EOL, $file)
         );
+        die('purring');
     }
 
     private static function configLocalPath(): string

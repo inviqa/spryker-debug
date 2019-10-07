@@ -1,2 +1,0 @@
-[2019-10-02 09:41:29] defaultLogger.ERROR: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "spy_product_abstract" does not exist LINE 1: SELECT COUNT(*) FROM spy_product_abstract WHERE spy_product_...                              ^ [] []
-[2019-10-02 09:41:32] defaultLogger.ERROR: SQLSTATE[42P01]: Undefined table: 7 ERROR:  relation "spy_product_abstract" does not exist LINE 1: SELECT COUNT(*) FROM spy_product_abstract WHERE spy_product_...                              ^ [] []

@@ -2,9 +2,9 @@
 
 namespace Inviqa\SprykerDebug\Tests\Support;
 
+use Psr\Container\ContainerInterface;
+use Pyz\Zed\Application\Communication\ZedBootstrap;
 use RuntimeException;
-use Spryker\Shared\Application\Application;
-use Spryker\Zed\Application\Communication\ZedBootstrap;
 
 class ApplicationBuilder
 {
@@ -64,21 +64,16 @@ class ApplicationBuilder
         return $this;
     }
 
-    public function build(): Application
+    public function build(): ContainerInterface
     {
         $this->defineIfNotSet('APPLICATION', $this->app);
         $this->defineIfNotSet('APPLICATION_ROOT_DIR', $this->resolveRootDir());
         $this->defineIfNotSet('APPLICATION_ENV', $this->resolveEnv());
         $this->defineIfNotSet('APPLICATION_STORE', $this->store);
         $this->defineIfNotSet('APPLICATION_VENDOR_DIR', __DIR__ . '/../../vendor');
+		$this->defineIfNotSet('APPLICATION_SOURCE_DIR', APPLICATION_ROOT_DIR . '/src');
 
-        $bootstrap = new ZedBootstrap();
-        $application = $bootstrap->boot();
-
-        // the documented return type above is wrong, and it confuses PHPStan.
-        assert($application instanceof Application);
-
-        return $application;
+        return $this->resolveBootstrap()->bootContainer();
     }
 
     private function resolveRootDir(): string
@@ -109,5 +104,10 @@ class ApplicationBuilder
         }
 
         define($string, $value);
+    }
+
+    private function resolveBootstrap(): ZedBootstrap
+    {
+        return new ZedBootstrap();
     }
 }

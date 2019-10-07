@@ -26,9 +26,10 @@
     "require": {
         "spryker-shop/shop-application": "^1.0",
         "spryker/propel": "^3.0@dev",
-        "spryker/console": "^3.0|^4.0",
+        "spryker/console": "^3.0|^4.0|^5.0",
         "guzzlehttp/guzzle": "^6.0",
-        "spryker/rabbit-mq": "^2.0"
+        "spryker/rabbit-mq": "^2.0",
+        "symfony/var-dumper": "^3.0|^4.0|^5.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.4@dev",
@@ -36,7 +37,8 @@
         "spryker-sdk/phpstan-spryker": "^1.0",
         "roave/behat-psr11extension": "dev-master",
         "webmozart/path-util": "^2.3@dev",
-        "spryker/code-sniffer": "dev-master"
+        "spryker/code-sniffer": "dev-master",
+        "thecodingmachine/safe": "^0.1.0@dev"
     },
     "scripts": {
       "integrate": [

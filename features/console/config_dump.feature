@@ -6,8 +6,8 @@ Feature: Config Dump
 
   Scenario: List all configuration
     Given I have the following local configuration:
-      | TEST_KEY_1 | Hello |
-      | TEST_KEY_2 | World |
+      | TEST_KEY_1 | "Hello" |
+      | TEST_KEY_2 | "World" |
     When I execute console command "debug:config"
     Then the command should succeed
     And I should see the following output:
@@ -17,8 +17,8 @@ Feature: Config Dump
 
   Scenario: Filter configuration
     Given I have the following local configuration:
-      | TEST_KEY_1 | Hello |
-      | TEST_KEY_2 | World |
+      | TEST_KEY_1 | "Hello" |
+      | TEST_KEY_2 | "World" |
     When I execute console command "debug:config KEY_1"
     Then the command should succeed
     And I should see the following output:
