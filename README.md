@@ -41,6 +41,7 @@ Follow the link for documentation:
 ### Integrations
 
 - [Twig Var Dumper](doc/twig_var_dumper.md): `{{ dump() }}` without destroying the planet.
+- [Var Dump Server](doc/twig_var_dumper.md): `var_dump` like water.
 
 Developing
 ----------
