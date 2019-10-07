@@ -40,7 +40,7 @@ Follow the link for documentation:
 
 ### Integrations
 
-- [Twig Var Dumper](doc/twig_var_dumper.md): Use a superior {{ dump() }}` to debug in Twig.
+- [Twig Var Dumper](doc/twig_var_dumper.md): `{{ dump() }}` without destroying the planet.
 
 Developing
 ----------

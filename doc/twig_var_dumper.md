@@ -23,10 +23,10 @@ use Inviqa\Shared\SprykerDebug\Plugin\Provider\TwigVarDumpServiceProvider;
 class YvesBootstrap extends SprykerYvesBootstrap
 {
     protected function registerServiceProviders()
-		{
+    {
         // ...
         $this->application->register(new TwigVarDumpServiceProvider());
-		}
+    }
 }
 ```
 
