@@ -54,6 +54,9 @@ Use `dump()` in your code:
 {{ dump($something) }}
 ```
 
+**TIP!**: The in Twig ``{{ dump(something) }}`` will not send information to the server -
+Use `{% dump(something) %}` instead.
+
 Running in Docker
 -----------------
 
