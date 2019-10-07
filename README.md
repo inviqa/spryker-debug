@@ -40,8 +40,9 @@ Follow the link for documentation:
 
 ### Integrations
 
-- [Twig Var Dumper](doc/twig_var_dumper.md): `{{ dump() }}` without destroying the planet.
-- [Var Dump Server](doc/var_dump_server.md): `var_dump` like water.
+- [Twig Var Dumper](doc/twig_var_dumper.md): `{{ dump() }}` without destroying the world.
+- [Var Dump Server](doc/var_dump_server.md): Bring `dump()` messages to
+  the CLI.
 
 Developing
 ----------
