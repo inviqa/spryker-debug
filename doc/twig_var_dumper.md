@@ -25,6 +25,9 @@ $config[TwigConstants::ZED_TWIG_OPTIONS] = [
 ];
 ```
 
+This is necessary because we use the Silex integration which depends upon the
+Twig debug mode, not the Spryker one.
+
 ### Yves
 
 Add the `TwigVarDumpServiceProvider` to your `YvesBootstrap`:
