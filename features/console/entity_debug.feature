@@ -43,3 +43,17 @@ Feature: Entity inspection
     """
     Could not find ids
     """
+
+  Scenario: Render product report
+    Given the file "entity_report_plugins.php" exists in the workspace:
+    """
+    <?php return [
+      Inviqa\Zed\SprykerDebug\Communication\Plugin\ProductEntityReportPlugin::class,
+    ];
+    """
+    When I execute console command "debug:entity 'Orm\Zed\Product\Persistence\SpyProduct' 1"
+    Then the command should succeed
+    And I should see the following output:
+    """
+    TEST-1-1
+    """
