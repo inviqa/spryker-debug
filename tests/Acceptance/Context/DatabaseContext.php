@@ -72,11 +72,14 @@ class DatabaseContext implements Context
                     }
                     return $this->map[$key];
                 }
+
+                throw new RuntimeException(sprintf('Could not decode JSON "%s"', $value), 0, $e);
             }
         }, $table->getRowsHash());
 
         $entity->fromArray($data, TableMap::TYPE_PHPNAME);
         $entity->save();
+
         $this->map[$tag] = $entity->getPrimaryKey();
     }
 }
