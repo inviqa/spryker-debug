@@ -67,7 +67,10 @@ class ConsoleContext implements Context
      */
     public function iShouldSeeTheFollowingOutput(PyStringNode $string)
     {
-        Assert::assertContains($string->getRaw(), $this->process->getOutput());
+        Assert::assertStringContainsString(
+            str_replace(' ','', $string->getRaw()),
+            str_replace(' ', '', trim($this->process->getOutput()))
+        );
     }
 
     /**

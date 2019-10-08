@@ -26,3 +26,4 @@ require __DIR__ . '/../storage.php';
 require __DIR__ . '/../rabbitmq.php';
 require __DIR__ . '/../twig.php';
 require __DIR__ . '/../var_dump_server.php';
+require __DIR__ . '/../yves.php';

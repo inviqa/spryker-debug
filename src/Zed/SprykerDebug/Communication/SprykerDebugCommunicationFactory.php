@@ -4,6 +4,8 @@ namespace Inviqa\Zed\SprykerDebug\Communication;
 
 use GuzzleHttp\Client;
 use Inviqa\Zed\SprykerDebug\Communication\Model\Rabbit\RabbitClient;
+use Inviqa\Zed\SprykerDebug\Communication\Model\Route\RouteLoader;
+use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
@@ -23,6 +25,17 @@ class SprykerDebugCommunicationFactory extends AbstractCommunicationFactory
                     Config::get(RabbitMqEnv::RABBITMQ_API_USERNAME),
                     Config::get(RabbitMqEnv::RABBITMQ_API_PASSWORD),
                 ],
+            ])
+        );
+    }
+
+    public function createRouteLoader(): RouteLoader
+    {
+        return new RouteLoader(
+            new Client([
+                'base_uri' => sprintf(
+                    Config::get(ApplicationConstants::BASE_URL_YVES)
+                ),
             ])
         );
     }

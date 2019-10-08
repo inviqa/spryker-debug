@@ -6,6 +6,7 @@ use Inviqa\Zed\SprykerDebug\Communication\Console\ConfigDumpConsole;
 use Inviqa\Zed\SprykerDebug\Communication\Console\DatabaseShellConsole;
 use Inviqa\Zed\SprykerDebug\Communication\Console\QueuesOverviewConsole;
 use Inviqa\Zed\SprykerDebug\Communication\Console\RedisShellConsole;
+use Inviqa\Zed\SprykerDebug\Communication\Console\RouteDebugConsole;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Propel\Communication\Console\BuildModelConsole;
@@ -47,6 +48,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new RedisShellConsole(),
             new ConfigDumpConsole(),
             new QueuesOverviewConsole(),
+            new RouteDebugConsole(),
         ];
     }
 }

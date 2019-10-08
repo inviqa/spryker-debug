@@ -13,9 +13,9 @@ class RouteApiController extends AbstractController
         $routeCollection = $this->getApplication()['routes'];
         $serialized = [];
 
-        foreach ($routeCollection as $route) {
+        foreach ($routeCollection as $name => $route) {
             assert($route instanceof Route);
-            $serialized[] = [
+            $serialized[$name] = [
                 'condition' => $route->getCondition(),
                 'host' => $route->getHost(),
                 'defaults' => $route->getDefaults(),
