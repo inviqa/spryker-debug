@@ -10,6 +10,9 @@ use Spryker\Shared\Config\Config;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
 
+/**
+ * @method \Inviqa\Zed\SprykerDebug\SprykerDebugConfig getConfig()
+ */
 class SprykerDebugCommunicationFactory extends AbstractCommunicationFactory
 {
     public function getRabbitClient(): RabbitClient
@@ -34,7 +37,7 @@ class SprykerDebugCommunicationFactory extends AbstractCommunicationFactory
         return new RouteLoader(
             new Client([
                 'base_uri' => sprintf(
-                    Config::get(ApplicationConstants::BASE_URL_YVES)
+                    $this->getConfig()->getYvesBaseUrl()
                 ),
             ])
         );
