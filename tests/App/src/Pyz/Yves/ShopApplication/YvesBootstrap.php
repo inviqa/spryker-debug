@@ -12,8 +12,8 @@ use Pyz\Yves\Test\Plugin\Provider\TestControllerProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Spryker\Shared\Application\Business\Routing\SilexRouter;
 use Spryker\Shared\Application\ServiceProvider\RoutingServiceProvider;
-use SprykerShop\Yves\ShopApplication\YvesBootstrap as SprykerYvesBootstrap;
 use Spryker\Shared\ErrorHandler\Plugin\ServiceProvider\WhoopsErrorHandlerServiceProvider;
+use SprykerShop\Yves\ShopApplication\YvesBootstrap as SprykerYvesBootstrap;
 
 class YvesBootstrap extends SprykerYvesBootstrap
 {

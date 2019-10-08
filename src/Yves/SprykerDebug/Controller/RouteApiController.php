@@ -5,7 +5,6 @@ namespace Inviqa\Yves\SprykerDebug\Controller;
 use Silex\Route;
 use Spryker\Yves\Kernel\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 
 class RouteApiController extends AbstractController
 {
@@ -24,7 +23,7 @@ class RouteApiController extends AbstractController
                 'options' => $route->getOptions(),
                 'path' => $route->getPath(),
                 'requirements' => $route->getRequirements(),
-                'schemes' => $route->getSchemes()
+                'schemes' => $route->getSchemes(),
             ];
         }
 
