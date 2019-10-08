@@ -8,7 +8,7 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 class SprykerDebugConfig extends AbstractBundleConfig
 {
-    public function getYvesBaseUrl()
+    public function getYvesApiBaseUrl()
     {
         if (Config::hasKey(SprykerDebugConstants::API_BASE_URL)) {
             return Config::get(SprykerDebugConstants::API_BASE_URL);

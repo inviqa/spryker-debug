@@ -37,7 +37,7 @@ class SprykerDebugCommunicationFactory extends AbstractCommunicationFactory
         return new RouteLoader(
             new Client([
                 'base_uri' => sprintf(
-                    $this->getConfig()->getYvesBaseUrl()
+                    $this->getConfig()->getYvesApiBaseUrl()
                 ),
             ])
         );

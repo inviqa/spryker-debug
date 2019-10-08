@@ -12,6 +12,6 @@ class SprykerDebugControllerProvider extends YvesControllerProvider
      */
     protected function defineControllers(Application $app)
     {
-        $this->createController('/spryker-debug/routes', 'sprykerdebugroutes', 'SprykerDebug', 'RouteApi');
+        $this->createController('/spryker-debug/routes', 'spryker-debug-routes', 'SprykerDebug', 'RouteApi');
     }
 }

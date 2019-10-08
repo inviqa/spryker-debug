@@ -10,10 +10,37 @@ Feature: Route debug
     Then the command should succeed
     And I should see the following output:
     """
-    ==================== ======== ======== ====== =======================
-     Name                 Method   Scheme   Host   Path
-    ==================== ======== ======== ====== =======================
-     home                 ANY      ANY      ANY    /
-     sprykerdebugroutes   ANY      ANY      ANY    /spryker-debug/routes
-    ==================== ======== ======== ====== =======================
+    ====================== ======== ======== ====== =======================
+     Name                  Method   Scheme   Host   Path
+    ====================== ======== ======== ====== =======================
+     home                  ANY      ANY      ANY    /
+     spryker-debug-routes  ANY      ANY      ANY    /spryker-debug/routes
+    ====================== ======== ======== ====== =======================
+    """
+
+  Scenario: Show defaults (for including the controller)
+
+    When I execute console command "debug:routes --defaults"
+    Then the command should succeed
+    And I should see the following output:
+    """
+    controller.service.spryker-debug
+    """
+
+  Scenario: Show requirements
+
+    When I execute console command "debug:routes --requirements"
+    Then the command should succeed
+    And I should see the following output:
+    """
+    Requirements
+    """
+
+  Scenario: Show condition
+
+    When I execute console command "debug:routes --condition"
+    Then the command should succeed
+    And I should see the following output:
+    """
+    Condition
     """
