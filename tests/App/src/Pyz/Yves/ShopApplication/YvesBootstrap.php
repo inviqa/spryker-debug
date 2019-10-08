@@ -17,10 +17,7 @@ use SprykerShop\Yves\ShopApplication\YvesBootstrap as SprykerYvesBootstrap;
 
 class YvesBootstrap extends SprykerYvesBootstrap
 {
-    /**
-     * @return void
-     */
-    protected function registerServiceProviders()
+    protected function registerServiceProviders(): void
     {
         $this->application['debug'] = true;
         $this->application->register(new ServiceControllerServiceProvider());
@@ -28,10 +25,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new WhoopsErrorHandlerServiceProvider());
     }
 
-    /**
-     * @return void
-     */
-    protected function registerRouters()
+    protected function registerRouters(): void
     {
         $this->application->addRouter(new SilexRouter($this->application));
     }
@@ -39,23 +33,14 @@ class YvesBootstrap extends SprykerYvesBootstrap
     /**
      * @return void
      */
-    protected function registerControllerProviders()
+    protected function registerControllerProviders(): void
     {
-        $isSsl = $this->config->isSslEnabled();
-
-        $controllerProviders = $this->getControllerProviderStack($isSsl);
-
-        foreach ($controllerProviders as $controllerProvider) {
+        foreach ($this->getControllerProviderStack() as $controllerProvider) {
             $this->application->mount($controllerProvider->getUrlPrefix(), $controllerProvider);
         }
     }
 
-    /**
-     * @param bool|null $isSsl
-     *
-     * @return \SprykerShop\Yves\ShopApplication\Plugin\Provider\AbstractYvesControllerProvider[]
-     */
-    protected function getControllerProviderStack($isSsl)
+    protected function getControllerProviderStack(): array
     {
         return [
             new TestControllerProvider(),

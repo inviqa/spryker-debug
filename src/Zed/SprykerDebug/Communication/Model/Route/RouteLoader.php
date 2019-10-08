@@ -24,7 +24,7 @@ class RouteLoader
         return $this->loadRoutes();
     }
 
-    private function loadRoutes()
+    private function loadRoutes(): RouteCollection
     {
         $response = $this->client->get('/spryker-debug/routes');
         $routes = json_decode($response->getBody()->__toString(), true);

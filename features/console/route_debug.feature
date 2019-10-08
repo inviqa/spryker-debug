@@ -18,7 +18,7 @@ Feature: Route debug
     ====================== ======== ======== ====== =======================
     """
 
-  Scenario: Show defaults (for including the controller)
+  Scenario: Show defaults (including the controller)
 
     When I execute console command "debug:routes --defaults"
     Then the command should succeed
