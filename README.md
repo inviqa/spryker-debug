@@ -34,6 +34,7 @@ Follow the link for documentation:
 ### Console Commands
 
 - [Config Dump](doc/config_dump.md): Introspect configuration.
+- [Route Debug](doc/route_debug.md): Inspect routes from Yves
 - [Database Shell](doc/database_shell.md): Launch a postgres shell.
 - [Redis Shell](doc/redis_shell.md): Launch a Redis shell.
 - [Queue Overview](doc/queue_overview.md): Show queue statuses.
