@@ -9,6 +9,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Routing\Route;
+use function Safe\json_encode;
 
 /**
  * @method \Inviqa\Zed\SprykerDebug\Communication\SprykerDebugCommunicationFactory getFactory()
@@ -79,19 +80,11 @@ class RouteDebugConsole extends Console
         ];
 
         if ($input->getOption(self::OPT_SHOW_DEFAULTS)) {
-            try {
-                $row[] = json_encode($route->getDefaults());
-            } catch (Exception $e) {
-                $row[] = sprintf('<error>%s</error>', $e->getMessage());
-            }
+            $row[] = $this->resolveArrayValue($route->getDefaults());
         }
 
         if ($input->getOption(self::OPT_SHOW_REQUIREMENTS)) {
-            try {
-                $row[] = json_encode($route->getRequirements());
-            } catch (Exception $e) {
-                $row[] = sprintf('<error>%s</error>', $e->getMessage());
-            }
+            $row[] = $this->resolveArrayValue($route->getRequirements());
         }
 
         if ($input->getOption(self::OPT_SHOW_CONDITION)) {
@@ -99,5 +92,14 @@ class RouteDebugConsole extends Console
         }
 
         return $row;
+    }
+
+    private function resolveArrayValue(array $value): string
+    {
+        try {
+            return json_encode($value);
+        } catch (Exception $e) {
+            return sprintf('<error>%s</error>', $e->getMessage());
+        }
     }
 }
