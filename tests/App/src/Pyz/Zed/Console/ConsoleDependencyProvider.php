@@ -4,6 +4,7 @@ namespace Pyz\Zed\Console;
 
 use Inviqa\Zed\SprykerDebug\Communication\Console\ConfigDumpConsole;
 use Inviqa\Zed\SprykerDebug\Communication\Console\DatabaseShellConsole;
+use Inviqa\Zed\SprykerDebug\Communication\Console\EntityDebugConsole;
 use Inviqa\Zed\SprykerDebug\Communication\Console\QueuesOverviewConsole;
 use Inviqa\Zed\SprykerDebug\Communication\Console\RedisShellConsole;
 use Inviqa\Zed\SprykerDebug\Communication\Console\RouteDebugConsole;
@@ -49,6 +50,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new ConfigDumpConsole(),
             new QueuesOverviewConsole(),
             new RouteDebugConsole(),
+            new EntityDebugConsole(),
         ];
     }
 }

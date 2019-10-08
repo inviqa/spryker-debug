@@ -10,5 +10,6 @@ class EntityInspectConsole extends Console
     {
         $this->setName('debug:entity:inspect');
         $this->setDescription('Gather and show information relating to a given Propel entity (referenced by it\'s table name');
+        $this->add
     }
 }
