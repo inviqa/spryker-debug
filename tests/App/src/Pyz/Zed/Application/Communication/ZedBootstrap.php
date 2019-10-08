@@ -11,6 +11,7 @@ class ZedBootstrap extends SprykerZedBootstrap implements TestBootstrap
     public function bootContainer(): ContainerInterface
     {
         $this->boot();
+
         return $this->application;
     }
 }

@@ -2,16 +2,11 @@
 
 namespace Inviqa\SprykerDebug\Tests\Acceptance\Context;
 
-use Behat\Gherkin\Node\PyStringNode;
-use Behat\Gherkin\Node\TableNode;
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
-use Generated\Shared\Transfer\ProductAbstractTransfer;
-use Generated\Shared\Transfer\ProductConcreteTransfer;
+use Behat\Behat\Tester\Exception\PendingException;
+use Behat\Gherkin\Node\PyStringNode;
 use Inviqa\SprykerDebug\Tests\Support\Workspace\Workspace;
-use Inviqa\Zed\SprykerDebug\Behat\State\ProcessState;
 use PHPUnit\Framework\Assert;
-use Spryker\Zed\Product\Business\ProductFacadeInterface;
 use Symfony\Component\Process\Process;
 
 class ConsoleContext implements Context
@@ -72,7 +67,10 @@ class ConsoleContext implements Context
      */
     public function iShouldSeeTheFollowingOutput(PyStringNode $string)
     {
-        Assert::assertContains($string->getRaw(), $this->process->getOutput());
+        Assert::assertStringContainsString(
+            str_replace(' ','', $string->getRaw()),
+            str_replace(' ', '', trim($this->process->getOutput()))
+        );
     }
 
     /**

@@ -12,10 +12,11 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
     {
         return [
             'workspace' => new class implements TwigLoaderPluginInterface {
-                public function getLoader(): FilesystemLoaderInterface {
+                public function getLoader(): FilesystemLoaderInterface
+                {
                     return new FilesystemLoader(__DIR__ . '/../../../Workspace');
                 }
-            }
+            },
         ];
     }
 }

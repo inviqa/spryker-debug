@@ -2,11 +2,8 @@
 
 namespace Inviqa\Shared\SprykerDebug\Plugin\Application;
 
-use Silex\Application;
-use Silex\ServiceProviderInterface;
 use Spryker\Service\Container\ContainerInterface;
 use Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface;
-use Spryker\Yves\Kernel\AbstractPlugin;
 use Symfony\Bridge\Twig\Extension\DumpExtension;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
 use Twig_Environment;

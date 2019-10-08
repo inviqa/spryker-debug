@@ -2,9 +2,9 @@
 
 namespace Inviqa\SprykerDebug\Tests\Support;
 
-use Psr\Container\ContainerInterface;
 use Pyz\Zed\Application\Communication\ZedBootstrap;
 use RuntimeException;
+use Spryker\Service\Container\ContainerInterface;
 
 class ApplicationBuilder
 {
@@ -71,7 +71,7 @@ class ApplicationBuilder
         $this->defineIfNotSet('APPLICATION_ENV', $this->resolveEnv());
         $this->defineIfNotSet('APPLICATION_STORE', $this->store);
         $this->defineIfNotSet('APPLICATION_VENDOR_DIR', __DIR__ . '/../../vendor');
-		$this->defineIfNotSet('APPLICATION_SOURCE_DIR', APPLICATION_ROOT_DIR . '/src');
+        $this->defineIfNotSet('APPLICATION_SOURCE_DIR', APPLICATION_ROOT_DIR . '/src');
 
         return $this->resolveBootstrap()->bootContainer();
     }
