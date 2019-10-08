@@ -5,7 +5,6 @@ namespace Inviqa\Zed\SprykerDebug\Communication;
 use GuzzleHttp\Client;
 use Inviqa\Zed\SprykerDebug\Communication\Model\Rabbit\RabbitClient;
 use Inviqa\Zed\SprykerDebug\Communication\Model\Route\RouteLoader;
-use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;

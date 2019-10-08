@@ -10,7 +10,7 @@ class RouteApiController extends AbstractController
 {
     public function indexAction()
     {
-        $routeCollection = $this->getApplication()['routes'];
+        $routeCollection = $this->getApplication()->get('routes');
         $serialized = [];
 
         foreach ($routeCollection as $name => $route) {

@@ -16,7 +16,6 @@ class SprykerDebugConfig extends AbstractBundleConfig
 
         return Config::get(Config::get(ApplicationConstants::YVES_SSL_ENABLED) ?
             ApplicationConstants::BASE_URL_SSL_YVES :
-            ApplicationConstants::BASE_URL_YVES
-        );
+            ApplicationConstants::BASE_URL_YVES);
     }
 }

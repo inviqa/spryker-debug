@@ -5,12 +5,10 @@ namespace Inviqa\Zed\SprykerDebug\Communication\Console;
 use Exception;
 use Spryker\Zed\Kernel\Communication\Console\Console;
 use Symfony\Component\Console\Helper\Table;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Routing\Route;
-use function Safe\json_decode;
 
 /**
  * @method \Inviqa\Zed\SprykerDebug\Communication\SprykerDebugCommunicationFactory getFactory()
@@ -77,7 +75,7 @@ class RouteDebugConsole extends Console
             implode(', ', $route->getMethods() ?: ['ANY']),
             implode(', ', $route->getSchemes() ?: ['ANY']),
             $route->getHost() ?: 'ANY',
-            $route->getPath()
+            $route->getPath(),
         ];
 
         if ($input->getOption(self::OPT_SHOW_DEFAULTS)) {
