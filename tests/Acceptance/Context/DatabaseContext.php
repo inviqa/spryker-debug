@@ -6,7 +6,9 @@ use Behat\Gherkin\Node\TableNode;
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\ScenarioScope;
+use Orm\Zed\Product\Persistence\SpyProduct;
 use Orm\Zed\Product\Persistence\SpyProductAbstract;
+use Orm\Zed\Product\Persistence\SpyProductQuery;
 use Propel\Runtime\ActiveRecord\ActiveRecordInterface;
 use Propel\Runtime\Map\TableMap;
 use Propel\Runtime\Propel;
@@ -19,7 +21,8 @@ class DatabaseContext implements Context
     /**
      * @var array
      */
-    private $map;
+    private $map = [];
+    private $rollbackMap = [];
 
     /**
      * @BeforeScenario @db-transaction
@@ -48,6 +51,18 @@ class DatabaseContext implements Context
                     $scope->getName()
                 )
             );
+        }
+    }
+
+    /**
+     * @AfterScenario @db-delete-inserted
+     */
+    public function deleteInserted(ScenarioScope $scope)
+    {
+        foreach (array_reverse($this->rollbackMap) as $entry) {
+            $queryName = $entry['class'].'Query';
+            $query = new $queryName;
+            $query->findPk($entry['pk'])->delete();
         }
     }
 
@@ -81,5 +96,9 @@ class DatabaseContext implements Context
         $entity->save();
 
         $this->map[$tag] = $entity->getPrimaryKey();
+        $this->rollbackMap[] = [
+            'class' => $className,
+            'pk' => $entity->getPrimaryKey(),
+        ];
     }
 }

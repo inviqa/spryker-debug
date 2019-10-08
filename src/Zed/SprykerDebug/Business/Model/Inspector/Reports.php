@@ -3,9 +3,10 @@
 namespace Inviqa\Zed\SprykerDebug\Business\Model\Inspector;
 
 use ArrayIterator;
+use Countable;
 use IteratorAggregate;
 
-class Reports implements IteratorAggregate
+class Reports implements IteratorAggregate, Countable
 {
     /**
      * @var Report[]
@@ -32,5 +33,13 @@ class Reports implements IteratorAggregate
     public function getIterator()
     {
         return new ArrayIterator($this->reports);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function count(): int
+    {
+        return count($this->reports);
     }
 }

@@ -4,6 +4,7 @@ namespace Inviqa\Zed\SprykerDebug\Business\Model\Inspector;
 
 use Generator;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
+use Propel\Runtime\Collection\ObjectCollection;
 use Propel\Runtime\Propel;
 use RuntimeException;
 use Spryker\Zed\PropelOrm\Business\Builder\QueryBuilder;
@@ -23,20 +24,43 @@ class ReportGenerator
     /**
      * @return Generator<string>
      */
-    public function generateFor(string $tableName, array $ids): Generator
+    public function generateFor(string $className, array $ids): Generator
     {
-        $className = $this->resolveClassName($tableName);
-        $entities = $this->findEntities($tableName, $ids);
+        $entities = $this->findEntities($className, $ids);
+
+        if ($entities->count() === 0) {
+            throw new RuntimeException(sprintf(
+                'Could not find any entities for IDs "%s"',
+                implode('", "', $ids)
+            ));
+        }
+
+        $entityIds = array_map(function ($entity) {
+            return $entity->getPrimaryKey();
+        }, iterator_to_array($entities));
+
+
+        if ($diff = array_diff($ids, $entityIds)) {
+            throw new RuntimeException(sprintf(
+                'Could not find ids "%s"',
+                implode('", "', $diff)
+            ));
+        }
 
         foreach ($entities as $entity) {
             $reports = $this->reports->reportsFor($entity);
+
+            if (count($reports) === 0) {
+                yield sprintf('No reports for %s (pk=%s)', $className, $entity->getPrimaryKey());
+            }
+
             foreach ($reports as $report) {
                 yield $report->render($entity);
             }
         }
     }
 
-    private function findEntities(string $className, array $ids): array
+    private function findEntities(string $className, array $ids): ObjectCollection
     {
         $queryClassName = $className . 'Query';
 
