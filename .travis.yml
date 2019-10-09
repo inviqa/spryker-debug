@@ -7,12 +7,16 @@ sudo: false
 php:
     - 7.3
 
+env:
+  YVES_HOST: localhost
+  YVES_PORT: 8080
+
 cache:
     directories:
         - $HOME/.composer/cache
 
 before_script:
-    - "php -S 127.0.0.1:8086 -t tests/App/public/yves &"
+    - "php -S $YVES_HOST:$YVES_PORT -t tests/App/public/yves &"
     - docker-compose up -d
     - composer install
     - tests/App/bin/console transfer:generate
