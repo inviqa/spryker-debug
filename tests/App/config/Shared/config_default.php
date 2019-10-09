@@ -8,9 +8,9 @@ use Spryker\Shared\Log\LogConstants;
 $config[KernelConstants::PROJECT_NAMESPACE] = 'Pyz';
 $config[KernelConstants::PROJECT_NAMESPACES] = [
     'Pyz',
-    'Inviqa',
 ];
 $config[KernelConstants::CORE_NAMESPACES] = [
+    'Inviqa',
     'SprykerShop',
     'SprykerMiddleware',
     'SprykerEco',

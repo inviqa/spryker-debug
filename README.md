@@ -14,11 +14,11 @@ Require the package with composer:
 $ composer require inviqa/spryker-debug
 ```
 
-Add the `Inviqa` namespace to your `config/Shared/config_default.php` file:
+Add the `Inviqa` namespace to the `CORE_NAMESPACES` key in your `config/Shared/config_default.php` file:
 
 ```php
-$config[KernelConstants::PROJECT_NAMESPACES] = [
-    'Pyz',
+$config[KernelConstants::CORE_NAMESPACES] = [
+    // ...
     'Inviqa',
 ];
 ```
