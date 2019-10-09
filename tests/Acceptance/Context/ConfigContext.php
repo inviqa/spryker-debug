@@ -4,7 +4,6 @@ namespace Inviqa\SprykerDebug\Tests\Acceptance\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\TableNode;
-use function Safe\json_decode;
 
 class ConfigContext implements Context
 {
@@ -34,7 +33,7 @@ class ConfigContext implements Context
             $file[] = sprintf(
                 '$config[\'%s\'] = %s;',
                 $name,
-                var_export(json_decode($value, true), true)
+                var_export(json_decode($value, true, 512, JSON_THROW_ON_ERROR), true)
             );
         }
 

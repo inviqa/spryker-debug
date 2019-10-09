@@ -9,7 +9,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Routing\Route;
-use function Safe\json_encode;
 
 /**
  * @method \Inviqa\Zed\SprykerDebug\Communication\SprykerDebugCommunicationFactory getFactory()
@@ -97,7 +96,7 @@ class RouteDebugConsole extends Console
     private function resolveArrayValue(array $value): string
     {
         try {
-            return json_encode($value);
+            return json_encode($value, JSON_THROW_ON_ERROR);
         } catch (Exception $e) {
             return sprintf('<error>%s</error>', $e->getMessage());
         }

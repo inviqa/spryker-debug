@@ -25,11 +25,10 @@
     "require": {
         "spryker-shop/shop-application": "^1.0",
         "spryker/propel": "^3.0",
-        "spryker/console": "^3.0|^4.0|^5.0",
+        "spryker/console": "^4.0",
         "guzzlehttp/guzzle": "^6.0",
         "spryker/rabbit-mq": "^2.0",
-        "symfony/var-dumper": "^3.0|^4.0|^5.0",
-        "thecodingmachine/safe": "^0.1"
+        "symfony/var-dumper": "^3.0|^4.0|^5.0"
     },
     "require-dev": {
         "propel/propel": "^2.0@alpha",
