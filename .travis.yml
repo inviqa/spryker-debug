@@ -1,0 +1,18 @@
+language: php
+
+sudo: false
+
+php:
+    - 7.3
+
+cache:
+    directories:
+        - $HOME/.composer/cache
+
+before_script:
+    - docker-compose up
+    - composer install
+
+
+script:
+    - composer integrate
