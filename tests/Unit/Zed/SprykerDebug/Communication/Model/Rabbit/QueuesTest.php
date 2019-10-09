@@ -19,7 +19,7 @@ class QueuesTest extends TestCase
             ]),
             Queue::fromRabbitApiData([
                 'vhost' => 'three',
-            ]),
+            ])
         );
         $this->assertCount(2, $queues->byVhost('one'));
         $this->assertCount(1, $queues->byVhost('three'));
@@ -39,7 +39,7 @@ class QueuesTest extends TestCase
         yield 'empty' => [
             new Queues(
                 $this->createQueue('one'),
-                $this->createQueue('two'),
+                $this->createQueue('two')
             ),
             '',
             [
@@ -51,7 +51,7 @@ class QueuesTest extends TestCase
         yield 'no match' => [
             new Queues(
                 $this->createQueue('one'),
-                $this->createQueue('two'),
+                $this->createQueue('two')
             ),
             'asdasdads',
             [
@@ -61,7 +61,7 @@ class QueuesTest extends TestCase
         yield 'exact match 1' => [
             new Queues(
                 $this->createQueue('one'),
-                $this->createQueue('two'),
+                $this->createQueue('two')
             ),
             'two',
             [
@@ -72,7 +72,7 @@ class QueuesTest extends TestCase
         yield 'partial match 1' => [
             new Queues(
                 $this->createQueue('one'),
-                $this->createQueue('two'),
+                $this->createQueue('two')
             ),
             'on',
             [

@@ -15,16 +15,17 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class DebugConfigConsole extends Console
 {
-    public const NAME = 'debug:config';
-    public const DESCRIPTION = 'Inspect the current Spryker configuration';
-    public const ARGUMENT_FILTER = 'filter';
+    private const NAME = 'debug:config';
+    private const DESCRIPTION = 'Inspect the current Spryker configuration';
+    private const ARG_FILTER = 'filter';
+    private const OPT_ORIGIN = 'origin';
 
     public function configure()
     {
         $this->setName(self::NAME);
         $this->setDescription(self::DESCRIPTION);
-        $this->addArgument(self::ARGUMENT_FILTER, InputArgument::OPTIONAL, 'Regex filter');
-        $this->addOption('origin', null, InputOption::VALUE_REQUIRED, 'Filter origin');
+        $this->addArgument(self::ARG_FILTER, InputArgument::OPTIONAL, 'Regex filter');
+        $this->addOption(self::OPT_ORIGIN, null, InputOption::VALUE_REQUIRED, 'Filter origin');
     }
 
     public function execute(InputInterface $input, OutputInterface $output)
@@ -32,11 +33,11 @@ class DebugConfigConsole extends Console
         $config = $this->extractConfiguration();
         $config = $this->filterConfig(
             $config,
-            Cast::toStringOrNull($input->getArgument(self::ARGUMENT_FILTER))
+            Cast::toStringOrNull($input->getArgument(self::ARG_FILTER))
         );
         $config = $this->sortConfiguration($config);
         $config = $this->addOrigin($config);
-        $config = $this->filterOrigin($config, Cast::toStringOrNull($input->getOption('origin')));
+        $config = $this->filterOrigin($config, Cast::toStringOrNull($input->getOption(self::OPT_ORIGIN)));
 
         $this->renderTable($output, $config);
     }
@@ -73,7 +74,7 @@ class DebugConfigConsole extends Console
             $table->addRow([
                 sprintf('<info>%s</>', $entry['key']),
                 $this->serializeValue($entry['value']),
-                $entry['origin'],
+                $entry[self::OPT_ORIGIN],
             ]);
         }
         $table->render();
@@ -109,7 +110,7 @@ class DebugConfigConsole extends Console
             return [
                 'key' => $key,
                 'value' => $value,
-                'origin' => isset($typeMap[$key]) ? basename($typeMap[$key]) : '<default>',
+                self::OPT_ORIGIN => isset($typeMap[$key]) ? basename($typeMap[$key]) : '<default>',
             ];
         }, array_keys($config), array_values($config));
     }
@@ -121,7 +122,7 @@ class DebugConfigConsole extends Console
         }
 
         return array_filter($config, function (array $entry) use ($filter) {
-            return preg_match('{' . $filter . '}i', $entry['origin']);
+            return preg_match('{' . $filter . '}i', $entry[self::OPT_ORIGIN]);
         });
     }
 }
