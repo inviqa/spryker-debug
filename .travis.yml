@@ -12,7 +12,7 @@ cache:
         - $HOME/.composer/cache
 
 before_script:
-    - "php -S 127.0.0.1:8086 &"
+    - "php -S 127.0.0.1:8086 -t tests/App/public/yves &"
     - docker-compose up -d
     - composer install
     - tests/App/bin/console transfer:generate
