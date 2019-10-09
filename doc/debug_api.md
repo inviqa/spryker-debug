@@ -8,7 +8,7 @@ Installation
 
 Register `SprykerDebugControllerProvider` in `YvesBootstrap`:
 
-```
+```php
 <?php
 
 namespace Pyz\Yves\ShopApplication;
