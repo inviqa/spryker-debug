@@ -29,28 +29,37 @@ class Queue
      */
     private $totalMessages;
 
+    /**
+     * @var string
+     */
+    private $vhost;
+
     public function __construct(
         string $name,
         string $state,
         int $readyMessages,
         int $unackedMessages,
-        int $totalMessages
+        int $totalMessages,
+        string $vhost
     ) {
         $this->name = $name;
         $this->state = $state;
         $this->readyMessages = $readyMessages;
         $this->unackedMessages = $unackedMessages;
         $this->totalMessages = $totalMessages;
+        $this->vhost = $vhost;
     }
 
     public static function fromRabbitApiData(array $data): self
     {
+        $state = isset($data['idle_since']) ? 'idle' : $data['state'] ?? '';
         return new self(
             $data['name'],
-            $data['state'] ?? '',
+            $state,
             $data['messages_ready'] ?? -1,
             $data['messages_unacknowledged'] ?? -1,
-            $data['messages'] ?? -1
+            $data['messages'] ?? -1,
+            $data['vhost'] ?? ''
         );
     }
 
@@ -77,5 +86,10 @@ class Queue
     public function unackedMessages(): int
     {
         return $this->unackedMessages;
+    }
+
+    public function vhost(): string
+    {
+        return $this->vhost;
     }
 }
