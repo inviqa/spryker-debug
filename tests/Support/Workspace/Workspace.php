@@ -31,11 +31,10 @@ class Workspace
 
     public function reset(): void
     {
-        if (file_exists($this->path) === false) {
-            return;
+        if (file_exists($this->path)) {
+            $this->filesystem->remove($this->path);
         }
 
-        $this->filesystem->remove($this->path);
         $this->filesystem->mkdir($this->path);
     }
 
