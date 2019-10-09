@@ -8,15 +8,15 @@ php:
     - 7.3
 
 env:
-  YVES_HOST: localhost
-  YVES_PORT: 8080
+  HOST_YVES: localhost
+  PORT_YVES: 8085
 
 cache:
     directories:
         - $HOME/.composer/cache
 
 before_script:
-    - "php -S $YVES_HOST:$YVES_PORT -t tests/App/public/yves &"
+    - "php -S $HOST_YVES:$PORT_YVES -t tests/App/public/yves &"
     - docker-compose up -d
     - composer install
     - tests/App/bin/console transfer:generate

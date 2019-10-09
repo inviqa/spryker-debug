@@ -10,6 +10,8 @@ use Spryker\Client\RabbitMq\RabbitMqClient;
 use Spryker\Client\RabbitMq\RabbitMqClientInterface;
 use Spryker\Service\Container\Container;
 use Spryker\Shared\Application\Application;
+use Spryker\Shared\Application\ApplicationConstants;
+use Spryker\Shared\Config\Config;
 use Spryker\Shared\Twig\TwigFilesystemLoader;
 use Spryker\Zed\Console\Communication\ConsoleBootstrap;
 use Symfony\Component\Debug\Debug;
@@ -17,8 +19,6 @@ use Twig\Environment;
 
 class TestContainer extends Container
 {
-    public const YVES_HOST = 'http://localhost:8086';
-
     public function __construct()
     {
         Debug::enable();
@@ -67,7 +67,11 @@ class TestContainer extends Container
     {
         $this[Client::class] = $this->share(function (Container $container) {
             return new Client([
-                'base_uri' => self::YVES_HOST,
+                'base_uri' => sprintf(
+                    'http://%s:%s',
+                    Config::get(ApplicationConstants::HOST_YVES),
+                    Config::get(ApplicationConstants::PORT_YVES),
+                )
             ]);
         });
     }
