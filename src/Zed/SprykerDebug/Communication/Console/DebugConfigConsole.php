@@ -13,7 +13,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ConfigDumpConsole extends Console
+class DebugConfigConsole extends Console
 {
     public const NAME = 'debug:config';
     public const DESCRIPTION = 'Inspect the current Spryker configuration';

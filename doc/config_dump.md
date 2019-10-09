@@ -12,7 +12,7 @@ This command will:
 Installation
 ------------
 
-Add the `ConfigDumpConsole` to your `ConsoleDependencyProvider`:
+Add the `DebugConfigConsole` to your `ConsoleDependencyProvider`:
 
 ```php
 <?php
@@ -20,7 +20,7 @@ Add the `ConfigDumpConsole` to your `ConsoleDependencyProvider`:
 namespace Pyz\Zed\Console;
 
 // ...
-use Inviqa\Zed\SprykerDebug\Communication\Console\ConfigDumpConsole;
+use Inviqa\Zed\SprykerDebug\Communication\Console\DebugConfigConsole;
 
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 {
@@ -30,7 +30,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     {
         return [
             // ...
-            new ConfigDumpConsole(),
+            new DebugConfigConsole(),
         ];
     }
 }

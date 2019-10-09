@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Route;
 /**
  * @method \Inviqa\Zed\SprykerDebug\Communication\SprykerDebugCommunicationFactory getFactory()
  */
-class RouteDebugConsole extends Console
+class DebugRoutesConsole extends Console
 {
     private const OPT_SHOW_DEFAULTS = 'defaults';
     private const OPT_SHOW_REQUIREMENTS = 'requirements';

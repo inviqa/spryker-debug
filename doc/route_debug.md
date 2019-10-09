@@ -14,7 +14,7 @@ Installation
 
 Ensure that you have configured the [debug api](debug_api.md).
 
-Add the `RouteDebugConsole` to your `ConsoleDependencyProvider`:
+Add the `DebugRoutesConsole` to your `ConsoleDependencyProvider`:
 
 ```php
 <?php
@@ -22,7 +22,7 @@ Add the `RouteDebugConsole` to your `ConsoleDependencyProvider`:
 namespace Pyz\Zed\Console;
 
 // ...
-use Inviqa\Zed\SprykerDebug\Communication\Console\RouteDebugConsole;
+use Inviqa\Zed\SprykerDebug\Communication\Console\DebugRoutesConsole;
 
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 {
@@ -32,7 +32,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     {
         return [
             // ...
-            new RouteDebugConsole(),
+            new DebugRoutesConsole(),
         ];
     }
 }

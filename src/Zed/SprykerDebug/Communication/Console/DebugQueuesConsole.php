@@ -10,7 +10,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @method \Inviqa\Zed\SprykerDebug\Communication\SprykerDebugCommunicationFactory getFactory()
  */
-class QueuesOverviewConsole extends Console
+class DebugQueuesConsole extends Console
 {
     public function configure()
     {

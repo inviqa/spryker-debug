@@ -9,7 +9,7 @@ similar to those shown in the Web interface.
 Installation
 ------------
 
-Add the `QueuesOverviewConsole` to your `ConsoleDependencyProvider`:
+Add the `DebugQueuesConsole` to your `ConsoleDependencyProvider`:
 
 ```php
 <?php
@@ -17,7 +17,7 @@ Add the `QueuesOverviewConsole` to your `ConsoleDependencyProvider`:
 namespace Pyz\Zed\Console;
 
 // ...
-use Inviqa\Zed\SprykerDebug\Communication\Console\QueuesOverviewConsole;
+use Inviqa\Zed\SprykerDebug\Communication\Console\DebugQueuesConsole;
 
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 {
@@ -27,7 +27,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     {
         return [
             // ...
-            new QueuesOverviewConsole(),
+            new DebugQueuesConsole(),
         ];
     }
 }
