@@ -14,8 +14,8 @@ cache:
 before_script:
     - docker-compose up -d
     - composer install
-    - vendor/bin/console propel:install
-
+    - tests/App/bin/console transfer:generate
+    - tests/App/bin/console propel:install
 
 script:
     - composer integrate
