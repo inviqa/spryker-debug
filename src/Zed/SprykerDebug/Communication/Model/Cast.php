@@ -22,4 +22,9 @@ class Cast
     {
         return (int)$value;
     }
+
+    public static function toArray($value): array
+    {
+        return (array)$value;
+    }
 }

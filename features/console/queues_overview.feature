@@ -13,3 +13,12 @@ Feature: Show queues overview
     """
     foobar
     """
+
+  Scenario: Show queues by vhost
+    Given the queue "foobar" exists
+    When I execute console command "debug:queues --vhost=/"
+    Then the command should succeed
+    And I should see the following output:
+    """
+    foobar
+    """

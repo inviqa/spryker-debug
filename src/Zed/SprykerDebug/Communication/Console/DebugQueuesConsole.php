@@ -2,9 +2,11 @@
 
 namespace Inviqa\Zed\SprykerDebug\Communication\Console;
 
+use Inviqa\Zed\SprykerDebug\Communication\Model\Cast;
 use Spryker\Zed\Kernel\Communication\Console\Console;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -12,9 +14,12 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class DebugQueuesConsole extends Console
 {
+    const OPT_VHOST = 'vhost';
+
     public function configure()
     {
         $this->setName('debug:queues');
+        $this->addOption(self::OPT_VHOST, null, InputOption::VALUE_REQUIRED|InputOption::VALUE_IS_ARRAY, 'Filter by vhost');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -23,14 +28,23 @@ class DebugQueuesConsole extends Console
 
         $table = new Table($output);
         $table->setHeaders([
+            self::OPT_VHOST,
             'name',
             'state',
             'ready',
             'unacked',
             'total',
         ]);
-        foreach ($client->queues() as $queue) {
+
+        $queues = $client->queues();
+
+        if ($input->getOption(self::OPT_VHOST)) {
+            $queues = $queues->byVhost(...Cast::toArray($input->getOption(self::OPT_VHOST)));
+        }
+
+        foreach ($queues as $queue) {
             $table->addRow([
+                $queue->vhost(),
                 $queue->name(),
                 $queue->state(),
                 $queue->readyMessages(),

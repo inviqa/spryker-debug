@@ -54,7 +54,7 @@ class Queue
     {
         $state = isset($data['idle_since']) ? 'idle' : $data['state'] ?? '';
         return new self(
-            $data['name'],
+            $data['name'] ?? '',
             $state,
             $data['messages_ready'] ?? -1,
             $data['messages_unacknowledged'] ?? -1,

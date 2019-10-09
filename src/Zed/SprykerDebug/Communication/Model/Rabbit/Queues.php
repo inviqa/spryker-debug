@@ -33,4 +33,11 @@ class Queues implements IteratorAggregate, Countable
     {
         return count($this->queues);
     }
+
+    public function byVhost(string ...$vhosts): self
+    {
+        return new self(...array_filter($this->queues, function (Queue $queue) use ($vhosts) {
+            return in_array($queue->vhost(), $vhosts);
+        }));
+    }
 }
