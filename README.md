@@ -35,17 +35,16 @@ Follow the link for documentation:
 
 ### Console Commands
 
-- [Config Dump](doc/config_dump.md): Introspect configuration.
+- [Config Dump](doc/config_dump.md): Inpsect configuration.
 - [Route Debug](doc/route_debug.md): Inspect routes from Yves
+- [Queue Overview](doc/queue_overview.md): Inspect queue statuses.
 - [Database Shell](doc/database_shell.md): Launch a postgres shell.
 - [Redis Shell](doc/redis_shell.md): Launch a Redis shell.
-- [Queue Overview](doc/queue_overview.md): Show queue statuses.
 
 ### Integrations
 
-- [Twig Var Dumper](doc/twig_var_dumper.md): `{{ dump() }}` without destroying the world.
-- [Var Dump Server](doc/var_dump_server.md): Bring `dump()` messages to
-  the CLI.
+- [Twig Var Dumper](doc/twig_var_dumper.md): Pretty `{{ dump() }}` in Twig.
+- [Var Dump Server](doc/var_dump_server.md): Send `dump()` messages to the command line.
 
 Developing
 ----------
