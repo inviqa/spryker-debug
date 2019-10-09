@@ -37,7 +37,7 @@ final class RabbitClient
             true
         );
 
-        if (false === $decoded) {
+        if ($decoded === false) {
             throw new RuntimeException(sprintf('Could not decode JSON response "%s"', json_last_error_msg()));
         }
 

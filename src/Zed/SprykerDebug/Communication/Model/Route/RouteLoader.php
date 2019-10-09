@@ -28,7 +28,7 @@ class RouteLoader
     {
         $response = $this->client->get('/spryker-debug/routes');
         $routes = json_decode($response->getBody()->__toString(), true, 512);
-        if (false === $routes) {
+        if ($routes === false) {
             throw new RuntimeException(sprintf('Could not decode JSON response "%s"', json_last_error_msg()));
         }
         $collection = new RouteCollection();

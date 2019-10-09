@@ -98,9 +98,10 @@ class RouteDebugConsole extends Console
     {
         try {
             $encoded = json_encode($value);
-            if (false === $encoded) {
+            if ($encoded === false) {
                 throw new RuntimeException(sprintf('Could not encode JSON value "%s"', json_last_error_msg()));
             }
+
             return $encoded;
         } catch (Exception $e) {
             return sprintf('<error>%s</error>', $e->getMessage());
