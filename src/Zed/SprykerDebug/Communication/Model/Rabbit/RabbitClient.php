@@ -3,6 +3,7 @@
 namespace Inviqa\Zed\SprykerDebug\Communication\Model\Rabbit;
 
 use GuzzleHttp\Client;
+use RuntimeException;
 
 final class RabbitClient
 {
@@ -28,14 +29,18 @@ final class RabbitClient
 
     private function request(string $url): array
     {
-        return json_decode(
+        $decoded = json_decode(
             $this->client->request(
                 'GET',
                 sprintf('/api/%s', $url)
             )->getBody()->__toString(),
-            true,
-            512,
-            JSON_THROW_ON_ERROR
+            true
         );
+
+        if (false === $decoded) {
+            throw new RuntimeException(sprintf('Could not decode JSON response "%s"', json_last_error_msg()));
+        }
+
+        return $decoded;
     }
 }

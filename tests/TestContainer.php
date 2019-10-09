@@ -70,7 +70,7 @@ class TestContainer extends Container
                 'base_uri' => sprintf(
                     'http://%s:%s',
                     Config::get(ApplicationConstants::HOST_YVES),
-                    Config::get(ApplicationConstants::PORT_YVES),
+                    Config::get(ApplicationConstants::PORT_YVES)
                 )
             ]);
         });

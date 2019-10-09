@@ -3,6 +3,7 @@
 namespace Inviqa\Zed\SprykerDebug\Communication\Model\Route;
 
 use GuzzleHttp\Client;
+use RuntimeException;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 
@@ -26,7 +27,10 @@ class RouteLoader
     private function loadRoutes(): RouteCollection
     {
         $response = $this->client->get('/spryker-debug/routes');
-        $routes = json_decode($response->getBody()->__toString(), true, 512, JSON_THROW_ON_ERROR);
+        $routes = json_decode($response->getBody()->__toString(), true, 512);
+        if (false === $routes) {
+            throw new RuntimeException(sprintf('Could not decode JSON response "%s"', json_last_error_msg()));
+        }
         $collection = new RouteCollection();
 
         foreach ($routes as $name => $route) {

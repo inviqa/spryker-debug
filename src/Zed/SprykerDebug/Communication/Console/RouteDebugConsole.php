@@ -3,6 +3,7 @@
 namespace Inviqa\Zed\SprykerDebug\Communication\Console;
 
 use Exception;
+use RuntimeException;
 use Spryker\Zed\Kernel\Communication\Console\Console;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
@@ -96,7 +97,11 @@ class RouteDebugConsole extends Console
     private function resolveArrayValue(array $value): string
     {
         try {
-            return json_encode($value, JSON_THROW_ON_ERROR);
+            $encoded = json_encode($value);
+            if (false === $encoded) {
+                throw new RuntimeException(sprintf('Could not encode JSON value "%s"', json_last_error_msg()));
+            }
+            return $encoded;
         } catch (Exception $e) {
             return sprintf('<error>%s</error>', $e->getMessage());
         }

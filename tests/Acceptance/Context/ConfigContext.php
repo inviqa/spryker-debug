@@ -30,10 +30,14 @@ class ConfigContext implements Context
         ];
 
         foreach ($table->getRowsHash() as $name => $value) {
+            $decoded = json_decode($value, true);
+            if (false === $decoded) {
+                throw new RuntimeException(sprintf('Could not decode JSON "%s"', json_last_error_msg()));
+            }
             $file[] = sprintf(
                 '$config[\'%s\'] = %s;',
                 $name,
-                var_export(json_decode($value, true, 512, JSON_THROW_ON_ERROR), true)
+                var_export($decoded, true)
             );
         }
 
