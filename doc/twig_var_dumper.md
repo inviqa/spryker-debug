@@ -10,7 +10,7 @@ Installation
 
 ### Yves
 
-Add the `TwigVarDumpServiceProvider` to your `YvesBootstrap`:
+Add the `TwigVarDumpServiceProvider` to your `ShopApplicationDependencyProvider` (you may need to create the method below if it does not exist):
 
 ```php
 <?php
