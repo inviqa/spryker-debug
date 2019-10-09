@@ -40,4 +40,18 @@ class Queues implements IteratorAggregate, Countable
             return in_array($queue->vhost(), $vhosts);
         }));
     }
+
+    public function filterByString(string $string): self
+    {
+        return new self(...array_filter($this->queues, function (Queue $queue) use ($string) {
+            return preg_match(sprintf('{.*%s.*}', $string), $queue->name());
+        }));
+    }
+
+    public function names(): array
+    {
+        return array_map(function (Queue $queue) {
+            return $queue->name();
+        }, $this->queues);
+    }
 }

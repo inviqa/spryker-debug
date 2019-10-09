@@ -25,4 +25,64 @@ class QueuesTest extends TestCase
         $this->assertCount(1, $queues->byVhost('three'));
         $this->assertCount(0, $queues->byVhost('four'));
     }
+
+    /**
+     * @dataProvider provideFilterByString
+     */
+    public function testFilterByString(Queues $queues, string $string, array $expectedQueueNames)
+    {
+        $this->assertEquals($expectedQueueNames, $queues->filterByString($string)->names());
+    }
+
+    public function provideFilterByString()
+    {
+        yield 'empty' => [
+            new Queues(
+                $this->createQueue('one'),
+                $this->createQueue('two'),
+            ),
+            '',
+            [
+                'one',
+                'two',
+            ]
+        ];
+
+        yield 'no match' => [
+            new Queues(
+                $this->createQueue('one'),
+                $this->createQueue('two'),
+            ),
+            'asdasdads',
+            [
+            ]
+        ];
+
+        yield 'exact match 1' => [
+            new Queues(
+                $this->createQueue('one'),
+                $this->createQueue('two'),
+            ),
+            'two',
+            [
+                'two',
+            ]
+        ];
+
+        yield 'partial match 1' => [
+            new Queues(
+                $this->createQueue('one'),
+                $this->createQueue('two'),
+            ),
+            'on',
+            [
+                'one',
+            ]
+        ];
+    }
+
+    private function createQueue(string $string)
+    {
+        return Queue::fromRabbitApiData(['name' => $string]);
+    }
 }

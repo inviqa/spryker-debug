@@ -53,6 +53,7 @@ class Queue
     public static function fromRabbitApiData(array $data): self
     {
         $state = isset($data['idle_since']) ? 'idle' : $data['state'] ?? '';
+
         return new self(
             $data['name'] ?? '',
             $state,

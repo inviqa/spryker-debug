@@ -39,12 +39,24 @@ Usage
 List all queues:
 
 ```bash
-$ ./vendor/bin/debug:queues
+$ ./vendor/bin/console debug:queues
 +--------------------------------+---------+-------+---------+-------+
 | name                           | state   | ready | unacked | total |
 +--------------------------------+---------+-------+---------+-------+
 | foobar                         | running | 0     | 0       | 0     |
 +--------------------------------+---------+-------+---------+-------+
+```
+
+List all queues containing the string "foobar":
+
+```bash
+$ ./vendor/bin/console debug:queues foobar
+```
+
+List all queues for a specific vhost:
+
+```bash
+$ ./vendor/bin/console debug:queues --vhost=de
 ```
 
 Notes

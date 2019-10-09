@@ -22,3 +22,12 @@ Feature: Show queues overview
     """
     foobar
     """
+
+  Scenario: Filter queues by name
+    Given the queue "foobar" exists
+    When I execute console command "debug:queues foo"
+    Then the command should succeed
+    And I should see the following output:
+    """
+    foobar
+    """
