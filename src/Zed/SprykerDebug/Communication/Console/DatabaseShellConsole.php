@@ -42,6 +42,7 @@ class DatabaseShellConsole extends AbstractShellConsole
         $output->getErrorOutput()->writeln(sprintf('<comment>Executing "%s" (connection params passed via env vars)</comment>', $process->getCommandLine()));
         $output->getErrorOutput()->writeln('<info>Type "\\q" to quit</info>');
         $process->setTty(true);
+        $process->setTimeout(null);
         $process->run();
 
         return Cast::toInt($process->getExitCode());

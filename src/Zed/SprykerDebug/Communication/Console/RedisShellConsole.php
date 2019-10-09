@@ -37,6 +37,7 @@ class RedisShellConsole extends AbstractShellConsole
         $output->getErrorOutput()->writeln(sprintf('<comment>Executing "%s" (password passed via env REDISCLI_AUTH)</comment>', $process->getCommandLine()));
         $output->getErrorOutput()->writeln('<info>Type "exit" to quit</info>');
         $process->setTty(true);
+        $process->setTimeout(null);
         $process->run();
 
         return Cast::toInt($process->getExitCode());
