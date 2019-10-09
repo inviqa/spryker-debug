@@ -37,7 +37,7 @@ Usage
 Connect to the `psql` shell:
 
 ```bash
-$ ./vendor/bin/debug:database:shell
+$ ./vendor/bin/console debug:database:shell
 ```
 
 Note that the `psql` shell will need to be available.
