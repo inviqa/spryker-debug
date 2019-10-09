@@ -1,0 +1,1 @@
+Because Spryker propel:install won't work without this directory existing, even if it's empty.
