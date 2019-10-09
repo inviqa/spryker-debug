@@ -2,7 +2,6 @@ Spryker Debug
 =============
 
 [![Build Status](https://travis-ci.org/inviqa/spryker-debug.svg?branch=master)](https://travis-ci.org/inviqa/spryker-debug)
-[![Latest Stable Version](https://poser.pugx.org/inviqa/spryker-debug/version)](https://packagist.org/packages/inviqa/spryker-debug)
 [![License](https://poser.pugx.org/inviqa/spryker-debug/license)](https://packagist.org/packages/inviqa/spryker-debug)
 
 Collection of debug and development tools for Spryker:
