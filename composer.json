@@ -2,7 +2,6 @@
     "name": "inviqa/spryker-debug",
     "description": "Inviqa Spryker Debug Module",
     "type": "library",
-    "minimum-stability": "dev",
     "license": "MIT",
     "authors": [
         {
@@ -33,11 +32,11 @@
         "thecodingmachine/safe": "^0.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.4@dev",
+        "phpunit/phpunit": "^8.4",
         "behat/behat": "^3.5",
         "spryker-sdk/phpstan-spryker": "^1.0",
-        "roave/behat-psr11extension": "dev-master",
-        "webmozart/path-util": "^2.3@dev",
+        "roave/behat-psr11extension": "^1.0",
+        "webmozart/path-util": "^2.0",
         "spryker/code-sniffer": "dev-master"
     },
     "scripts": {
