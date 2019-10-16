@@ -31,7 +31,7 @@ class RedisShellConsole extends AbstractShellConsole
             ], $this->buildArgs()),
             null,
             [
-                'REDISCLI_AUTH' => Config::get(StorageConstants::STORAGE_REDIS_PASSWORD),
+                'REDISCLI_AUTH' => Config::get('STORAGE_REDIS:STORAGE_REDIS_PASSWORD', Config::get(StorageConstants::STORAGE_REDIS_PASSWORD, '')),
             ]
         );
         $output->getErrorOutput()->writeln(sprintf('<comment>Executing "%s" (password passed via env REDISCLI_AUTH)</comment>', $process->getCommandLine()));
@@ -47,11 +47,11 @@ class RedisShellConsole extends AbstractShellConsole
     {
         return [
             '-h',
-            Config::get(StorageConstants::STORAGE_REDIS_HOST),
+            Config::get('STORAGE_REDIS:STORAGE_REDIS_HOST', Config::get(StorageConstants::STORAGE_REDIS_HOST, '')),
             '-p',
-            Config::get(StorageConstants::STORAGE_REDIS_PORT),
+            Config::get('STORAGE_REDIS:STORAGE_REDIS_PORT', Config::get(StorageConstants::STORAGE_REDIS_PORT, '')),
             '-n',
-            Config::get(StorageConstants::STORAGE_REDIS_DATABASE),
+            Config::get('STORAGE_REDIS:STORAGE_REDIS_DATABASE', Config::get(StorageConstants::STORAGE_REDIS_DATABASE, '')),
         ];
     }
 }
