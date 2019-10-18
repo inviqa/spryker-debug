@@ -5,7 +5,7 @@ You can use `var_dump` or `dump()` to inspect variables in the browser, but
 this is actually a terrible idea as often it will corrupt the output and leave
 you dazed and confused.
 
-The [var dump
+The Symfony [var dump
 server](https://symfony.com/doc/current/components/var_dumper.html#the-dump-server)
 provides you with an alternative. Instead of dumping to the output, it will
 dump to a CLI application which you have running.
@@ -51,7 +51,7 @@ Use `dump()` in your code:
 
 // ...
 
-{{ dump($something) }}
+dump($something);
 ```
 
 **TIP!**: The in Twig ``{{ dump(something) }}`` will not send information to the server -
