@@ -9,6 +9,6 @@ class IndexController extends AbstractController
 {
     public function indexAction()
     {
-        return new Response('Hello World');
+        return new Response('<html><body>Hello World</body></html>');
     }
 }
