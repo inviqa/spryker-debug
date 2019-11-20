@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\ShopApplication;
 
+use Inviqa\Shared\SprykerDebug\Plugin\Application\GuzzleProfilerApplicationPlugin;
 use Inviqa\Yves\SprykerDebug\Plugin\SprykerDebugControllerProvider;
 use Pyz\Yves\Test\Plugin\Provider\TestControllerProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
@@ -67,6 +68,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new RouterApplicationPlugin(),
             new ErrorHandlerApplicationPlugin(),
             new HttpApplicationPlugin(),
+            new GuzzleProfilerApplicationPlugin(),
         ];
     }
 }

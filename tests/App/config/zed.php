@@ -1,7 +1,10 @@
 <?php
 
+use Psr\Http\Message\RequestInterface;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Router\RouterConstants;
+use Spryker\Shared\ZedRequest\Client\HandlerStack\HandlerStackContainer;
+use Spryker\Shared\ZedRequest\Client\Middleware\MiddlewareInterface;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
 $config[ApplicationConstants::ZED_SSL_ENABLED] = false;
