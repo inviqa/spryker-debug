@@ -27,3 +27,4 @@ require __DIR__ . '/../rabbitmq.php';
 require __DIR__ . '/../twig.php';
 require __DIR__ . '/../var_dump_server.php';
 require __DIR__ . '/../yves.php';
+require __DIR__ . '/../web_profiler.php';
