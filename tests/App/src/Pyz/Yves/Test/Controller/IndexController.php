@@ -13,7 +13,12 @@ class IndexController extends AbstractController
 {
     public function indexAction()
     {
-        $this->getClient()->helloWorld(new TestTransfer());
         return new Response('<html><body>Hello World</body></html>');
+    }
+
+    public function zedCallAction()
+    {
+        $this->getClient()->helloWorld(new TestTransfer());
+        return new Response('<html><body>I called Zed baby</body></html>');
     }
 }
