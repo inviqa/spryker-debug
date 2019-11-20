@@ -5,7 +5,7 @@ Feature: Web Debug Toolbar
   In order to debug the most recent web request
   I want the web debug toolbar to be shown
 
-  Scenario: Web Profiler is shownb
+  Scenario: Web Profiler is shown
     When request "/" from Yves
     Then the response should contain:
     """

@@ -7,12 +7,12 @@ Feature: Twig Var Dumper
   See config/Shared/twig.php to see how to enable debug mode.
 
   Scenario: Dump using the var dumper
-     Given I have the Twig template "Hello.twig":
+     Given I have the Twig template "hello.twig":
      """
      Hello World
      {{ dump() }}
      """
-     When I render the "@workspace/Hello.twig" template with the following parameters:
+     When I render the "@workspace/hello.twig" template with the following parameters:
      | name      | value                   |
      | hello     | thisvalueshouldbedumped |
      Then I should see the rendered template:

@@ -13,6 +13,7 @@ default:
         - Inviqa\SprykerDebug\Tests\Acceptance\Context\QueueContext
         - Inviqa\SprykerDebug\Tests\Acceptance\Context\TwigContext
         - Inviqa\SprykerDebug\Tests\Acceptance\Context\YvesHttpContext
+        - Inviqa\SprykerDebug\Tests\Acceptance\Context\CacheContext
 
   extensions:
     Roave\BehatPsrContainer\PsrContainerExtension:
