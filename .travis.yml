@@ -17,6 +17,7 @@ cache:
         - $HOME/.composer/cache
 
 before_script:
+    - echo "memory_limit=2G" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
     - "php -S $HOST_YVES:$PORT_YVES -t tests/App/public/yves &"
     - docker-compose up -d
     - composer install
