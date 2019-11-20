@@ -38,7 +38,12 @@
         "spryker-sdk/phpstan-spryker": "^1.0@dev",
         "roave/behat-psr11extension": "^1.0",
         "webmozart/path-util": "^2.0",
-        "spryker/code-sniffer": "dev-master"
+        "spryker/code-sniffer": "dev-master",
+        "spryker-shop/web-profiler-widget": "^1.3",
+        "spryker/web-profiler": "^1.5",
+        "spryker/router": "^1.3",
+        "spryker/http": "^1.0",
+        "spryker/event-dispatcher": "^1.0"
     },
     "scripts": {
       "integrate": [
