@@ -33,9 +33,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new ServiceControllerServiceProvider());
         $this->application->register(new WhoopsErrorHandlerServiceProvider());
         $this->application->register(new HttpFragmentServiceProvider());
-
-        //$this->application->register(new TwigServiceProvider());
-        //$this->application->register(new WebProfilerWidgetServiceProvider());
     }
 
     protected function registerRouters(): void
