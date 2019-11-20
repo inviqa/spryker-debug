@@ -19,7 +19,8 @@ $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
 $config[ZedRequestConstants::ZED_API_SSL_ENABLED] = false;
 
 $config[ZedRequestConstants::HOST_ZED_API] = getenv('HOST_ZED') ?: 'localhost';
-$config[ZedRequestConstants::BASE_URL_ZED_API] = 'http://localhost:8081';
+$config[ZedRequestConstants::BASE_URL_ZED_API] = getenv('BASE_URL_ZED_API') ?: 'http://localhost:8081';
+
 $config[ZedRequestConstants::AUTH_DEFAULT_CREDENTIALS] = [
     'yves_system' => [
         'rules' => [
