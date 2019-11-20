@@ -1,6 +1,7 @@
 <?php
 
 use Spryker\Shared\Application\ApplicationConstants;
+use Spryker\Shared\Router\RouterConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
 $config[ApplicationConstants::ZED_SSL_ENABLED] = false;
@@ -28,3 +29,6 @@ $config[ZedRequestConstants::AUTH_DEFAULT_CREDENTIALS] = [
         'token' => 'JDJ5JDEwJFE0cXBwYnVVTTV6YVZXSnVmM2l1UWVhRE94WkQ4UjBUeHBEWTNHZlFRTEd4U2F6QVBqejQ2', // Please replace this token for your project
     ],
 ];
+$config[RouterConstants::ZED_IS_SSL_ENABLED] = false;
+$config[RouterConstants::ZED_IS_CACHE_ENABLED] = false;
+$config[RouterConstants::ZED_SSL_EXCLUDED_ROUTE_NAMES] = false;
