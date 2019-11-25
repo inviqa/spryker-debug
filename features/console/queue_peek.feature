@@ -6,6 +6,7 @@ Feature: Show queues overview
   I want a command which will display the state of all the queues
 
   Scenario: Show queues status
+
     Given the queue "foobar" exists
     And I add the following message to queue "foobar":
     """
@@ -18,5 +19,23 @@ Feature: Show queues overview
     And I should see the following output:
     """
     {"hello":"goodbye"}
+    """
+
+  Scenario: Pretty print JSON output
+
+    Given the queue "foobar" exists
+    And I add the following message to queue "foobar":
+    """
+    {"hello":"goodbye"}
+    """
+
+    When I execute console command "debug:queues:peek foobar --json"
+
+    Then the command should succeed
+    And I should see the following output:
+    """
+    {
+      "hello":"goodbye"
+    }
     """
 

@@ -51,7 +51,7 @@ final class RabbitClient
                 'POST',
                 sprintf('/api/%s', $url),
                 [
-                    'json' => $options
+                    'json' => $options,
                 ]
             )->getBody()->__toString(),
             true
@@ -73,6 +73,7 @@ final class RabbitClient
         ]);
 
         dump($response);
+
         return new Messages(array_map(function ($record) {
             return new Message($record['payload']);
         }, $response));
