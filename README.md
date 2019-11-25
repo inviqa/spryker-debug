@@ -37,6 +37,7 @@ Follow the link for documentation:
 - [Config Dump](doc/config_dump.md): Inpsect configuration.
 - [Route Debug](doc/route_debug.md): Inspect routes from Yves
 - [Queue Overview](doc/queue_overview.md): Inspect queue statuses.
+- [Queue Peek](doc/queue_peek.md): Peek at messages in a queue.
 - [Database Shell](doc/database_shell.md): Launch a Postgres shell.
 - [Redis Shell](doc/redis_shell.md): Launch a Redis shell.
 

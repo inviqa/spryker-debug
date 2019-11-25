@@ -17,11 +17,12 @@ class DebugQueuesPeekConsole extends Console
 {
     private const ARG_NAME = 'peek';
     private const OPT_VHOST = 'vhost';
-    const OPT_JSON = 'json';
+    private const OPT_JSON = 'json';
 
     public function configure()
     {
         $this->setName('debug:queues:peek');
+        $this->setDescription('Peek at messages in a queue');
         $this->addArgument(self::ARG_NAME, InputArgument::REQUIRED, 'Name of queue to peak into');
         $this->addOption(self::OPT_VHOST, null, InputOption::VALUE_REQUIRED, 'Filter by vhost', '%2f');
         $this->addOption(self::OPT_JSON, null, InputOption::VALUE_NONE, 'Pretty print JSON output');
@@ -45,14 +46,15 @@ class DebugQueuesPeekConsole extends Console
     {
         if ($input->getOption(self::OPT_JSON)) {
             $decoded = json_decode($message);
-            if (false === $decoded) {
+            if ($decoded === false) {
                 throw new RuntimeException(sprintf(
-                    'Could not decode JSON: "%s"', json_last_error_msg()
+                    'Could not decode JSON: "%s"',
+                    json_last_error_msg()
                 ));
             }
 
             $encoded = json_encode($decoded, JSON_PRETTY_PRINT);
-            if (false === $encoded) {
+            if ($encoded === false) {
                 throw new RuntimeException(
                     'Could not encode JSON'
                 );
