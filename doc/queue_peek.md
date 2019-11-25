@@ -40,6 +40,14 @@ $ ./vendor/bin/console debug:queues:peek foobar
 {"hello": "goodbye"}
 ```
 
+Show multiple messages:
+
+```bash
+$ ./vendor/bin/console debug:queues:peek foobar --count=2
+{"hello": "goodbye"}
+{"foo": "bar"}
+```
+
 Format a JSON message:
 
 ```bash

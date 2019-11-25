@@ -64,15 +64,13 @@ final class RabbitClient
         return $decoded;
     }
 
-    public function peek(string $vhost, string $queue): Messages
+    public function peek(string $vhost, string $queue, int $limit): Messages
     {
         $response = $this->post(sprintf('queues/%s/%s/get', $vhost, $queue), [
-            'count' => 1,
+            'count' => $limit,
             'ackmode' => 'ack_requeue_true',
             'encoding' => 'auto',
         ]);
-
-        dump($response);
 
         return new Messages(array_map(function ($record) {
             return new Message($record['payload']);

@@ -18,6 +18,7 @@ class DebugQueuesPeekConsole extends Console
     private const ARG_NAME = 'peek';
     private const OPT_VHOST = 'vhost';
     private const OPT_JSON = 'json';
+    private const OPT_COUNT = 'count';
 
     public function configure()
     {
@@ -26,6 +27,7 @@ class DebugQueuesPeekConsole extends Console
         $this->addArgument(self::ARG_NAME, InputArgument::REQUIRED, 'Name of queue to peak into');
         $this->addOption(self::OPT_VHOST, null, InputOption::VALUE_REQUIRED, 'Filter by vhost', '%2f');
         $this->addOption(self::OPT_JSON, null, InputOption::VALUE_NONE, 'Pretty print JSON output');
+        $this->addOption(self::OPT_COUNT, null, InputOption::VALUE_REQUIRED, 'Specify number of messages', 1);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -34,7 +36,8 @@ class DebugQueuesPeekConsole extends Console
 
         $messages = $client->peek(
             Cast::toString($input->getOption(self::OPT_VHOST)),
-            Cast::toString($input->getArgument(self::ARG_NAME))
+            Cast::toString($input->getArgument(self::ARG_NAME)),
+            Cast::toInt($input->getOption(self::OPT_COUNT))
         );
 
         foreach ($messages as $message) {
