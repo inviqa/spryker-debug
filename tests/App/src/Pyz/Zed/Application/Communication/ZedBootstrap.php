@@ -2,6 +2,7 @@
 
 namespace Pyz\Zed\Application\Communication;
 
+use Inviqa\Shared\SprykerDebug\Plugin\Application\TwigVarDumpApplicationPlugin;
 use Inviqa\SprykerDebug\Tests\Support\TestBootstrap;
 use Psr\Container\ContainerInterface;
 use Spryker\Zed\Application\Communication\ZedBootstrap as SprykerZedBootstrap;
@@ -23,6 +24,7 @@ class ZedBootstrap extends SprykerZedBootstrap implements TestBootstrap
         return [
             new HttpApplicationPlugin(),
             new EventDispatcherApplicationPlugin(),
+            new TwigVarDumpApplicationPlugin(),
         ];
     }
 }
