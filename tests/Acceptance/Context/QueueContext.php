@@ -3,16 +3,24 @@
 namespace Inviqa\SprykerDebug\Tests\Acceptance\Context;
 
 use Behat\Behat\Context\Context;
+use Behat\Gherkin\Node\PyStringNode;
+use Generated\Shared\Transfer\QueueSendMessageTransfer;
 use Generated\Shared\Transfer\RabbitMqOptionTransfer;
+use PhpAmqpLib\Connection\AMQPConnection;
+use PhpAmqpLib\Message\AMQPMessage;
 use Spryker\Client\RabbitMq\RabbitMqClientInterface;
 
 class QueueContext implements Context
 {
-    private $client;
+    /**
+     * @var AMQPConnection
+     */
+    private $connection;
 
-    public function __construct(RabbitMqClientInterface $client)
+
+    public function __construct(AMQPConnection $connection)
     {
-        $this->client = $client;
+        $this->connection = $connection;
     }
 
     /**
@@ -20,10 +28,18 @@ class QueueContext implements Context
      */
     public function theQueueExists(string $queueName)
     {
-        $options = new RabbitMqOptionTransfer();
-        $options->setQueueName($queueName);
-        $this->client->createQueueAdapter()->createQueue($queueName, [
-            'rabbitMqConsumerOption' => $options,
-        ]);
+        $channel = $this->connection->channel();
+        $channel->queue_delete($queueName);
+        $channel->queue_declare($queueName);
+    }
+
+    /**
+     * @When I add the following message to queue :arg1:
+     */
+    public function addTheFollowingMessageToQueue(string $queueName, PyStringNode $message)
+    {
+        $channel = $this->connection->channel();
+        $message = new AMQPMessage($message->getRaw());
+        $channel->basic_publish($message, '', $queueName);
     }
 }
