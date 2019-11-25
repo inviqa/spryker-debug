@@ -11,6 +11,8 @@ php:
 env:
   HOST_YVES: localhost
   PORT_YVES: 8085
+  HOST_ZED: localhost
+  BASE_URL_ZED_API: http://localhost:8086
 
 cache:
     directories:
@@ -19,6 +21,7 @@ cache:
 before_script:
     - echo "memory_limit=2G" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
     - "php -S $HOST_YVES:$PORT_YVES -t tests/App/public/yves &"
+    - "php -S $BASE_URL_ZED_API -t tests/App/public/zed &"
     - docker-compose up -d
     - composer install
     - tests/App/bin/console transfer:generate

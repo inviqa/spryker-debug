@@ -14,5 +14,6 @@ class TestControllerProvider extends AbstractYvesControllerProvider implements C
     protected function defineControllers(Application $app)
     {
         $this->createController('/', 'home', 'Test', 'Index');
+        $this->createController('/zed', 'zedCall', 'Test', 'Index', 'zedCall');
     }
 }

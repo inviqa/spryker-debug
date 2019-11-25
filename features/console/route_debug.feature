@@ -14,8 +14,6 @@ Feature: Route debug
      Name                  Method   Scheme   Host   Path
     ====================== ======== ======== ====== =======================
      home                  ANY      ANY      ANY    /
-     spryker-debug-routes  ANY      ANY      ANY    /spryker-debug/routes
-    ====================== ======== ======== ====== =======================
     """
 
   Scenario: Show defaults (including the controller)
