@@ -27,6 +27,9 @@ class SprykerDebugCommunicationFactory extends AbstractCommunicationFactory
                     Config::get(RabbitMqEnv::RABBITMQ_API_USERNAME),
                     Config::get(RabbitMqEnv::RABBITMQ_API_PASSWORD),
                 ],
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                ],
             ])
         );
     }

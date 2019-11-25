@@ -7,9 +7,16 @@ Feature: Show queues overview
 
   Scenario: Show queues status
     Given the queue "foobar" exists
-    When I execute console command "debug:queues:peek foobar"
     And I add the following message to queue "foobar":
     """
     {"hello":"goodbye"}
     """
+
+    When I execute console command "debug:queues:peek foobar"
+
     Then the command should succeed
+    And I should see the following output:
+    """
+    {"hello":"goodbye"}
+    """
+

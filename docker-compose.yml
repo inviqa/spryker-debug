@@ -13,5 +13,5 @@ services:
   rabbitmq:
     image: rabbitmq:3.7-management-alpine
     ports:
-      - 16672:15672
-      - 57720:5672
+      - 16673:15672
+      - 57721:5672
