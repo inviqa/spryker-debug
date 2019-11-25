@@ -5,6 +5,7 @@ namespace Inviqa\SprykerDebug\Tests;
 use GuzzleHttp\Client;
 use Inviqa\SprykerDebug\Tests\Support\ApplicationBuilder;
 use Inviqa\SprykerDebug\Tests\Support\Workspace\Workspace;
+use PhpAmqpLib\Connection\AMQPConnection;
 use Psr\Container\ContainerInterface;
 use Spryker\Client\RabbitMq\RabbitMqClient;
 use Spryker\Client\RabbitMq\RabbitMqClientInterface;
@@ -12,6 +13,7 @@ use Spryker\Service\Container\Container;
 use Spryker\Shared\Application\Application;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Config\Config;
+use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Twig\TwigFilesystemLoader;
 use Spryker\Zed\Console\Communication\ConsoleBootstrap;
 use Symfony\Component\Debug\Debug;
@@ -60,6 +62,15 @@ class TestContainer extends Container
     {
         $this[RabbitMqClientInterface::class] = $this->share(function () {
             return new RabbitMqClient();
+        });
+        $this[AMQPConnection::class] = $this->share(function () {
+            $this->initApplication();
+            return new AMQPConnection(
+                Config::get(RabbitMqEnv::RABBITMQ_HOST),
+                Config::get(RabbitMqEnv::RABBITMQ_PORT),
+                Config::get(RabbitMqEnv::RABBITMQ_USERNAME),
+                Config::get(RabbitMqEnv::RABBITMQ_PASSWORD)
+            );
         });
     }
 
