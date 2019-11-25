@@ -45,6 +45,11 @@
         "spryker/http": "^1.0",
         "spryker/event-dispatcher": "^1.0"
     },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    },
     "scripts": {
       "integrate": [
         "@phpcs",
