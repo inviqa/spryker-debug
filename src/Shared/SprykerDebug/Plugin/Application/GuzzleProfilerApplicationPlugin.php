@@ -3,6 +3,7 @@
 namespace Inviqa\Shared\SprykerDebug\Plugin\Application;
 
 use Closure;
+use Inviqa\Shared\SprykerDebug\Plugin\Guzzle\GuzzleStopwatchProfilerMiddleware;
 use Psr\Http\Message\RequestInterface;
 use Spryker\Service\Container\ContainerInterface;
 use Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface;
@@ -17,38 +18,8 @@ class GuzzleProfilerApplicationPlugin implements ApplicationPluginInterface
      */
     public function provide(ContainerInterface $container): ContainerInterface
     {
-        (new HandlerStackContainer())->addMiddleware(
-            new class ($container->get('stopwatch')) implements MiddlewareInterface {
-
-                private $stopwatch;
-
-                public function __construct(Stopwatch $stopwatch)
-                {
-                    $this->stopwatch = $stopwatch;
-                }
-
-                public function getName(): string
-                {
-                    return 'HTTP stopwatch profiler';
-                }
-
-                public function getCallable(): Closure
-                {
-                    return function (callable $handler) {
-                        return function (
-                            RequestInterface $request,
-                            array $options
-                        ) use ($handler) {
-                            $this->stopwatch->start($request->getUri()->__toString());
-                            $response = $handler($request, $options);
-                            $this->stopwatch->stop($request->getUri()->__toString());
-
-                            return $response;
-                        };
-                    };
-                }
-            }
-        );
+        $stack = (new HandlerStackContainer());
+        $stack->addMiddleware(new GuzzleStopwatchProfilerMiddleware($container->get('stopwatch')));
 
         return $container;
     }
