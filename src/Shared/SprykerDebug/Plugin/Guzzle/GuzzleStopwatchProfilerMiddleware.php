@@ -28,11 +28,11 @@ class GuzzleStopwatchProfilerMiddleware implements MiddlewareInterface
                 RequestInterface $request,
                 array $options
             ) use ($handler) {
-            $this->stopwatch->start($request->getUri()->__toString());
-            $response = $handler($request, $options);
-            $this->stopwatch->stop($request->getUri()->__toString());
+                $this->stopwatch->start($request->getUri()->__toString());
+                $response = $handler($request, $options);
+                $this->stopwatch->stop($request->getUri()->__toString());
 
-            return $response;
+                return $response;
             };
         };
     }
