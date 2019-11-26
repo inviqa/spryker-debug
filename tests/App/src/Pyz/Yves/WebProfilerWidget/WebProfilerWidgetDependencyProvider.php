@@ -2,6 +2,8 @@
 
 namespace Pyz\Yves\WebProfilerWidget;
 
+use Inviqa\Shared\SprykerDebug\Plugin\WebProfiler\GuzzleProfilerDataCollectorPlugin;
+use Inviqa\Shared\SprykerDebug\Plugin\WebProfiler\Guzzle\GuzzleProfilerDataCollector;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\WebProfiler\WebProfilerAjaxDataCollectorPlugin;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\WebProfiler\WebProfilerConfigDataCollectorPlugin;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\WebProfiler\WebProfilerEventsDataCollectorPlugin;
@@ -32,6 +34,7 @@ class WebProfilerWidgetDependencyProvider extends SprykerWebProfilerWidgetDepend
             new WebProfilerTimeDataCollectorPlugin(),
             new WebProfilerTwigDataCollectorPlugin(),
             new WebProfilerMemoryDataCollectorPlugin(),
+            new GuzzleProfilerDataCollectorPlugin(),
         ];
     }
 

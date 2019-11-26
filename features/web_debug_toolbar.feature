@@ -6,7 +6,7 @@ Feature: Web Debug Toolbar
   I want the web debug toolbar to be shown
 
   Scenario: Web Profiler is shown
-    When request "/" from Yves
+    When request "/zed" from Yves
     Then the response should contain:
     """
     sf-toolbar
