@@ -93,7 +93,7 @@ class PropelDumpMetadataConsole extends Console
             ['class' => $table->getClassName()],
             ['collection' => $table->getCollectionClassName()],
             ['table' => $table->getName()],
-            ['primaryKeys' => json_encode($table->getPrimaryKeys())],
+            ['primaryKeys' => json_encode($table->getPrimaryKeys())]
         );
     }
 
@@ -130,7 +130,7 @@ class PropelDumpMetadataConsole extends Console
                     return $column->getName();
                 }, $relation->getLocalColumns())),
                 $this->relationType($relation->getType()),
-                $relation->getForeignTable()->getName(),
+                $relation->getForeignTable()->getName()
             ));
         }
     }
