@@ -2,7 +2,7 @@ Feature: Debug Propel Metadata
 
   As a developer
   I want to easily inspect propel metadata
-  Because I can
+  In order to, for example, help ensure that my behaviors are correctly configured
 
   Scenario: Inspect metadata by table name
     When I execute console command "debug:propel:metadata spy_store"
