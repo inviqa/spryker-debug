@@ -9,6 +9,15 @@ Feature: Inspect Propel Entity
     foobar
     """
 
+  Scenario: Inspect entities with relation
+    Given a test entity exists with name "foobar" with a related entity
+    When I execute console command "debug:propel:entity PyzTestEntity"
+    Then the command should succeed
+    And I should see the following output:
+    """
+    foobar
+    """
+
   Scenario: Inspect entities by criteria
     Given a test entity exists with name "foobar"
     And a test entity exists with name "barfoo"
