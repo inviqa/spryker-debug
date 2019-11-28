@@ -4,9 +4,11 @@ namespace Inviqa\Zed\SprykerDebug\Communication;
 
 use GuzzleHttp\Client;
 use Inviqa\Zed\SprykerDebug\Communication\Model\Propel\TableNameFinder;
+use Inviqa\Zed\SprykerDebug\Communication\Model\Propel\TablesFactory;
 use Inviqa\Zed\SprykerDebug\Communication\Model\Rabbit\RabbitClient;
 use Inviqa\Zed\SprykerDebug\Communication\Model\Route\RouteLoader;
 use Inviqa\Zed\SprykerDebug\Model\Propel\PropelConfig;
+use Propel\Runtime\Propel;
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
@@ -47,7 +49,12 @@ class SprykerDebugCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    public function createPropelTableFinder(): TableNameFinder
+    public function createPropelTablesFactory(): TablesFactory
+    {
+        return new TablesFactory(Propel::getDatabaseMap(), $this->createPropelTableNameFinder());
+    }
+
+    public function createPropelTableNameFinder(): TableNameFinder
     {
         return new TableNameFinder(new PropelConfig(Config::get('PROPEL')));
     }

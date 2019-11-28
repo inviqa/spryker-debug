@@ -3,10 +3,8 @@
 namespace Inviqa\Zed\SprykerDebug\Communication\Console;
 
 use Propel\Runtime\Map\ColumnMap;
-use Propel\Runtime\Map\Exception\TableNotFoundException;
 use Propel\Runtime\Map\RelationMap;
 use Propel\Runtime\Map\TableMap;
-use Propel\Runtime\Propel;
 use Spryker\Zed\Kernel\Communication\Console\Console;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
@@ -31,34 +29,21 @@ class PropelDumpMetadataConsole extends Console
     {
         $style = new SymfonyStyle($input, $output);
         $selected = $input->getArgument(self::ARG_PATTERN);
-        $tables = $this->findTables();
+        $tables = $this->getFactory()->createPropelTablesFactory()->createTables();
 
         if (empty($selected)) {
             $selected = $style->choice('Select entity:', array_map(function (TableMap $tableMap) {
                 return sprintf('%s', $tableMap->getName());
-            }, $tables));
+            }, $tables->toArray()));
         }
 
-        foreach ($tables as $table) {
-            if ($table->getName() === $selected || $table->getPhpName() === $selected) {
-                $this->dumpTable($output, $style, $table);
+        if ($selected === null) {
+            $output->writeln('No table selected');
 
-                return 0;
-            }
+            return 0;
         }
-    }
 
-    private function findTables()
-    {
-        $names = $this->getFactory()->createPropelTableFinder()->findEntityNames();
-
-        return array_filter(array_map(function (string $name) {
-            try {
-                return Propel::getDatabaseMap()->getTableByPhpName($name);
-            } catch (TableNotFoundException $notFound) {
-                return null;
-            }
-        }, $names));
+        $this->dumpTable($output, $style, $tables->get($selected));
     }
 
     private function dumpTable(OutputInterface $output, SymfonyStyle $style, TableMap $table)

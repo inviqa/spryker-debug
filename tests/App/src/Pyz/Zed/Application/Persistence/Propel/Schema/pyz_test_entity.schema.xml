@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\SprykerDebug\Persistence" package="src.Orm.Zed.SprykerDebug.Persistence">
+
+    <table name="pyz_test_entity" idMethod="native" allowPkInsert="true">
+        <column name="id_test_entity" required="true" type="INTEGER" primaryKey="true" autoIncrement="true"/>
+        <column name="fk_related_entity" required="false" type="INTEGER"/>
+        <column name="name" required="true" type="VARCHAR" size="255"/>
+        <id-method-parameter value="pyz_test_entity_pk_seq"/>
+        <foreign-key name="pyz_test_entity-fk_related_entity" foreignTable="pyz_related_entity">
+            <reference local="fk_related_entity" foreign="id_related_entity"/>
+        </foreign-key>
+    </table>
+
+    <table name="pyz_related_entity" idMethod="native" allowPkInsert="true">
+        <column name="id_related_entity" required="true" type="INTEGER" primaryKey="true" autoIncrement="true"/>
+        <column name="name" required="true" type="VARCHAR" size="255"/>
+        <id-method-parameter value="pyz_related_entity_pk_seq"/>
+    </table>
+
+</database>
+
