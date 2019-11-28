@@ -25,8 +25,8 @@ class PropelDumpEntityConsole extends Console
     private const ARG_NAME = 'name';
     private const OPT_BY = 'by';
     private const OPT_LIMIT = 'limit';
-    public const OPT_RECORDS = 'records';
-    public const OPT_FIELDS = 'fields';
+    private const OPT_RECORDS = 'records';
+    private const OPT_FIELDS = 'fields';
 
     /**
      * @var CriteriaParser
