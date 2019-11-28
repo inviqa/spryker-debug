@@ -31,12 +31,12 @@ class PropelDumpMetadataConsole extends Console
     {
         $style = new SymfonyStyle($input, $output);
         $selected = $input->getArgument(self::ARG_PATTERN);
-        $tables = $this->getFactory()->createPropelTablesFactory()->createTables();
+        $tables = $this->findTables();
 
         if (empty($selected)) {
             $selected = $style->choice('Select entity:', array_map(function (TableMap $tableMap) {
                 return sprintf('%s', $tableMap->getName());
-            }, $tables->toArray()));
+            }, $tables));
         }
 
         foreach ($tables as $table) {
@@ -46,6 +46,10 @@ class PropelDumpMetadataConsole extends Console
                 return 0;
             }
         }
+    }
+
+    private function findTables()
+    {
     }
 
     private function dumpTable(OutputInterface $output, SymfonyStyle $style, TableMap $table)
