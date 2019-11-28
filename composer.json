@@ -35,7 +35,7 @@
     },
     "require-dev": {
         "propel/propel": "^2.0@alpha",
-        "phpunit/phpunit": "^8.4",
+        "phpunit/phpunit": "^7.4",
         "behat/behat": "^3.5",
         "spryker-sdk/phpstan-spryker": "^1.0@dev",
         "roave/behat-psr11extension": "^1.0",
