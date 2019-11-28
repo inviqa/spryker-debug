@@ -5,6 +5,8 @@ namespace Inviqa\Zed\SprykerDebug\Communication\Model\Propel;
 use ArrayIterator;
 use Iterator;
 use IteratorAggregate;
+use Propel\Runtime\Map\Exception\TableNotFoundException;
+use Propel\Runtime\Map\TableMap;
 
 class Tables implements IteratorAggregate
 {
@@ -17,7 +19,7 @@ class Tables implements IteratorAggregate
         }
     }
 
-    private function add($table): void
+    private function add(TableMap $table): void
     {
         $this->tables[] = $table;
     }
@@ -30,5 +32,19 @@ class Tables implements IteratorAggregate
     public function toArray(): array
     {
         return $this->tables;
+    }
+
+    public function get(string $phpOrTableName): TableMap
+    {
+        foreach ($this->tables as $table) {
+            if ($table->getName() === $phpOrTableName || $table->getPhpName() === $phpOrTableName) {
+                return $table;
+            }
+        }
+
+        throw new TableNotFoundException(sprintf(
+            'Could not find table map "%s" (using either PHP or table name)',
+            $phpOrTableName
+        ));
     }
 }
