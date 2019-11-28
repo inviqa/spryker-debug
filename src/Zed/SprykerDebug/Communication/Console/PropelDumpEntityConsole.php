@@ -30,6 +30,7 @@ class PropelDumpEntityConsole extends Console
     private $criteriaParser;
     public const ARG_NAME = 'name';
     const OPT_BY = 'by';
+    const OPT_LIMIT = 'limit';
 
     public function __construct()
     {
@@ -41,7 +42,8 @@ class PropelDumpEntityConsole extends Console
     {
         $this->setName('debug:propel:entity');
         $this->addArgument(self::ARG_NAME, InputArgument::REQUIRED, 'Entity name');
-        $this->addOption(self::OPT_BY, 'b', InputOption::VALUE_REQUIRED|InputOption::VALUE_IS_ARRAY, 'Criteria, e.g. Sku:AB-1234');
+        $this->addOption(self::OPT_BY, 'b', InputOption::VALUE_REQUIRED|InputOption::VALUE_IS_ARRAY, 'Simple (single) criteria, e.g. sku:1234');
+        $this->addOption(self::OPT_LIMIT, 'l', InputOption::VALUE_REQUIRED, 'Limit number of records');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -58,10 +60,14 @@ class PropelDumpEntityConsole extends Console
         $query = new $queryClass;
         assert($query instanceof ModelCriteria);
 
+        if ($limit = Cast::toInt($input->getOption(self::OPT_LIMIT))) {
+            $query->setLimit($limit);
+        }
+
         try {
-        $entities = $query->findByArray($this->criteriaParser->parseMany(
-            Cast::toArray($input->getOption(self::OPT_BY))
-        ));
+            $entities = $query->findByArray($this->criteriaParser->parseMany(
+                Cast::toArray($input->getOption(self::OPT_BY))
+            ));
         } catch (RuntimeException $exception) {
             $output->writeln('<error>' . $exception->getMessage() . '</>');
             return 0;
@@ -76,6 +82,6 @@ class PropelDumpEntityConsole extends Console
             $table->render();
         }
 
-        $output->writeln(sprintf('%s entites', count($entities)));
+        $output->writeln(sprintf('%s entities', count($entities)));
     }
 }
