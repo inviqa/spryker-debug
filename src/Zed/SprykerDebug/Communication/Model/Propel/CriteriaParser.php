@@ -19,14 +19,14 @@ final class CriteriaParser
             return [];
         }
 
-        if (false === $colonPos) {
+        if ($colonPos === false) {
             return [
-                $criteria => null
+                $criteria => null,
             ];
         }
 
         return [
-            substr($criteria, 0, $colonPos) => substr($criteria, $colonPos + 1)
+            substr($criteria, 0, $colonPos) => substr($criteria, $colonPos + 1),
         ];
     }
 }

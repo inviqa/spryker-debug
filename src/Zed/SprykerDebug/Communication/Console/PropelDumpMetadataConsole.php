@@ -3,10 +3,8 @@
 namespace Inviqa\Zed\SprykerDebug\Communication\Console;
 
 use Propel\Runtime\Map\ColumnMap;
-use Propel\Runtime\Map\Exception\TableNotFoundException;
 use Propel\Runtime\Map\RelationMap;
 use Propel\Runtime\Map\TableMap;
-use Propel\Runtime\Propel;
 use Spryker\Zed\Kernel\Communication\Console\Console;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
@@ -39,8 +37,9 @@ class PropelDumpMetadataConsole extends Console
             }, $tables->toArray()));
         }
 
-        if (null === $selected) {
+        if ($selected === null) {
             $output->writeln('No table selected');
+
             return 0;
         }
 

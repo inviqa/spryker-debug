@@ -11,6 +11,7 @@ class TablesFactory
      * @var DatabaseMap
      */
     private $map;
+
     /**
      * @var TableNameFinder
      */

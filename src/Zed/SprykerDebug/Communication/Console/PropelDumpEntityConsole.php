@@ -8,11 +8,7 @@ use Inviqa\Zed\SprykerDebug\Communication\Model\Propel\FieldParser;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
 use Propel\Runtime\ActiveRecord\ActiveRecordInterface;
 use Propel\Runtime\Exception\PropelException;
-use Propel\Runtime\Map\ColumnMap;
-use Propel\Runtime\Map\Exception\TableNotFoundException;
-use Propel\Runtime\Map\RelationMap;
 use Propel\Runtime\Map\TableMap;
-use Propel\Runtime\Propel;
 use RuntimeException;
 use Spryker\Zed\Kernel\Communication\Console\Console;
 use Symfony\Component\Console\Helper\Table;
@@ -20,7 +16,6 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
 /**
  * @method \Inviqa\Zed\SprykerDebug\Communication\SprykerDebugCommunicationFactory getFactory()
@@ -30,8 +25,8 @@ class PropelDumpEntityConsole extends Console
     private const ARG_NAME = 'name';
     private const OPT_BY = 'by';
     private const OPT_LIMIT = 'limit';
-    const OPT_RECORDS = 'records';
-    const OPT_FIELDS = 'fields';
+    public const OPT_RECORDS = 'records';
+    public const OPT_FIELDS = 'fields';
 
     /**
      * @var CriteriaParser
@@ -54,7 +49,7 @@ class PropelDumpEntityConsole extends Console
     {
         $this->setName('debug:propel:entity');
         $this->addArgument(self::ARG_NAME, InputArgument::REQUIRED, 'Entity name');
-        $this->addOption(self::OPT_BY, 'b', InputOption::VALUE_REQUIRED|InputOption::VALUE_IS_ARRAY, 'Simple field criteria, e.g. idProduct:1234 (many are joined by "and")');
+        $this->addOption(self::OPT_BY, 'b', InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Simple field criteria, e.g. idProduct:1234 (many are joined by "and")');
         $this->addOption(self::OPT_LIMIT, 'l', InputOption::VALUE_REQUIRED, 'Limit number of records');
         $this->addOption(self::OPT_RECORDS, 'r', InputOption::VALUE_NONE, 'Display rows as individual records');
         $this->addOption(self::OPT_FIELDS, 'f', InputOption::VALUE_REQUIRED, 'Comma separted fields to select');
@@ -67,11 +62,12 @@ class PropelDumpEntityConsole extends Console
         $query = $this->buildQuery($table, $input);
 
         try {
-            $entities = $query->findByArray($f = $this->criteriaParser->parseMany(
+            $entities = $query->findByArray($this->criteriaParser->parseMany(
                 Cast::toArray($input->getOption(self::OPT_BY))
             ));
         } catch (PropelException $exception) {
             $output->writeln('<error>' . $exception->getMessage() . '</>');
+
             return 0;
         }
 
@@ -90,10 +86,11 @@ class PropelDumpEntityConsole extends Console
         if (!class_exists($queryClass)) {
             throw new RuntimeException(sprintf(
                 'Could not find query class "%s" for "%s"',
-                $queryClass, $table->getClassName()
+                $queryClass,
+                $table->getClassName()
             ));
         }
-        $query = new $queryClass;
+        $query = new $queryClass();
         assert($query instanceof ModelCriteria);
 
         if ($limit = Cast::toInt($input->getOption(self::OPT_LIMIT))) {
@@ -125,7 +122,7 @@ class PropelDumpEntityConsole extends Console
 
         foreach ($entities as $index => $entity) {
             $cells = $this->entityToCells($entity);
-            if (null === $header) {
+            if ($header === null) {
                 $header = array_keys($cells);
             }
 
@@ -164,6 +161,5 @@ class PropelDumpEntityConsole extends Console
         return array_map(function ($value) {
             return json_encode($value);
         }, $entity);
-
     }
 }
