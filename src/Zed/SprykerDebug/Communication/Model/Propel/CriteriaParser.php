@@ -2,7 +2,7 @@
 
 namespace Inviqa\Zed\SprykerDebug\Communication\Model\Propel;
 
-class CriteriaParser
+final class CriteriaParser
 {
     public function parseMany(array $criterias): array
     {
@@ -10,6 +10,7 @@ class CriteriaParser
             return array_merge($carry, $this->parse($criteria));
         }, []);
     }
+
     public function parse(string $criteria): array
     {
         $colonPos = strpos($criteria, ':');
