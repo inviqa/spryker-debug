@@ -1,5 +1,5 @@
-Database Shell
-==============
+Propel Metadata
+===============
 
 Inspect propel metadata including any configured behaviors.
 

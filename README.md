@@ -41,6 +41,7 @@ Follow the link for documentation:
 - [Database Shell](doc/database_shell.md): Launch a Postgres shell.
 - [Redis Shell](doc/redis_shell.md): Launch a Redis shell.
 - [Propel Metadata](doc/propel_metadata.md): Inspect Propel Entity metadata.
+- [Propel Entity](doc/propel_entity.md): Inspect Propel Entity entity.
 
 ### Integrations
 
