@@ -39,13 +39,12 @@ class PropelDumpMetadataConsole extends Console
             }, $tables->toArray()));
         }
 
-        foreach ($tables as $table) {
-            if ($table->getName() === $selected || $table->getPhpName() === $selected) {
-                $this->dumpTable($output, $style, $table);
-
-                return 0;
-            }
+        if (null === $selected) {
+            $output->writeln('No table selected');
+            return 0;
         }
+
+        $this->dumpTable($output, $style, $tables->get($selected));
     }
 
     private function dumpTable(OutputInterface $output, SymfonyStyle $style, TableMap $table)
