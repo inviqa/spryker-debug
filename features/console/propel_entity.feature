@@ -51,3 +51,12 @@ Feature: Inspect Propel Entity
     Given a test entity exists with name "foobar"
     When I execute console command "debug:propel:entity PyzTestEntity --records"
     Then the command should succeed
+
+  Scenario: Specify fields
+    Given a test entity exists with name "foobar"
+    When I execute console command "debug:propel:entity PyzTestEntity --fields=name"
+    Then the command should succeed
+    And I should see the following output:
+    """
+    foobar
+    """

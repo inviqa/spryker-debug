@@ -4,7 +4,10 @@ namespace Inviqa\Zed\SprykerDebug\Communication\Console;
 
 use Inviqa\Zed\SprykerDebug\Communication\Model\Cast;
 use Inviqa\Zed\SprykerDebug\Communication\Model\Propel\CriteriaParser;
+use Inviqa\Zed\SprykerDebug\Communication\Model\Propel\FieldParser;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
+use Propel\Runtime\ActiveRecord\ActiveRecordInterface;
+use Propel\Runtime\Exception\PropelException;
 use Propel\Runtime\Map\ColumnMap;
 use Propel\Runtime\Map\Exception\TableNotFoundException;
 use Propel\Runtime\Map\RelationMap;
@@ -28,16 +31,23 @@ class PropelDumpEntityConsole extends Console
     private const OPT_BY = 'by';
     private const OPT_LIMIT = 'limit';
     const OPT_RECORDS = 'records';
+    const OPT_FIELDS = 'fields';
 
     /**
      * @var CriteriaParser
      */
     private $criteriaParser;
 
+    /**
+     * @var FieldParser
+     */
+    private $fieldParser;
+
     public function __construct()
     {
         parent::__construct();
         $this->criteriaParser = new CriteriaParser();
+        $this->fieldParser = new FieldParser();
     }
 
     protected function configure()
@@ -47,6 +57,7 @@ class PropelDumpEntityConsole extends Console
         $this->addOption(self::OPT_BY, 'b', InputOption::VALUE_REQUIRED|InputOption::VALUE_IS_ARRAY, 'Simple field criteria, e.g. idProduct:1234 (many are joined by "and")');
         $this->addOption(self::OPT_LIMIT, 'l', InputOption::VALUE_REQUIRED, 'Limit number of records');
         $this->addOption(self::OPT_RECORDS, 'r', InputOption::VALUE_NONE, 'Display rows as individual records');
+        $this->addOption(self::OPT_FIELDS, 'f', InputOption::VALUE_REQUIRED, 'Comma separted fields to select');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -59,7 +70,7 @@ class PropelDumpEntityConsole extends Console
             $entities = $query->findByArray($f = $this->criteriaParser->parseMany(
                 Cast::toArray($input->getOption(self::OPT_BY))
             ));
-        } catch (RuntimeException $exception) {
+        } catch (PropelException $exception) {
             $output->writeln('<error>' . $exception->getMessage() . '</>');
             return 0;
         }
@@ -88,6 +99,10 @@ class PropelDumpEntityConsole extends Console
         if ($limit = Cast::toInt($input->getOption(self::OPT_LIMIT))) {
             $query->setLimit($limit);
         }
+        if ($fields = Cast::toStringOrNull($input->getOption(self::OPT_FIELDS))) {
+            $query->select($this->fieldParser->parse($fields));
+        }
+
         return $query;
     }
 
@@ -96,8 +111,8 @@ class PropelDumpEntityConsole extends Console
         foreach ($entities as $index => $entity) {
             $output->writeln(sprintf('<comment>// #%s</>', $index + 1));
             $table = new Table($output);
-            foreach ($entity->toArray() as $field => $value) {
-                $table->addRow([$field, json_encode($value)]);
+            foreach ($this->entityToCells($entity) as $field => $value) {
+                $table->addRow([$field, $value]);
             }
             $table->render();
         }
@@ -126,6 +141,29 @@ class PropelDumpEntityConsole extends Console
 
     private function entityToCells($entity): array
     {
-        return $entity->toArray();
+        if (is_scalar($entity)) {
+            return [ $entity ];
+        }
+
+        if ($entity instanceof ActiveRecordInterface) {
+            if (!method_exists($entity, 'toArray')) {
+                throw new RuntimeException(
+                    'Active record has no ->toArray method'
+                );
+            }
+            $entity = $entity->toArray();
+        }
+
+        if (!is_array($entity)) {
+            throw new RuntimeException(sprintf(
+                'Entity/row data is not an array, is "%s"',
+                gettype($entity)
+            ));
+        }
+
+        return array_map(function ($value) {
+            return json_encode($value);
+        }, $entity);
+
     }
 }
