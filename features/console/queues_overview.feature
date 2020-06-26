@@ -31,3 +31,19 @@ Feature: Show queues overview
     """
     foobar
     """
+
+  Scenario: Show only non-empty queues
+    Given the queue "foobar" exists
+    And I add the following message to queue "foobar":
+    """
+    {"hello":"goodbye"}
+    """
+    When I execute console command "debug:queues --non-empty"
+    Then the command should succeed
+
+    # This doesn't work well in a synchronous context
+    #
+    # And I should see the following output:
+    # """
+    # foobar
+    # """

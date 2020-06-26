@@ -23,7 +23,7 @@
       }
     },
     "require": {
-        "php": ">=7.1",
+        "php": "^7.2",
         "spryker-shop/shop-application": "^1.0",
         "spryker/propel": "^3.0",
         "spryker/console": "^4.0",
@@ -61,6 +61,6 @@
       "behat": "./vendor/bin/behat --colors",
       "phpcs": "./vendor/bin/phpcs",
       "phpunit": "./vendor/bin/phpunit",
-      "phpstan": "./vendor/bin/phpstan analyse -c phpstan.neon src --level=7"
+      "phpstan": "./vendor/bin/phpstan analyse -c phpstan.neon src"
     }
 }

@@ -78,10 +78,15 @@ class PropelDumpEntityConsole extends Console
         }
 
         $output->writeln(sprintf('%s entities', count($entities)));
+
+        return 0;
     }
 
     private function buildQuery(TableMap $table, InputInterface $input): ModelCriteria
     {
+        $limit = Cast::toInt($input->getOption(self::OPT_LIMIT));
+        $fields = Cast::toStringOrNull($input->getOption(self::OPT_FIELDS));
+
         $queryClass = sprintf('%s%s', $table->getClassName(), 'Query');
         if (!class_exists($queryClass)) {
             throw new RuntimeException(sprintf(
@@ -93,10 +98,11 @@ class PropelDumpEntityConsole extends Console
         $query = new $queryClass();
         assert($query instanceof ModelCriteria);
 
-        if ($limit = Cast::toInt($input->getOption(self::OPT_LIMIT))) {
+        if ($limit) {
             $query->setLimit($limit);
         }
-        if ($fields = Cast::toStringOrNull($input->getOption(self::OPT_FIELDS))) {
+
+        if ($fields) {
             $query->select($this->fieldParser->parse($fields));
         }
 

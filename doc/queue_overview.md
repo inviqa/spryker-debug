@@ -59,6 +59,12 @@ List all queues for a specific vhost:
 $ ./vendor/bin/console debug:queues --vhost=de
 ```
 
+List all non-empty queues:
+
+```bash
+$ ./vendor/bin/console debug:queues --non-empty
+```
+
 Notes
 -----
 

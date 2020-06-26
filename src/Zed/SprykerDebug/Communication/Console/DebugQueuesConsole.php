@@ -17,11 +17,13 @@ class DebugQueuesConsole extends Console
 {
     public const OPT_VHOST = 'vhost';
     public const ARG_PATTERN = 'pattern';
+    public const OPT_NON_EMPTY = 'non-empty';
 
     public function configure()
     {
         $this->setName('debug:queues');
         $this->addOption(self::OPT_VHOST, null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Filter by vhost');
+        $this->addOption(self::OPT_NON_EMPTY, 'N', InputOption::VALUE_NONE, 'Only show non-empty queues');
         $this->addArgument(self::ARG_PATTERN, InputArgument::OPTIONAL, 'Filter pattern');
     }
 
@@ -45,6 +47,10 @@ class DebugQueuesConsole extends Console
             $queues = $queues->byVhost(...Cast::toArray($input->getOption(self::OPT_VHOST)));
         }
 
+        if ($input->getOption(self::OPT_NON_EMPTY)) {
+            $queues = $queues->nonEmpty();
+        }
+
         if ($input->getArgument(self::ARG_PATTERN)) {
             $queues = $queues->filterByString(Cast::toString($input->getArgument(self::ARG_PATTERN)));
         }
@@ -60,5 +66,7 @@ class DebugQueuesConsole extends Console
             ]);
         }
         $table->render();
+
+        return 0;
     }
 }
