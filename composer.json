@@ -23,7 +23,7 @@
       }
     },
     "require": {
-        "php": ">=7.1",
+        "php": "^7.2",
         "spryker-shop/shop-application": "^1.0",
         "spryker/propel": "^3.0",
         "spryker/console": "^4.0",
