@@ -40,6 +40,8 @@ class DebugConfigConsole extends Console
         $config = $this->filterOrigin($config, Cast::toStringOrNull($input->getOption(self::OPT_ORIGIN)));
 
         $this->renderTable($output, $config);
+
+        return 0;
     }
 
     private function extractConfiguration(): array

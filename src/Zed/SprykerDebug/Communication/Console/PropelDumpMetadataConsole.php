@@ -44,6 +44,8 @@ class PropelDumpMetadataConsole extends Console
         }
 
         $this->dumpTable($output, $style, $tables->get($selected));
+
+        return 0;
     }
 
     private function dumpTable(OutputInterface $output, SymfonyStyle $style, TableMap $table)

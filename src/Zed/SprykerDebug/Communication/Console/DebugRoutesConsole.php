@@ -42,6 +42,8 @@ class DebugRoutesConsole extends Console
         }
 
         $table->render();
+
+        return 0;
     }
 
     private function resolveHeader(InputInterface $input): array

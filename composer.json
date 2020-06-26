@@ -61,6 +61,6 @@
       "behat": "./vendor/bin/behat --colors",
       "phpcs": "./vendor/bin/phpcs",
       "phpunit": "./vendor/bin/phpunit",
-      "phpstan": "./vendor/bin/phpstan analyse -c phpstan.neon src --level=7"
+      "phpstan": "./vendor/bin/phpstan analyse -c phpstan.neon src"
     }
 }

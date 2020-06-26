@@ -66,5 +66,7 @@ class DebugQueuesConsole extends Console
             ]);
         }
         $table->render();
+
+        return 0;
     }
 }

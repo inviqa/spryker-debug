@@ -43,6 +43,8 @@ class DebugQueuesPeekConsole extends Console
         foreach ($messages as $message) {
             $output->writeln($this->formatPayload($input, $message->payload()), OutputInterface::OUTPUT_RAW);
         }
+
+        return 0;
     }
 
     private function formatPayload(InputInterface $input, string $message): string

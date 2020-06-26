@@ -78,6 +78,8 @@ class PropelDumpEntityConsole extends Console
         }
 
         $output->writeln(sprintf('%s entities', count($entities)));
+
+        return 0;
     }
 
     private function buildQuery(TableMap $table, InputInterface $input): ModelCriteria

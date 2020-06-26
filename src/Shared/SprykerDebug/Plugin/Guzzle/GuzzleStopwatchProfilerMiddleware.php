@@ -9,6 +9,9 @@ use Symfony\Component\Stopwatch\Stopwatch;
 
 class GuzzleStopwatchProfilerMiddleware implements MiddlewareInterface
 {
+    /**
+     * @var Stopwatch
+     */
     private $stopwatch;
 
     public function __construct(Stopwatch $stopwatch)
