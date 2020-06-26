@@ -54,4 +54,11 @@ class Queues implements IteratorAggregate, Countable
             return $queue->name();
         }, $this->queues);
     }
+
+    public function nonEmpty(): self
+    {
+        return new self(...array_filter($this->queues, function (Queue $queue) {
+            return $queue->totalMessages() > 0;
+        }));
+    }
 }
