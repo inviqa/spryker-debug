@@ -17,7 +17,7 @@ class DebugQueuesConsole extends Console
 {
     public const OPT_VHOST = 'vhost';
     public const ARG_PATTERN = 'pattern';
-    const OPT_NON_EMPTY = 'non-empty';
+    public const OPT_NON_EMPTY = 'non-empty';
 
     public function configure()
     {
