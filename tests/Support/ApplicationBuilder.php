@@ -68,6 +68,7 @@ class ApplicationBuilder
     {
         $this->defineIfNotSet('APPLICATION', $this->app);
         $this->defineIfNotSet('APPLICATION_ROOT_DIR', $this->resolveRootDir());
+        $this->defineIfNotSet('APPLICATION_CODE_BUCKET', 'Foobar');
         $this->defineIfNotSet('APPLICATION_ENV', $this->resolveEnv());
         $this->defineIfNotSet('APPLICATION_STORE', $this->store);
         $this->defineIfNotSet('APPLICATION_VENDOR_DIR', __DIR__ . '/../../vendor');
