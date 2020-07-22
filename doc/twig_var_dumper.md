@@ -53,3 +53,24 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     }
 }
 ```
+
+Configuration
+------------
+
+Make sure that both Yves and Zed have the "debug" option enabled for Twig, otherwise the Twig\Environment will skip the dump-function.
+
+```php
+// config/Shared/config_default-%env%.php
+
+$config[TwigConstants::YVES_TWIG_OPTIONS] = [
+    // ...
+    'debug' => true
+];
+
+...
+
+$config[TwigConstants::ZED_TWIG_OPTIONS] = [
+    // ...
+    'debug' => true
+];
+```
