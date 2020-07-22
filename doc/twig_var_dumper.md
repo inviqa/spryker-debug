@@ -63,14 +63,14 @@ Make sure that both Yves and Zed have the "debug" option enabled for Twig, other
 // config/Shared/config_default-%env%.php
 
 $config[TwigConstants::YVES_TWIG_OPTIONS] = [
-    ...
+    // ...
     'debug' => true
 ];
 
 ...
 
 $config[TwigConstants::ZED_TWIG_OPTIONS] = [
-    ...
+    // ...
     'debug' => true
 ];
 ```
