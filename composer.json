@@ -28,15 +28,15 @@
         "spryker/propel": "^3.0",
         "spryker/console": "^4.0",
         "guzzlehttp/guzzle": "^6.0",
-        "spryker/rabbit-mq": "^2.0",
+        "spryker/rabbit-mq": "^2.15",
         "symfony/var-dumper": "^4.0|^5.0",
         "spryker/zed-request": "^3.8"
     },
     "require-dev": {
+        "phpstan/phpstan": "^1.2",
         "phpunit/phpunit": "^7.0",
         "propel/propel": "^2.0@alpha",
         "behat/behat": "^3.5",
-        "spryker-sdk/phpstan-spryker": "^1.0@dev",
         "roave/behat-psr11extension": "^1.0",
         "webmozart/path-util": "^2.0",
         "spryker/code-sniffer": "dev-master",
