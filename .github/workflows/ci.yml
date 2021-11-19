@@ -1,0 +1,52 @@
+name: "CI"
+
+on:
+    pull_request: ~
+    push:
+        branches:
+            - 'master'
+
+env:
+    fail-fast: true
+    TZ: "UTC"
+
+jobs:
+    phpunit:
+        name: "PHPUnit (${{ matrix.php-version }})"
+
+        runs-on: "ubuntu-latest"
+
+        strategy:
+            matrix:
+                php-version:
+                    - '7.3'
+                    - '7.4'
+                    - '8.0'
+
+        steps:
+            -
+                name: "Checkout code"
+                uses: "actions/checkout@v2"
+            -
+                name: "Start container"
+                run: docker-compose up -d
+            -
+                name: "Install PHP"
+                uses: "shivammathur/setup-php@v2"
+                with:
+                    coverage: "none"
+                    extensions: "${{ env.REQUIRED_PHP_EXTENSIONS }}"
+                    php-version: "${{ matrix.php-version }}"
+                    tools: composer:v2
+
+            -
+                name: "Composer install"
+                uses: "ramsey/composer-install@v1"
+
+            -
+                name: "Run PHPUnit"
+                run: "composer phpunit"
+
+            -
+                name: "Run Behat"
+                run: "composer behat"
