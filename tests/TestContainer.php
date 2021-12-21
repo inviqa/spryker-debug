@@ -15,7 +15,7 @@ use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Twig\TwigFilesystemLoader;
-use Spryker\Zed\Console\Communication\ConsoleBootstrap;
+use Spryker\Zed\Console\Communication\Bootstrap\ConsoleBootstrap;
 use Symfony\Component\Debug\Debug;
 use Twig\Environment;
 
@@ -41,11 +41,13 @@ class TestContainer extends Container
         $this[Application::class] = $this->share(function () {
             return $this->initApplication();
         });
+
         $this[ConsoleBootstrap::class] = function (Container $container) {
             $container->get(Application::class);
 
             return new ConsoleBootstrap();
         };
+
         $this[Environment::class] = $this->share(function (Container $container) {
             return $container[Application::class]['twig'];
         });
