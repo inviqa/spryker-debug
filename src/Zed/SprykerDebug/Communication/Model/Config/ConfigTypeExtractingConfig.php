@@ -7,6 +7,9 @@ use Spryker\Shared\Config\Config;
 
 class ConfigTypeExtractingConfig extends Config
 {
+    /**
+     * @var array
+     */
     private static $types;
 
     public function __invoke(): array

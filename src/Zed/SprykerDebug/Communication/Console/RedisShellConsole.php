@@ -15,14 +15,14 @@ class RedisShellConsole extends AbstractShellConsole
 {
     private const OPTION_SHELL = 'shell';
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName('debug:redis:shell');
         $this->setDescription('Connects to the redis shell using the storage configuration');
         $this->addOption(self::OPTION_SHELL, 's', InputOption::VALUE_REQUIRED, 'Shell to use', 'redis-cli');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         assert($output instanceof ConsoleOutputInterface);
         $process = new Process(
