@@ -8,6 +8,9 @@ use IteratorAggregate;
 
 final class Messages implements IteratorAggregate
 {
+    /**
+     * @var array
+     */
     private $messages = [];
 
     public function __construct(array $messages)

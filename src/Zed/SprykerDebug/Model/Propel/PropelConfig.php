@@ -14,7 +14,7 @@ class PropelConfig
         $this->config = $config;
     }
 
-    public function schemaDir()
+    public function schemaDir(): string
     {
         return $this->config['paths']['schemaDir'] . DIRECTORY_SEPARATOR;
     }
