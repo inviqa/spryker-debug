@@ -15,7 +15,7 @@ class DatabaseShellConsole extends AbstractShellConsole
 {
     private const OPTION_SHELL = 'shell';
 
-    protected function configure()
+    protected function configure(): void
     {
         parent::configure();
         $this->setName('debug:database:shell');
@@ -23,7 +23,7 @@ class DatabaseShellConsole extends AbstractShellConsole
         $this->addOption(self::OPTION_SHELL, 's', InputOption::VALUE_REQUIRED, 'Shell to use', 'psql');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         assert($output instanceof ConsoleOutputInterface);
         $process = new Process(

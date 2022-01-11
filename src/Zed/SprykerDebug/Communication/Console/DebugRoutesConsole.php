@@ -20,7 +20,7 @@ class DebugRoutesConsole extends Console
     private const OPT_SHOW_REQUIREMENTS = 'requirements';
     private const OPT_SHOW_CONDITION = 'condition';
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName('debug:routes');
         $this->addOption(self::OPT_SHOW_DEFAULTS, null, InputOption::VALUE_NONE, 'Show defaults (including controller)');
@@ -29,7 +29,7 @@ class DebugRoutesConsole extends Console
         $this->setDescription('List all routes or debug a specific route');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $routes = $this->getFactory()->createRouteLoader()->load();
         $table = new Table($output);
@@ -43,7 +43,7 @@ class DebugRoutesConsole extends Console
 
         $table->render();
 
-        return 0;
+        return self::SUCCESS;
     }
 
     private function resolveHeader(InputInterface $input): array
@@ -71,7 +71,7 @@ class DebugRoutesConsole extends Console
         return $header;
     }
 
-    private function resolveRow(InputInterface $input, $name, Route $route): array
+    private function resolveRow(InputInterface $input, string $name, Route $route): array
     {
         $row = [
             $name,

@@ -19,7 +19,7 @@ class DebugQueuesConsole extends Console
     public const ARG_PATTERN = 'pattern';
     public const OPT_NON_EMPTY = 'non-empty';
 
-    public function configure()
+    public function configure(): void
     {
         $this->setName('debug:queues');
         $this->addOption(self::OPT_VHOST, null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Filter by vhost');
@@ -27,7 +27,7 @@ class DebugQueuesConsole extends Console
         $this->addArgument(self::ARG_PATTERN, InputArgument::OPTIONAL, 'Filter pattern');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $client = $this->getFactory()->getRabbitClient();
 
@@ -67,6 +67,6 @@ class DebugQueuesConsole extends Console
         }
         $table->render();
 
-        return 0;
+        return self::SUCCESS;
     }
 }

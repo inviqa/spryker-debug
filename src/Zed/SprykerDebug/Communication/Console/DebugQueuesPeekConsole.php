@@ -20,7 +20,7 @@ class DebugQueuesPeekConsole extends Console
     private const OPT_JSON = 'json';
     private const OPT_COUNT = 'count';
 
-    public function configure()
+    public function configure(): void
     {
         $this->setName('debug:queues:peek');
         $this->setDescription('Peek at messages in a queue');
@@ -30,7 +30,7 @@ class DebugQueuesPeekConsole extends Console
         $this->addOption(self::OPT_COUNT, null, InputOption::VALUE_REQUIRED, 'Specify number of messages', 1);
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $client = $this->getFactory()->getRabbitClient();
 
@@ -44,7 +44,7 @@ class DebugQueuesPeekConsole extends Console
             $output->writeln($this->formatPayload($input, $message->payload()), OutputInterface::OUTPUT_RAW);
         }
 
-        return 0;
+        return self::SUCCESS;
     }
 
     private function formatPayload(InputInterface $input, string $message): string
