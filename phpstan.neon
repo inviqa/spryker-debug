@@ -8,6 +8,3 @@ parameters:
         - %rootDir%/../../../src/Mcrm/SoapType*
     bootstrapFiles:
         - %rootDir%/../../../ci/bootstrap.php
-    ignoreErrors:
-        - '/has no return typehint specified/'
-        - '/no typehint specified/'
