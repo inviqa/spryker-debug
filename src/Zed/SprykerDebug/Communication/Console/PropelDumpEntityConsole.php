@@ -7,6 +7,7 @@ use Inviqa\Zed\SprykerDebug\Communication\Model\Propel\CriteriaParser;
 use Inviqa\Zed\SprykerDebug\Communication\Model\Propel\FieldParser;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
 use Propel\Runtime\ActiveRecord\ActiveRecordInterface;
+use Propel\Runtime\Collection\ObjectCollection;
 use Propel\Runtime\Exception\PropelException;
 use Propel\Runtime\Map\TableMap;
 use RuntimeException;
@@ -45,7 +46,7 @@ class PropelDumpEntityConsole extends Console
         $this->fieldParser = new FieldParser();
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName('debug:propel:entity');
         $this->addArgument(self::ARG_NAME, InputArgument::REQUIRED, 'Entity name');
@@ -55,7 +56,7 @@ class PropelDumpEntityConsole extends Console
         $this->addOption(self::OPT_FIELDS, 'f', InputOption::VALUE_REQUIRED, 'Comma separted fields to select');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $tables = $this->getFactory()->createPropelTablesFactory()->createTables();
         $table = $tables->get(Cast::toString($input->getArgument(self::ARG_NAME)));
@@ -68,7 +69,7 @@ class PropelDumpEntityConsole extends Console
         } catch (PropelException $exception) {
             $output->writeln('<error>' . $exception->getMessage() . '</>');
 
-            return 0;
+            return self::SUCCESS;
         }
 
         if ($input->getOption(self::OPT_RECORDS)) {
@@ -79,7 +80,7 @@ class PropelDumpEntityConsole extends Console
 
         $output->writeln(sprintf('%s entities', count($entities)));
 
-        return 0;
+        return self::SUCCESS;
     }
 
     private function buildQuery(TableMap $table, InputInterface $input): ModelCriteria
@@ -109,7 +110,7 @@ class PropelDumpEntityConsole extends Console
         return $query;
     }
 
-    private function renderRecords($entities, OutputInterface $output)
+    private function renderRecords(ObjectCollection $entities, OutputInterface $output): void
     {
         foreach ($entities as $index => $entity) {
             $output->writeln(sprintf('<comment>// #%s</>', $index + 1));
@@ -121,7 +122,7 @@ class PropelDumpEntityConsole extends Console
         }
     }
 
-    private function renderRows($entities, OutputInterface $output)
+    private function renderRows(ObjectCollection $entities, OutputInterface $output): void
     {
         $table = new Table($output);
         $header = null;
@@ -142,6 +143,9 @@ class PropelDumpEntityConsole extends Console
         $table->render();
     }
 
+    /**
+     * @param mixed $entity
+     */
     private function entityToCells($entity): array
     {
         if (is_scalar($entity)) {
