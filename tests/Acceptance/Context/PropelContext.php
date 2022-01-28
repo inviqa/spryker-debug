@@ -2,10 +2,7 @@
 
 namespace Inviqa\SprykerDebug\Tests\Acceptance\Context;
 
-use Behat\Gherkin\Node\TableNode;
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
-use Orm\Zed\Product\Persistence\SpyProduct;
 use Orm\Zed\SprykerDebug\Persistence\PyzRelatedEntityQuery;
 use Orm\Zed\SprykerDebug\Persistence\PyzTestEntityQuery;
 

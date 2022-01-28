@@ -4,21 +4,18 @@ namespace Inviqa\SprykerDebug\Tests\Acceptance\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
-use Generated\Shared\Transfer\QueueSendMessageTransfer;
-use Generated\Shared\Transfer\RabbitMqOptionTransfer;
-use PhpAmqpLib\Connection\AMQPConnection;
+use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
-use Spryker\Client\RabbitMq\RabbitMqClientInterface;
 
 class QueueContext implements Context
 {
     /**
-     * @var AMQPConnection
+     * @var AMQPStreamConnection
      */
     private $connection;
 
 
-    public function __construct(AMQPConnection $connection)
+    public function __construct(AMQPStreamConnection $connection)
     {
         $this->connection = $connection;
     }

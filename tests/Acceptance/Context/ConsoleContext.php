@@ -36,10 +36,12 @@ class ConsoleContext implements Context
      */
     public function iExecute($command)
     {
-        $this->process = new Process(
-            sprintf(__DIR__ . '/../../App/bin/console %s', $command),
-            $this->workspace->path()
+        $commandSplit = array_merge(
+            [__DIR__ . '/../../App/bin/console'],
+            explode(' ', $command)
         );
+
+        $this->process = new Process($commandSplit, $this->workspace->path());
         $this->process->run();
     }
 
@@ -78,7 +80,7 @@ class ConsoleContext implements Context
      */
     public function iShouldNotSeeTheFollowingOutput(PyStringNode $string)
     {
-        Assert::assertNotContains($string->getRaw(), $this->process->getOutput());
+        Assert::assertStringNotContainsString($string->getRaw(), $this->process->getOutput());
     }
 
     /**
