@@ -6,7 +6,6 @@ use GuzzleHttp\Client;
 use Inviqa\Zed\SprykerDebug\Communication\Model\Propel\TableNameFinder;
 use Inviqa\Zed\SprykerDebug\Communication\Model\Propel\TablesFactory;
 use Inviqa\Zed\SprykerDebug\Communication\Model\Rabbit\RabbitClient;
-use Inviqa\Zed\SprykerDebug\Communication\Model\Route\RouteLoader;
 use Inviqa\Zed\SprykerDebug\Model\Propel\PropelConfig;
 use Propel\Runtime\Propel;
 use Spryker\Shared\Config\Config;
@@ -34,15 +33,6 @@ class SprykerDebugCommunicationFactory extends AbstractCommunicationFactory
                 'headers' => [
                     'Content-Type' => 'application/json',
                 ],
-            ])
-        );
-    }
-
-    public function createRouteLoader(): RouteLoader
-    {
-        return new RouteLoader(
-            new Client([
-                'base_uri' => $this->getConfig()->getYvesApiBaseUrl(),
             ])
         );
     }

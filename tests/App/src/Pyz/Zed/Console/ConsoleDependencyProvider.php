@@ -52,7 +52,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DebugConfigConsole(),
             new DebugQueuesConsole(),
             new DebugQueuesPeekConsole(),
-            new DebugRoutesConsole(),
             new PropelDumpMetadataConsole(),
             new PropelDumpEntityConsole(),
         ];
