@@ -1,7 +1,7 @@
 <?php
 
-use Pyz\Yves\ShopApplication\YvesBootstrap;
 use Spryker\Shared\Config\Application\Environment;
+use SprykerShop\Yves\ShopApplication\Bootstrap\YvesBootstrap;
 
 define('APPLICATION', 'YVES');
 define('APPLICATION_ROOT_DIR', realpath(__DIR__ . '/../..'));
