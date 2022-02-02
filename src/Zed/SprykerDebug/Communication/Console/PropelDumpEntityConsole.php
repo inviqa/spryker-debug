@@ -7,7 +7,7 @@ use Inviqa\Zed\SprykerDebug\Communication\Model\Propel\CriteriaParser;
 use Inviqa\Zed\SprykerDebug\Communication\Model\Propel\FieldParser;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
 use Propel\Runtime\ActiveRecord\ActiveRecordInterface;
-use Propel\Runtime\Collection\ObjectCollection;
+use Propel\Runtime\Collection\Collection;
 use Propel\Runtime\Exception\PropelException;
 use Propel\Runtime\Map\TableMap;
 use RuntimeException;
@@ -110,7 +110,7 @@ class PropelDumpEntityConsole extends Console
         return $query;
     }
 
-    private function renderRecords(ObjectCollection $entities, OutputInterface $output): void
+    private function renderRecords(Collection $entities, OutputInterface $output): void
     {
         foreach ($entities as $index => $entity) {
             $output->writeln(sprintf('<comment>// #%s</>', $index + 1));
@@ -122,7 +122,7 @@ class PropelDumpEntityConsole extends Console
         }
     }
 
-    private function renderRows(ObjectCollection $entities, OutputInterface $output): void
+    private function renderRows(Collection $entities, OutputInterface $output): void
     {
         $table = new Table($output);
         $header = null;
