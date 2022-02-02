@@ -15,7 +15,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             'workspace' => new class implements TwigLoaderPluginInterface {
                 public function getLoader(): FilesystemLoaderInterface
                 {
-                    return new FilesystemLoader(APPLICATION_ROOT_DIR . '/../Support/Workspace');
+                    return new FilesystemLoader(APPLICATION_ROOT_DIR . '/../Workspace', 'workspace');
                 }
             },
         ];
