@@ -18,8 +18,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
     {
         return [
             new TwigApplicationPlugin(),
-            new EventDispatcherApplicationPlugin(),
             new ShopApplicationApplicationPlugin(),
+            new EventDispatcherApplicationPlugin(),
             new RouterApplicationPlugin(),
             new HttpApplicationPlugin(),
         ];
