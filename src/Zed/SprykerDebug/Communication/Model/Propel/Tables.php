@@ -10,6 +10,9 @@ use Propel\Runtime\Map\TableMap;
 
 class Tables implements IteratorAggregate
 {
+    /**
+     * @var array
+     */
     private $tables;
 
     public function __construct(array $tables)

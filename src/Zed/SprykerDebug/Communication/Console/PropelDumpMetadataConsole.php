@@ -19,13 +19,13 @@ class PropelDumpMetadataConsole extends Console
 {
     public const ARG_PATTERN = 'pattern';
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName('debug:propel:metadata');
         $this->addArgument(self::ARG_PATTERN, InputArgument::OPTIONAL, 'Filter entities / tables');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $style = new SymfonyStyle($input, $output);
         $selected = $input->getArgument(self::ARG_PATTERN);
@@ -48,7 +48,7 @@ class PropelDumpMetadataConsole extends Console
         return 0;
     }
 
-    private function dumpTable(OutputInterface $output, SymfonyStyle $style, TableMap $table)
+    private function dumpTable(OutputInterface $output, SymfonyStyle $style, TableMap $table): void
     {
         $style->title($table->getPhpName());
 
@@ -73,7 +73,7 @@ class PropelDumpMetadataConsole extends Console
         }, $table->getBehaviors()));
     }
 
-    private function renderGeneral(SymfonyStyle $style, TableMap $table)
+    private function renderGeneral(SymfonyStyle $style, TableMap $table): void
     {
         $style->section('General');
         $style->definitionList(
@@ -84,7 +84,7 @@ class PropelDumpMetadataConsole extends Console
         );
     }
 
-    private function renderForeignKeys(SymfonyStyle $style, TableMap $table)
+    private function renderForeignKeys(SymfonyStyle $style, TableMap $table): void
     {
         $style->section('Foreign Keys');
 
@@ -100,7 +100,7 @@ class PropelDumpMetadataConsole extends Console
         }
     }
 
-    private function renderRelations(SymfonyStyle $style, TableMap $table)
+    private function renderRelations(SymfonyStyle $style, TableMap $table): void
     {
         $style->section('Relations');
 
@@ -138,7 +138,7 @@ class PropelDumpMetadataConsole extends Console
         }
     }
 
-    private function renderColumns(SymfonyStyle $style, OutputInterface $output, TableMap $tableMap)
+    private function renderColumns(SymfonyStyle $style, OutputInterface $output, TableMap $tableMap): void
     {
         $style->section('Schema');
 

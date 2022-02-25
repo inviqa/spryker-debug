@@ -6,11 +6,18 @@ use ArrayObject;
 
 class KeyTrackingArrayObject extends ArrayObject
 {
+    /**
+     * @var array
+     */
     private $map = [];
 
-    public function offsetSet($index, $newVal)
+    /**
+     * @param int|string $index
+     * @param mixed $value
+     */
+    public function offsetSet($index, $value): void
     {
-        parent::offsetSet($index, $newVal);
+        parent::offsetSet($index, $value);
         $this->map[$index] = $this->callingFile();
     }
 

@@ -33,15 +33,14 @@
         "spryker/zed-request": "^3.8"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.0",
-        "propel/propel": "^2.0@alpha",
+        "propel/propel": "2.0.0-alpha12",
         "behat/behat": "^3.5",
-        "spryker-sdk/phpstan-spryker": "^1.0@dev",
+        "spryker-sdk/phpstan-spryker": "^0.4",
         "roave/behat-psr11extension": "^1.0",
         "webmozart/path-util": "^2.0",
-        "spryker/code-sniffer": "dev-master",
-        "spryker-shop/web-profiler-widget": "^1.3",
-        "spryker/web-profiler": "^1.5",
+        "spryker/code-sniffer": "^0.14",
+        "spryker-shop/web-profiler-widget": "^1.4",
+        "spryker/web-profiler": "^1.6",
         "spryker/router": "^1.3",
         "spryker/http": "^1.0",
         "spryker/event-dispatcher": "^1.0"
@@ -58,7 +57,7 @@
         "@phpunit",
         "@behat"
       ],
-      "behat": "./vendor/bin/behat --colors",
+      "behat": "./vendor/bin/behat --colors --tags=~skip-github-actions",
       "phpcs": "./vendor/bin/phpcs",
       "phpunit": "./vendor/bin/phpunit",
       "phpstan": "./vendor/bin/phpstan analyse -c phpstan.neon src"

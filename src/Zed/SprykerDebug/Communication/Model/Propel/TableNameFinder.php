@@ -51,8 +51,7 @@ class TableNameFinder
         }
 
         // spryker does not seem to have consistent XML namespace
-        foreach (
-            [
+        foreach ([
             'sprk' => 'spryker:schema-01',
             '' => '',
             ] as $alias => $namespace

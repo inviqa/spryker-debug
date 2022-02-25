@@ -2,12 +2,9 @@ parameters:
     level: 6
     checkMissingIterableValueType: false
     checkGenericClassInNonGenericObjectType: false
-    excludes_analyse:
+    excludePaths:
         - %rootDir%/../../../src/Generated/*
         - %rootDir%/../../../src/Orm/*
         - %rootDir%/../../../src/Mcrm/SoapType*
-
-    bootstrap: %rootDir%/../../../ci/bootstrap.php
-    ignoreErrors:
-      - '/has no return typehint specified/'
-      - '/no typehint specified/'
+    bootstrapFiles:
+        - %rootDir%/../../../ci/bootstrap.php

@@ -2,9 +2,9 @@
 
 namespace Inviqa\SprykerDebug\Tests\Support;
 
-use Pyz\Zed\Application\Communication\ZedBootstrap;
 use RuntimeException;
 use Spryker\Service\Container\ContainerInterface;
+use Spryker\Zed\Application\Communication\Bootstrap\BackofficeBootstrap;
 
 class ApplicationBuilder
 {
@@ -74,7 +74,7 @@ class ApplicationBuilder
         $this->defineIfNotSet('APPLICATION_VENDOR_DIR', __DIR__ . '/../../vendor');
         $this->defineIfNotSet('APPLICATION_SOURCE_DIR', APPLICATION_ROOT_DIR . '/src');
 
-        return $this->resolveBootstrap()->bootContainer();
+        return $this->resolveBootstrap()->boot();
     }
 
     private function resolveRootDir(): string
@@ -107,8 +107,8 @@ class ApplicationBuilder
         define($string, $value);
     }
 
-    private function resolveBootstrap(): ZedBootstrap
+    private function resolveBootstrap(): BackofficeBootstrap
     {
-        return new ZedBootstrap();
+        return new BackofficeBootstrap();
     }
 }

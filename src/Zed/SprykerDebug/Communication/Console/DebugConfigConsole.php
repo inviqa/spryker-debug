@@ -20,7 +20,7 @@ class DebugConfigConsole extends Console
     private const ARG_FILTER = 'filter';
     private const OPT_ORIGIN = 'origin';
 
-    public function configure()
+    public function configure(): void
     {
         $this->setName(self::NAME);
         $this->setDescription(self::DESCRIPTION);
@@ -28,7 +28,7 @@ class DebugConfigConsole extends Console
         $this->addOption(self::OPT_ORIGIN, null, InputOption::VALUE_REQUIRED, 'Filter origin');
     }
 
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): int
     {
         $config = $this->extractConfiguration();
         $config = $this->filterConfig(
@@ -41,7 +41,7 @@ class DebugConfigConsole extends Console
 
         $this->renderTable($output, $config);
 
-        return 0;
+        return self::SUCCESS;
     }
 
     private function extractConfiguration(): array
@@ -82,7 +82,7 @@ class DebugConfigConsole extends Console
         $table->render();
     }
 
-    private function filterConfig($config, ?string $filter): array
+    private function filterConfig(array $config, ?string $filter): array
     {
         if ($filter === null) {
             return $config;
@@ -95,6 +95,9 @@ class DebugConfigConsole extends Console
         return $config;
     }
 
+    /**
+     * @param mixed $value
+     */
     private function serializeValue($value): string
     {
         if (!is_scalar($value)) {
@@ -104,7 +107,7 @@ class DebugConfigConsole extends Console
         return Cast::toString($value);
     }
 
-    private function addOrigin($config): array
+    private function addOrigin(array $config): array
     {
         $typeMap = (new ConfigTypeExtractingConfig())();
 

@@ -1,0 +1,59 @@
+name: "CI"
+
+on:
+  pull_request: ~
+  push:
+    branches:
+      - 'master'
+
+env:
+  fail-fast: true
+  TZ: "UTC"
+
+jobs:
+  integrate:
+    name: "Integrate PHP${{ matrix.php-version }}"
+
+    runs-on: "ubuntu-latest"
+
+    strategy:
+      matrix:
+        php-version:
+          - '7.3'
+          - '7.4'
+
+    steps:
+      -
+        name: "Checkout code"
+        uses: "actions/checkout@v2"
+      -
+        name: "Start container"
+        run: docker-compose up -d
+      -
+        name: "Install PHP"
+        uses: "shivammathur/setup-php@v2"
+        with:
+          coverage: "none"
+          extensions: "${{ env.REQUIRED_PHP_EXTENSIONS }}"
+          php-version: "${{ matrix.php-version }}"
+          tools: composer:v2
+
+      -
+        name: "Composer install"
+        uses: "ramsey/composer-install@v1"
+
+      -
+        name: "Generate transfer objects"
+        run: "tests/App/bin/console transfer:generate"
+
+      -
+        name: "Install propel"
+        run: "tests/App/bin/console propel:install"
+
+      -
+        name: "Start Yves"
+        run: "php -S localhost:8085 -t tests/App/public/yves &"
+
+      -
+        name: "Run checks"
+        run: "composer integrate"

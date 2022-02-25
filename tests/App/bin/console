@@ -2,9 +2,8 @@
 <?php
 
 use Inviqa\SprykerDebug\Tests\TestContainer;
-use Spryker\Zed\Console\Communication\ConsoleBootstrap;
+use Spryker\Zed\Console\Communication\Bootstrap\ConsoleBootstrap;
 use Symfony\Component\Debug\Debug;
-
 
 $autoload = __DIR__ . '/../../../vendor/autoload.php';
 

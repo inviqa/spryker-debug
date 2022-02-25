@@ -45,6 +45,6 @@ class YvesHttpContext implements Context
      */
     public function theResponseShouldContain(PyStringNode $string)
     {
-        Assert::assertContains($string->__toString(), $this->response->getBody()->__toString());
+        Assert::assertStringContainsString($string->__toString(), $this->response->getBody()->__toString());
     }
 }
