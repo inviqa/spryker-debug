@@ -38,6 +38,15 @@ class Workspace
         $this->filesystem->mkdir($this->path);
     }
 
+    public function ensureExists(): void
+    {
+        if (file_exists($this->path)) {
+            return;
+        }
+
+        $this->filesystem->mkdir($this->path);
+    }
+
     public function path(string $relative = '/'): string
     {
         return Path::join($this->path, $relative);

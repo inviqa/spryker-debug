@@ -57,7 +57,7 @@ class TestContainer extends Container
     private function registerSupport(): void
     {
         $this[Workspace::class] = $this->share(function () {
-            return new Workspace(__DIR__ . '/Workspace');
+            return $this->createWorkspace();
         });
     }
 
@@ -95,6 +95,8 @@ class TestContainer extends Container
         $app = ApplicationBuilder::create(__DIR__ . '/App', 'GB')
             ->build();
 
+        $this->createWorkspace()->ensureExists();
+
         $app->extend('twig.loader.zed', function (TwigFilesystemLoader $zedLoader) {
             $zedLoader->addPath(__DIR__ . '/Workspace', 'workspace');
 
@@ -102,5 +104,10 @@ class TestContainer extends Container
         });
 
         return $app;
+    }
+
+    private function createWorkspace(): Workspace
+    {
+        return new Workspace(__DIR__ . '/Workspace');
     }
 }
