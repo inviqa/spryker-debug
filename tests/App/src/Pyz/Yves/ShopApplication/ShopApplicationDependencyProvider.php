@@ -8,6 +8,7 @@ use Spryker\Yves\Router\Plugin\Application\RouterApplicationPlugin;
 use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use SprykerShop\Yves\ShopApplication\Plugin\Application\ShopApplicationApplicationPlugin;
 use SprykerShop\Yves\ShopApplication\ShopApplicationDependencyProvider as SprykerShopApplicationDependencyProvider;
+use SprykerShop\Yves\WebProfilerWidget\Plugin\Application\WebProfilerApplicationPlugin;
 
 class ShopApplicationDependencyProvider extends SprykerShopApplicationDependencyProvider
 {
@@ -22,6 +23,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new EventDispatcherApplicationPlugin(),
             new RouterApplicationPlugin(),
             new HttpApplicationPlugin(),
+            new WebProfilerApplicationPlugin()
         ];
     }
 }
