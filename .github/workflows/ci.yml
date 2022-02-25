@@ -11,8 +11,8 @@ env:
   TZ: "UTC"
 
 jobs:
-  phpunit:
-    name: "PHPUnit (${{ matrix.php-version }})"
+  integrate:
+    name: "Integrate PHP${{ matrix.php-version }}"
 
     runs-on: "ubuntu-latest"
 
@@ -51,13 +51,9 @@ jobs:
         run: "tests/App/bin/console propel:install"
 
       -
-        name: "Run PHPUnit"
-        run: "composer phpunit"
-
-      -
         name: "Start Yves"
         run: "php -S localhost:8085 -t tests/App/public/yves &"
 
       -
-        name: "Run Behat"
-        run: "composer behat"
+        name: "Run checks"
+        run: "composer integrate"
