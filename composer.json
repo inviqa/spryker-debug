@@ -57,7 +57,7 @@
         "@phpunit",
         "@behat"
       ],
-      "behat": "./vendor/bin/behat --colors",
+      "behat": "./vendor/bin/behat --colors --tags=~skip-github-actions",
       "phpcs": "./vendor/bin/phpcs",
       "phpunit": "./vendor/bin/phpunit",
       "phpstan": "./vendor/bin/phpstan analyse -c phpstan.neon src"

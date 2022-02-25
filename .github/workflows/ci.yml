@@ -55,5 +55,9 @@ jobs:
         run: "composer phpunit"
 
       -
+        name: "Start Yves"
+        run: "php -S localhost:8085 -t tests/App/public/yves &"
+
+      -
         name: "Run Behat"
         run: "composer behat"

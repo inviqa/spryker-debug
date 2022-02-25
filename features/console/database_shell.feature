@@ -1,3 +1,4 @@
+@skip-github-actions
 Feature: Open a new database shell
 
   As a developer
