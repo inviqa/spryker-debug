@@ -43,6 +43,12 @@ jobs:
         uses: "ramsey/composer-install@v1"
 
       -
+        name: "Setup Spryker"
+        run:
+          - tests/App/bin/console transfer:generate
+          - tests/App/bin/console propel:install
+
+      -
         name: "Run PHPUnit"
         run: "composer phpunit"
 
