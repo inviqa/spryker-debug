@@ -67,6 +67,6 @@ class DebugQueuesConsole extends Console
         }
         $table->render();
 
-        return self::SUCCESS;
+        return self::CODE_SUCCESS;
     }
 }

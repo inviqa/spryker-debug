@@ -41,7 +41,7 @@ class DebugConfigConsole extends Console
 
         $this->renderTable($output, $config);
 
-        return self::SUCCESS;
+        return self::CODE_SUCCESS;
     }
 
     private function extractConfiguration(): array
