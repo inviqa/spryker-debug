@@ -44,7 +44,7 @@ class DebugQueuesPeekConsole extends Console
             $output->writeln($this->formatPayload($input, $message->payload()), OutputInterface::OUTPUT_RAW);
         }
 
-        return self::SUCCESS;
+        return self::CODE_SUCCESS;
     }
 
     private function formatPayload(InputInterface $input, string $message): string

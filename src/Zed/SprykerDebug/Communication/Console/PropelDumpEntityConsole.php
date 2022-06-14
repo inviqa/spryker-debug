@@ -69,7 +69,7 @@ class PropelDumpEntityConsole extends Console
         } catch (PropelException $exception) {
             $output->writeln('<error>' . $exception->getMessage() . '</>');
 
-            return self::SUCCESS;
+            return self::CODE_SUCCESS;
         }
 
         if ($input->getOption(self::OPT_RECORDS)) {
@@ -80,7 +80,7 @@ class PropelDumpEntityConsole extends Console
 
         $output->writeln(sprintf('%s entities', count($entities)));
 
-        return self::SUCCESS;
+        return self::CODE_SUCCESS;
     }
 
     private function buildQuery(TableMap $table, InputInterface $input): ModelCriteria
