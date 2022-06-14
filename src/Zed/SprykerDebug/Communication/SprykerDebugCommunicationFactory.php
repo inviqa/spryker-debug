@@ -24,7 +24,7 @@ class SprykerDebugCommunicationFactory extends AbstractCommunicationFactory
                 'base_uri' => sprintf(
                     'http://%s:%s/api',
                     Config::get(RabbitMqEnv::RABBITMQ_API_HOST),
-                    Config::get(RabbitMqEnv::RABBITMQ_API_PORT)
+                    Config::get(RabbitMqEnv::RABBITMQ_API_PORT),
                 ),
                 'auth' => [
                     Config::get(RabbitMqEnv::RABBITMQ_API_USERNAME),
@@ -33,7 +33,7 @@ class SprykerDebugCommunicationFactory extends AbstractCommunicationFactory
                 'headers' => [
                     'Content-Type' => 'application/json',
                 ],
-            ])
+            ]),
         );
     }
 

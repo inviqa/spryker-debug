@@ -10,7 +10,7 @@ use Symfony\Component\Stopwatch\Stopwatch;
 class GuzzleStopwatchProfilerMiddleware implements MiddlewareInterface
 {
     /**
-     * @var Stopwatch
+     * @var \Symfony\Component\Stopwatch\Stopwatch
      */
     private $stopwatch;
 

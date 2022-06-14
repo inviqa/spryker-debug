@@ -32,7 +32,7 @@ class RedisShellConsole extends AbstractShellConsole
             null,
             [
                 'REDISCLI_AUTH' => Config::get('STORAGE_REDIS:STORAGE_REDIS_PASSWORD', Config::get(StorageConstants::STORAGE_REDIS_PASSWORD, '')),
-            ]
+            ],
         );
         $output->getErrorOutput()->writeln(sprintf('<comment>Executing "%s" (password passed via env REDISCLI_AUTH)</comment>', $process->getCommandLine()));
         $output->getErrorOutput()->writeln('<info>Type "exit" to quit</info>');

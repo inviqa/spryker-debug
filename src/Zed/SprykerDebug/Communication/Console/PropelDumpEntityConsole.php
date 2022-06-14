@@ -24,18 +24,22 @@ use Symfony\Component\Console\Output\OutputInterface;
 class PropelDumpEntityConsole extends Console
 {
     private const ARG_NAME = 'name';
+
     private const OPT_BY = 'by';
+
     private const OPT_LIMIT = 'limit';
+
     private const OPT_RECORDS = 'records';
+
     private const OPT_FIELDS = 'fields';
 
     /**
-     * @var CriteriaParser
+     * @var \Inviqa\Zed\SprykerDebug\Communication\Model\Propel\CriteriaParser
      */
     private $criteriaParser;
 
     /**
-     * @var FieldParser
+     * @var \Inviqa\Zed\SprykerDebug\Communication\Model\Propel\FieldParser
      */
     private $fieldParser;
 
@@ -64,7 +68,7 @@ class PropelDumpEntityConsole extends Console
 
         try {
             $entities = $query->findByArray($this->criteriaParser->parseMany(
-                Cast::toArray($input->getOption(self::OPT_BY))
+                Cast::toArray($input->getOption(self::OPT_BY)),
             ));
         } catch (PropelException $exception) {
             $output->writeln('<error>' . $exception->getMessage() . '</>');
@@ -93,7 +97,7 @@ class PropelDumpEntityConsole extends Console
             throw new RuntimeException(sprintf(
                 'Could not find query class "%s" for "%s"',
                 $queryClass,
-                $table->getClassName()
+                $table->getClassName(),
             ));
         }
         $query = new $queryClass();
@@ -149,13 +153,13 @@ class PropelDumpEntityConsole extends Console
     private function entityToCells($entity): array
     {
         if (is_scalar($entity)) {
-            return [ $entity ];
+            return [$entity];
         }
 
         if ($entity instanceof ActiveRecordInterface) {
             if (!method_exists($entity, 'toArray')) {
                 throw new RuntimeException(
-                    'Active record has no ->toArray method'
+                    'Active record has no ->toArray method',
                 );
             }
             $entity = $entity->toArray();
@@ -164,7 +168,7 @@ class PropelDumpEntityConsole extends Console
         if (!is_array($entity)) {
             throw new RuntimeException(sprintf(
                 'Entity/row data is not an array, is "%s"',
-                gettype($entity)
+                gettype($entity),
             ));
         }
 

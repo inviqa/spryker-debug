@@ -8,12 +8,12 @@ use Propel\Runtime\Map\Exception\TableNotFoundException;
 class TablesFactory
 {
     /**
-     * @var DatabaseMap
+     * @var \Propel\Runtime\Map\DatabaseMap
      */
     private $map;
 
     /**
-     * @var TableNameFinder
+     * @var \Inviqa\Zed\SprykerDebug\Communication\Model\Propel\TableNameFinder
      */
     private $finder;
 

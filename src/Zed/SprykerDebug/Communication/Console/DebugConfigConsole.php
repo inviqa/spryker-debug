@@ -16,8 +16,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 class DebugConfigConsole extends Console
 {
     private const NAME = 'debug:config';
+
     private const DESCRIPTION = 'Inspect the current Spryker configuration';
+
     private const ARG_FILTER = 'filter';
+
     private const OPT_ORIGIN = 'origin';
 
     public function configure(): void
@@ -33,7 +36,7 @@ class DebugConfigConsole extends Console
         $config = $this->extractConfiguration();
         $config = $this->filterConfig(
             $config,
-            Cast::toStringOrNull($input->getArgument(self::ARG_FILTER))
+            Cast::toStringOrNull($input->getArgument(self::ARG_FILTER)),
         );
         $config = $this->sortConfiguration($config);
         $config = $this->addOrigin($config);

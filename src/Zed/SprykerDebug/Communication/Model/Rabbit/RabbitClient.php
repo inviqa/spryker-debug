@@ -8,7 +8,7 @@ use RuntimeException;
 final class RabbitClient
 {
     /**
-     * @var Client
+     * @var \GuzzleHttp\Client
      */
     private $client;
 
@@ -18,7 +18,7 @@ final class RabbitClient
     }
 
     /**
-     * @return Queues<Queue>
+     * @return \Inviqa\Zed\SprykerDebug\Communication\Model\Rabbit\Queues<\Inviqa\Zed\SprykerDebug\Communication\Model\Rabbit\Queue>
      */
     public function queues(): Queues
     {
@@ -32,9 +32,9 @@ final class RabbitClient
         $decoded = json_decode(
             $this->client->request(
                 'GET',
-                sprintf('/api/%s', $url)
+                sprintf('/api/%s', $url),
             )->getBody()->__toString(),
-            true
+            true,
         );
 
         if ($decoded === false) {
@@ -52,9 +52,9 @@ final class RabbitClient
                 sprintf('/api/%s', $url),
                 [
                     'json' => $options,
-                ]
+                ],
             )->getBody()->__toString(),
-            true
+            true,
         );
 
         if ($decoded === false) {

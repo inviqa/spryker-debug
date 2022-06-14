@@ -16,8 +16,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 class DebugQueuesPeekConsole extends Console
 {
     private const ARG_NAME = 'peek';
+
     private const OPT_VHOST = 'vhost';
+
     private const OPT_JSON = 'json';
+
     private const OPT_COUNT = 'count';
 
     public function configure(): void
@@ -37,7 +40,7 @@ class DebugQueuesPeekConsole extends Console
         $messages = $client->peek(
             Cast::toString($input->getOption(self::OPT_VHOST)),
             Cast::toString($input->getArgument(self::ARG_NAME)),
-            Cast::toInt($input->getOption(self::OPT_COUNT))
+            Cast::toInt($input->getOption(self::OPT_COUNT)),
         );
 
         foreach ($messages as $message) {
@@ -54,14 +57,14 @@ class DebugQueuesPeekConsole extends Console
             if ($decoded === false) {
                 throw new RuntimeException(sprintf(
                     'Could not decode JSON: "%s"',
-                    json_last_error_msg()
+                    json_last_error_msg(),
                 ));
             }
 
             $encoded = json_encode($decoded, JSON_PRETTY_PRINT);
             if ($encoded === false) {
                 throw new RuntimeException(
-                    'Could not encode JSON'
+                    'Could not encode JSON',
                 );
             }
 
