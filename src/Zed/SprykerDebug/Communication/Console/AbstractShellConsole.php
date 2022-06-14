@@ -19,7 +19,7 @@ class AbstractShellConsole extends Console
         if ($path === null) {
             throw new RuntimeException(sprintf(
                 'Shell "%s" not found, maybe you need to install it?',
-                $shellName
+                $shellName,
             ));
         }
 

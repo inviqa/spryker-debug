@@ -12,12 +12,12 @@ use Symfony\Component\Finder\Finder;
 class TableNameFinder
 {
     /**
-     * @var PropelConfig
+     * @var \Inviqa\Zed\SprykerDebug\Model\Propel\PropelConfig
      */
     private $config;
 
     /**
-     * @var PhpNameGenerator
+     * @var \Propel\Generator\Model\PhpNameGenerator
      */
     private $nameGenerator;
 
@@ -51,7 +51,8 @@ class TableNameFinder
         }
 
         // spryker does not seem to have consistent XML namespace
-        foreach ([
+        foreach (
+            [
             'sprk' => 'spryker:schema-01',
             '' => '',
             ] as $alias => $namespace

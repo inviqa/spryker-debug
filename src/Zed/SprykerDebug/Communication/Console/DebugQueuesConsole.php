@@ -16,7 +16,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 class DebugQueuesConsole extends Console
 {
     public const OPT_VHOST = 'vhost';
+
     public const ARG_PATTERN = 'pattern';
+
     public const OPT_NON_EMPTY = 'non-empty';
 
     public function configure(): void

@@ -60,7 +60,7 @@ class Queue
             $data['messages_ready'] ?? -1,
             $data['messages_unacknowledged'] ?? -1,
             $data['messages'] ?? -1,
-            $data['vhost'] ?? ''
+            $data['vhost'] ?? '',
         );
     }
 

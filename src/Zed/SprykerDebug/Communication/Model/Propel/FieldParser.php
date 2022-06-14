@@ -8,7 +8,7 @@ final class FieldParser
     {
         $fields = trim($fields);
 
-        if (empty($fields)) {
+        if (!$fields) {
             return [];
         }
 

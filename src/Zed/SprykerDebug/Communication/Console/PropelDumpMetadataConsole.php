@@ -31,7 +31,7 @@ class PropelDumpMetadataConsole extends Console
         $selected = $input->getArgument(self::ARG_PATTERN);
         $tables = $this->getFactory()->createPropelTablesFactory()->createTables();
 
-        if (empty($selected)) {
+        if (!$selected) {
             $selected = $style->choice('Select entity:', array_map(function (TableMap $tableMap) {
                 return sprintf('%s', $tableMap->getName());
             }, $tables->toArray()));
@@ -80,7 +80,7 @@ class PropelDumpMetadataConsole extends Console
             ['class' => $table->getClassName()],
             ['collection' => $table->getCollectionClassName()],
             ['table' => $table->getName()],
-            ['primaryKeys' => json_encode($table->getPrimaryKeys())]
+            ['primaryKeys' => json_encode($table->getPrimaryKeys())],
         );
     }
 
@@ -117,7 +117,7 @@ class PropelDumpMetadataConsole extends Console
                     return $column->getName();
                 }, $relation->getLocalColumns())),
                 $this->relationType($relation->getType()),
-                $relation->getForeignTable()->getName()
+                $relation->getForeignTable()->getName(),
             ));
         }
     }

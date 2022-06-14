@@ -47,7 +47,7 @@ class Tables implements IteratorAggregate
 
         throw new TableNotFoundException(sprintf(
             'Could not find table map "%s" (using either PHP or table name)',
-            $phpOrTableName
+            $phpOrTableName,
         ));
     }
 }

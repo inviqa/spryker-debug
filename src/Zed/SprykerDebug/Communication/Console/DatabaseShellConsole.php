@@ -37,7 +37,7 @@ class DatabaseShellConsole extends AbstractShellConsole
                 'PGHOST' => Config::get(PropelConstants::ZED_DB_HOST),
                 'PGDATABASE' => Config::get(PropelConstants::ZED_DB_DATABASE),
                 'PGPORT' => Config::get(PropelConstants::ZED_DB_PORT),
-            ]
+            ],
         );
         $output->getErrorOutput()->writeln(sprintf('<comment>Executing "%s" (connection params passed via env vars)</comment>', $process->getCommandLine()));
         $output->getErrorOutput()->writeln('<info>Type "\\q" to quit</info>');
