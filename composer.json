@@ -23,7 +23,7 @@
       }
     },
     "require": {
-        "php": "^7.2 | ^8.0",
+        "php": "^7.4 | ^8.0",
         "spryker-shop/shop-application": "^1.0",
         "spryker/propel": "^3.0",
         "spryker/console": "^4.0",
@@ -36,7 +36,7 @@
         "propel/propel": "2.0.0-alpha12",
         "behat/behat": "^3.5",
         "spryker-sdk/phpstan-spryker": "^0.4",
-        "roave/behat-psr11extension": "^1.0",
+        "roave/behat-psr11extension": "^2.1",
         "webmozart/path-util": "^2.0",
         "spryker/code-sniffer": "^0.17.7",
         "spryker-shop/web-profiler-widget": "^1.4",
