@@ -63,5 +63,10 @@
       "phpcs": "./vendor/bin/phpcs",
       "phpunit": "./vendor/bin/phpunit",
       "phpstan": "./vendor/bin/phpstan analyse -c phpstan.neon src"
+    },
+    "config": {
+      "allow-plugins": {
+        "dealerdirect/phpcodesniffer-composer-installer": false
+      }
     }
 }
