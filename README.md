@@ -34,7 +34,7 @@ Follow the link for documentation:
 
 ### Console Commands
 
-- [Config Dump](doc/config_dump.md): Inpsect configuration.
+- [Config Dump](doc/config_dump.md): Inspect configuration.
 - [Queue Overview](doc/queue_overview.md): Inspect queue statuses.
 - [Queue Peek](doc/queue_peek.md): Peek at messages in a queue.
 - [Database Shell](doc/database_shell.md): Launch a Postgres shell.
