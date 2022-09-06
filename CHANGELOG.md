@@ -1,6 +1,17 @@
 CHANGELOG
 =========
 
+1.2.0
+-----
+
+Features:
+
+- List non empty queues
+
+Improvements:
+
+- Added type hints for Symfony console commands
+
 1.1.0
 -----
 
