@@ -68,7 +68,7 @@ class TableNameFinder
                     $entityNamespace,
                     '\\',
                     $this->nameGenerator->generateName([
-                        $tableEl->attributes->getNamedItem('name')->value,
+                        $tableEl->attributes->getNamedItem('name')->nodeValue,
                         PhpNameGenerator::CONV_METHOD_PHPNAME,
                     ]),
                 ]);
